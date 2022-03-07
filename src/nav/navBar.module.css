@@ -1,0 +1,21 @@
+.searchIcon {
+  width: max(30px, 30px);
+  height: max(30px, 30px);
+  color: #e15e5e;
+}
+.chevronDownIcon {
+  width: max(30px, 30px);
+  height: max(30px, 30px);
+  color: #e15e5e;
+  margin-top: 6px;
+}
+.userIcon {
+  height: max(30px, 30px);
+  width: max(30px, 30px);
+  margin-right: 10px;
+}
+.shoppingCardIcon {
+  height: max(30px, 30px);
+  width: max(30px, 30px);
+  color: white;
+}
