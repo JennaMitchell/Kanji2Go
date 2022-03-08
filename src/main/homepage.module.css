@@ -1,6 +1,17 @@
 .bannerBoxOne {
-  margin-left: 20%;
+  margin-left: 30%;
 }
 .bannerBoxThree {
-  margin-right: 20%;
+  margin-right: 30%;
+}
+.icon {
+  width: max(25px, 20px);
+  height: max(25px, 20px);
+}
+
+.loginClickedHompage {
+  position: static;
+  overflow: hidden;
+  width: max(100vw, 100vw);
+  height: max(90vh, 90vh);
 }

@@ -17,17 +17,43 @@ import cityStreetTwo from "../img/city_street2.jpg";
 import kanjiSheet from "../img/kanji_Sheet.jpg";
 import tablet from "../img/tablet.jpg";
 import books from "../img/books.jpg";
-import facebookIcon from "../icons/facebook.png";
+import facebookIcon from "../icons/facebook-app-symbol.png";
 import instagramIcon from "../icons/instagram.png";
-import linkedinIcon from "../icons/linkedin-logo.png";
+import linkedinIcon from "../icons/linkedin.png";
 import twitterIcon from "../icons/twitter.png";
 
 import BannerBox from "../components/BannerBox";
 import classes from "./homepage.module.css";
+import {
+  LocationMarkerIcon,
+  PhoneIcon,
+  MailIcon,
+} from "@heroicons/react/solid";
+import { useSelector } from "react-redux";
+
+import PageMenu from "./pageMenu";
+import ShopMenu from "./shopMenu";
+import LoginPopup from "../login/loginPopup";
 const HomePage = () => {
+  //const dispatch = useDispatch();
+  const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
+  const shopNavButtonClicked = useSelector(
+    (state) => state.shopNavButtonClicked
+  );
+  const loginButtonClicked = useSelector((state) => state.loginButtonClicked);
   return (
-    <>
-      <Container maxW="100%" h="900px" p="0" bgColor="#dc5357" m="0">
+    <div className={`${loginButtonClicked ? classes.loginClickedHompage : ""}`}>
+      <Container
+        maxW="100%"
+        h="900px"
+        p="0"
+        bgColor="#dc5357"
+        m="0"
+        pos="relative"
+      >
+        {pageButtonClicked ? <PageMenu /> : ""}
+        {shopNavButtonClicked ? <ShopMenu /> : ""}
+        {loginButtonClicked ? <LoginPopup /> : ""}
         <SimpleGrid
           columns={2}
           alignItems="center"
@@ -170,7 +196,7 @@ const HomePage = () => {
         <GridItem w="80%" h="50%" p="10px" colSpan={1} ml="10%" mt="10%">
           <Text fontSize="26px">Get Started Today!</Text>
           <Heading fontSize="80px" mt="10px">
-            Create a Free Account
+            Save Your Progress
           </Heading>
           <Text fontSize="26px" mt="20px">
             Create a free account today to save your custom made sheets, and
@@ -196,12 +222,11 @@ const HomePage = () => {
         p="0"
         bgColor="#221f1f"
         m="0"
-        templateColumns="repeat(4,1fr)"
+        templateColumns="1fr 4fr"
         alignItems="center"
         justifyItems="center"
       >
         <GridItem
-          templateRows="repeat(3,1fr)"
           h="max-content"
           w="80%"
           display="flex"
@@ -217,14 +242,27 @@ const HomePage = () => {
             Working to bring free education by providing adaptive learning,
             student engagment, and a flexible study environment.
           </Text>
-          <HStack>
-            <Image src={facebookIcon} w="20px" h="20px" borderRadius="2px" />
+          <HStack
+            alignItems="center"
+            justifyItems="end"
+            w="max-content"
+            mr="57%"
+          >
+            <Image
+              src={facebookIcon}
+              w="20px"
+              h="20px"
+              borderRadius="2px"
+              bg="white"
+              padding="1px"
+            />
             <Image
               src={instagramIcon}
               bg="white"
               w="20px"
               h="20px"
-              borderRadius="6px"
+              borderRadius="2px"
+              padding="1px"
             />
             <Image
               src={twitterIcon}
@@ -232,6 +270,7 @@ const HomePage = () => {
               w="20px"
               h="20px"
               borderRadius="2px"
+              padding="1px"
             />
             <Image
               src={linkedinIcon}
@@ -239,11 +278,48 @@ const HomePage = () => {
               w="20px"
               h="20px"
               borderRadius="2px"
+              padding="1px"
             />
           </HStack>
         </GridItem>
+        <Grid
+          templateColumns="repeat(3,1fr)"
+          alignItems="center"
+          justifyItems="center"
+          colSpan={1}
+          w="100%"
+          h="100%"
+        >
+          <VStack w="100%" h="30%" colSpan={1}>
+            <Heading marginBottom="30px">Explore</Heading>
+            <Text fontSize="24px">Home</Text>
+            <Text fontSize="24px">About</Text>
+            <Text fontSize="24px">Contact</Text>
+          </VStack>
+          <VStack w="100%" h="30%" colSpan={1}>
+            <Heading marginBottom="30px">Resources</Heading>
+            <Text fontSize="24px">What is JLPT?</Text>
+            <Text fontSize="24px">JLPT Testing Centers</Text>
+            <Text fontSize="24px">Create Account</Text>
+          </VStack>
+          <VStack w="100%" h="30%" colSpan={1}>
+            <Heading marginBottom="30px">Contact</Heading>
+            <HStack>
+              <LocationMarkerIcon className={classes.icon} />
+              <Text fontSize="24px">Address</Text>
+            </HStack>
+            <HStack>
+              <PhoneIcon className={classes.icon} />
+              <Text fontSize="24px">Phone</Text>
+            </HStack>
+            <HStack>
+              <MailIcon className={classes.icon} />
+              <Text fontSize="24px">Email</Text>
+            </HStack>
+          </VStack>
+        </Grid>
       </Grid>
-    </>
+    </div>
   );
 };
 export default HomePage;

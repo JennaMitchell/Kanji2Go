@@ -4,7 +4,6 @@ import {
   Image,
   Input,
   HStack,
-  Text,
   SimpleGrid,
   GridItem,
   Button,
@@ -15,12 +14,56 @@ import logo from "../img/logo.JPG";
 import {
   SearchIcon,
   ChevronDownIcon,
+  ChevronUpIcon,
   UserIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/solid";
 import classes from "./navBar.module.css";
 
+import { useDispatch, useSelector } from "react-redux";
+import { storeActions } from "../store/store";
+
 const NavBar = () => {
+  //const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
+
+  const dispatch = useDispatch();
+  //useEffect(() => {}, [pageButtonClicked]);
+  const storePageButtonClicked = useSelector(
+    (state) => state.pageButtonClicked
+  );
+  const storeShopButtonClicked = useSelector(
+    (state) => state.shopNavButtonClicked
+  );
+  const loginButtonClicked = useSelector((state) => state.loginButtonClicked);
+
+  const pageButtonHandler = () => {
+    if (storePageButtonClicked) {
+      dispatch(storeActions.setPageButtonClicked(false));
+    } else {
+      if (storeShopButtonClicked) {
+        dispatch(storeActions.setShopNavButtonClicked(false));
+      }
+      dispatch(storeActions.setPageButtonClicked(true));
+      // if the shop button is clicked then we turn it off and render the page button
+    }
+  };
+  const shopButtonHandler = () => {
+    if (storeShopButtonClicked) {
+      dispatch(storeActions.setShopNavButtonClicked(false));
+    } else {
+      if (storePageButtonClicked) {
+        dispatch(storeActions.setPageButtonClicked(false));
+      }
+      // if the page button is clicked then we turn it off and render the shop button
+      dispatch(storeActions.setShopNavButtonClicked(true));
+    }
+  };
+  const loginButtonHandler = () => {
+    dispatch(storeActions.setLoginButtonClicked(true));
+    dispatch(storeActions.setPageButtonClicked(false));
+    dispatch(storeActions.setShopNavButtonClicked(false));
+  };
+
   return (
     <Container maxW="100%" maxH="100px" p="0" bgColor="#221f1f" m="0">
       <SimpleGrid
@@ -73,29 +116,58 @@ const NavBar = () => {
         >
           <Flex mr={50}>
             <Flex mr="20px" justifyContent="center" alignItems="center">
-              <Text w="80%" h="80%" fontSize="24px">
+              <Button
+                w="100%"
+                h="80%"
+                fontSize="24px"
+                paddingRight="10px"
+                bg="inherit"
+              >
                 Home
-              </Text>
-              <ChevronDownIcon
-                className={classes.chevronDownIcon}
-              ></ChevronDownIcon>
+              </Button>
             </Flex>
 
             <Flex mr="20px" justifyContent="center" alignItems="center">
-              <Text w="80%" h="80%" fontSize="24px">
+              <Button
+                w="80%"
+                h="80%"
+                fontSize="24px"
+                onClick={pageButtonHandler}
+                bgColor="inherit"
+                _focus={{ border: "none" }}
+              >
                 Pages
-              </Text>
-              <ChevronDownIcon
-                className={classes.chevronDownIcon}
-              ></ChevronDownIcon>
+              </Button>
+              {storePageButtonClicked ? (
+                <ChevronUpIcon
+                  className={classes.chevronDownIcon}
+                ></ChevronUpIcon>
+              ) : (
+                <ChevronDownIcon
+                  className={classes.chevronDownIcon}
+                ></ChevronDownIcon>
+              )}
             </Flex>
             <Flex mr="20px" justifyContent="center" alignItems="center">
-              <Text w="80%" h="80%" fontSize="24px">
+              <Button
+                w="80%"
+                h="80%"
+                fontSize="24px"
+                onClick={shopButtonHandler}
+                bgColor="inherit"
+                _focus={{ border: "none" }}
+              >
                 Shop
-              </Text>
-              <ChevronDownIcon
-                className={classes.chevronDownIcon}
-              ></ChevronDownIcon>
+              </Button>
+              {storeShopButtonClicked ? (
+                <ChevronUpIcon
+                  className={classes.chevronDownIcon}
+                ></ChevronUpIcon>
+              ) : (
+                <ChevronDownIcon
+                  className={classes.chevronDownIcon}
+                ></ChevronDownIcon>
+              )}
             </Flex>
 
             <Flex
@@ -118,6 +190,7 @@ const NavBar = () => {
                 top="4px"
                 right="-5px"
                 justifyContent="center"
+                cd
                 alignItems="center"
                 fontSize="14px"
               >
@@ -125,7 +198,12 @@ const NavBar = () => {
               </Flex>
             </Flex>
 
-            <Button h="50px" w="170px" bgColor="brand.300">
+            <Button
+              h="50px"
+              w="170px"
+              bgColor="brand.300"
+              onClick={loginButtonHandler}
+            >
               <UserIcon className={classes.userIcon} />
               Login/Register
             </Button>

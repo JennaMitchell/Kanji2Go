@@ -5,13 +5,17 @@ import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
 import reportWebVitals from "./reportWebVitals";
 import theme from "./theme/theme";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 // we uses this therme property to set thems for the Chakra app.
 
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")
