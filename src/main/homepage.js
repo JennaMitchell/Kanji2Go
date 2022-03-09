@@ -1,9 +1,7 @@
 import {
   Container,
-  Flex,
   VStack,
   Image,
-  Input,
   HStack,
   Text,
   SimpleGrid,
@@ -34,6 +32,7 @@ import { useSelector } from "react-redux";
 import PageMenu from "./pageMenu";
 import ShopMenu from "./shopMenu";
 import LoginPopup from "../login/loginPopup";
+
 const HomePage = () => {
   //const dispatch = useDispatch();
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
@@ -41,6 +40,7 @@ const HomePage = () => {
     (state) => state.shopNavButtonClicked
   );
   const loginButtonClicked = useSelector((state) => state.loginButtonClicked);
+  const signUpButtonClicked = useSelector((state) => state.signUpButtonClicked);
   return (
     <div className={`${loginButtonClicked ? classes.loginClickedHompage : ""}`}>
       <Container
@@ -54,6 +54,7 @@ const HomePage = () => {
         {pageButtonClicked ? <PageMenu /> : ""}
         {shopNavButtonClicked ? <ShopMenu /> : ""}
         {loginButtonClicked ? <LoginPopup /> : ""}
+
         <SimpleGrid
           columns={2}
           alignItems="center"

@@ -7,6 +7,10 @@ import {
 
 import { mode } from "@chakra-ui/theme-tools";
 
+const searchBar = {
+  variants: {},
+};
+
 const theme = extendTheme({
   colors: {
     brand: {

@@ -3,6 +3,7 @@ const initialState = {
   pageButtonClicked: false,
   shopNavButtonClicked: false,
   loginButtonClicked: false,
+  signUpButtonClicked: false,
 };
 
 const storeSlice = createSlice({
@@ -17,6 +18,9 @@ const storeSlice = createSlice({
     },
     setLoginButtonClicked(state, { payload }) {
       state.loginButtonClicked = payload;
+    },
+    setSignUpButtonClicked(state, { payload }) {
+      state.signUpButtonClicked = payload;
     },
   },
 });

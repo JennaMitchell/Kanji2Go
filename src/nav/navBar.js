@@ -97,6 +97,7 @@ const NavBar = () => {
                     w="15vw"
                     color="white"
                     borderColor="white"
+                    _placeholder={{ color: "white" }}
                   />
                   <InputRightElement
                     children={<SearchIcon className={classes.searchIcon} />}
@@ -190,7 +191,6 @@ const NavBar = () => {
                 top="4px"
                 right="-5px"
                 justifyContent="center"
-                cd
                 alignItems="center"
                 fontSize="14px"
               >
