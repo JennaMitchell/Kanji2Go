@@ -7,16 +7,19 @@ import reportWebVitals from "./reportWebVitals";
 import theme from "./theme/theme";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import { BrowserRouter } from "react-router-dom";
 
 // we uses this therme property to set thems for the Chakra app.
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </ChakraProvider>
+    <BrowserRouter>
+      <ChakraProvider theme={theme}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </ChakraProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

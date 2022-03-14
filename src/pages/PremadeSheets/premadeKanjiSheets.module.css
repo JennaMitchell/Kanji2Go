@@ -1,0 +1,17 @@
+.menuIcon {
+  width: max(90%, 90%);
+  height: max(90%, 90%);
+}
+.cardGrid {
+  display: grid;
+  position: relative;
+  height: max(1200px, 1200px);
+  width: max(100%, 100%);
+  background-color: #f3bdbd;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  align-items: center;
+  justify-items: center;
+  overflow-y: scroll;
+}

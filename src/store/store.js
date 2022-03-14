@@ -4,6 +4,9 @@ const initialState = {
   shopNavButtonClicked: false,
   loginButtonClicked: false,
   signUpButtonClicked: false,
+  grammarCardsDB: [],
+  kanjiCardsDB: [],
+  vocabCardsDB: [],
 };
 
 const storeSlice = createSlice({
@@ -21,6 +24,15 @@ const storeSlice = createSlice({
     },
     setSignUpButtonClicked(state, { payload }) {
       state.signUpButtonClicked = payload;
+    },
+    setGrammarCardsDB(state, { payload }) {
+      state.grammarCardsDB = payload;
+    },
+    setKanjiCardsDB(state, { payload }) {
+      state.kanjiCardsDB = payload;
+    },
+    setVocabCardsDB(state, { payload }) {
+      state.vocabCardsDB = payload;
     },
   },
 });

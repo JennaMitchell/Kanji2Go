@@ -1,0 +1,76 @@
+.cardContainer {
+  width: max(70%, 70%);
+  height: max(max-content, max-content);
+  background-color: #dc5357;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  position: relative;
+}
+
+.cardContainer:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.563);
+}
+.previewIconContainer {
+  width: max(30px, 30px);
+  height: max(30px, 30px);
+  position: absolute;
+  top: 30px;
+  right: -30px;
+  background-color: #221f1f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.previewIconContainer:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.563);
+}
+.previewIcon {
+  width: max(75%, 75%);
+  height: max(75%, 75%);
+}
+
+.banner {
+  position: absolute;
+  top: 2.5%;
+  left: -2%;
+  padding: 4px;
+  width: max(80px, 80px);
+  height: max(max-content, max-content);
+  text-align: center;
+
+  box-shadow: 1px 1px 5px black;
+
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.bannerShadow {
+  position: absolute;
+  bottom: -5px;
+  left: 0px;
+  width: max(6.75px, 6.75px);
+  height: max(5px, 5px);
+  border-bottom-left-radius: 2px;
+}
+.blueBanner {
+  background-color: blue;
+}
+.redBanner {
+  background-color: rgb(184, 3, 3);
+}
+.greenBanner {
+  background-color: green;
+}
+.bannerShadowBlue {
+  background-color: rgb(2, 2, 116);
+}
+.bannerShadowGreen {
+  background-color: rgb(0, 67, 0);
+}
+.bannerShadowRed {
+  background-color: rgb(130, 0, 0);
+}

@@ -19,6 +19,7 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/solid";
 import classes from "./navBar.module.css";
+import { NavLink } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { storeActions } from "../store/store";
@@ -124,7 +125,7 @@ const NavBar = () => {
                 paddingRight="10px"
                 bg="inherit"
               >
-                Home
+                <NavLink to="/home">Home</NavLink>
               </Button>
             </Flex>
 
