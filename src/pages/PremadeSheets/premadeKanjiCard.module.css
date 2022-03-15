@@ -26,7 +26,7 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.previewIconContainer:hover {
+.cardContainer .previewIconContainer:hover {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.563);
 }
 .previewIcon {
@@ -73,4 +73,23 @@
 }
 .bannerShadowRed {
   background-color: rgb(130, 0, 0);
+}
+.kanjiSelectionContainer {
+  width: max(330px, 330px);
+  height: max(330px, 330px);
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 3fr;
+}
+.kanjiSelectorButtons {
+  margin-top: 20px;
+  width: max(80%, 80%);
+  height: max(100%, 100%);
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1fr;
+  margin-left: 15px;
+  margin-right: auto;
 }

@@ -7,6 +7,8 @@ const initialState = {
   grammarCardsDB: [],
   kanjiCardsDB: [],
   vocabCardsDB: [],
+  kanjiIdClicked: false,
+  activePreviewKanjiData: [],
 };
 
 const storeSlice = createSlice({
@@ -33,6 +35,12 @@ const storeSlice = createSlice({
     },
     setVocabCardsDB(state, { payload }) {
       state.vocabCardsDB = payload;
+    },
+    setKanjiIdClicked(state, { payload }) {
+      state.kanjiIdClicked = payload;
+    },
+    setActivePreviewKanjiData(state, { payload }) {
+      state.activePreviewKanjiData = payload;
     },
   },
 });

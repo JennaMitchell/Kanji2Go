@@ -71,7 +71,7 @@ const PreMadeKanjiSheets = () => {
           bgColor="#dc5357"
           p="0"
           top="5%"
-          left="0.5%"
+          left="0%"
           display="grid"
           placeItems="center"
         >

@@ -28,6 +28,7 @@ const LocalDatabaseSetup = () => {
                 id: key,
                 title: val[key].title,
                 description: val[key].description,
+                kanjiList: val[key].kanjiList,
               });
             }
             if (databaseType === "grammarCards") {

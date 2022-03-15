@@ -1,0 +1,12 @@
+.initialSide {
+  width: max(100%, 100%);
+  height: max(100%, 100%);
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+.infoContainer {
+  position: absolute;
+  top: 55%;
+  left: 2.5%;
+}
