@@ -1,15 +1,5 @@
 import classes from "./premadeKanjiSheets.module.css";
-import {
-  Container,
-  VStack,
-  Image,
-  Text,
-  SimpleGrid,
-  GridItem,
-  Button,
-  Heading,
-  Grid,
-} from "@chakra-ui/react";
+import { Container, Heading } from "@chakra-ui/react";
 
 import Footer from "../../components/footer";
 
@@ -24,6 +14,8 @@ import MountainStart from "../../img/mountainStart.jpg";
 import Gate from "../../img/gate.jpg";
 
 import SunsetCity from "../../img/sunset.jpg";
+import PremadeKanjiFilterMenu from "./premadeKanjiMenu";
+import { useState } from "react";
 
 const PreMadeKanjiSheets = () => {
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
@@ -34,6 +26,10 @@ const PreMadeKanjiSheets = () => {
   const kanjiCardsDB = useSelector((state) => state.kanjiCardsDB);
   const vocabCardsDB = useSelector((state) => state.vocabCardsDB);
   const grammarCardsDB = useSelector((state) => state.grammarCardsDB);
+  const [menuButtonClicked, setMenuButtonClicked] = useState(false);
+  const menuButtonHandler = () => {
+    setMenuButtonClicked(!menuButtonClicked);
+  };
 
   return (
     <div className={`${loginButtonClicked ? classes.loginClickedHompage : ""}`}>
@@ -64,19 +60,19 @@ const PreMadeKanjiSheets = () => {
         </Heading>
       </Container>
       <div className={classes.cardGrid}>
-        <Container
-          pos="absolute"
-          w="50px"
-          h="50px"
-          bgColor="#dc5357"
-          p="0"
-          top="5%"
-          left="0%"
-          display="grid"
-          placeItems="center"
+        <div
+          className={`${classes.menuIconContainer} ${
+            menuButtonClicked && classes.menuIconMoveOut
+          }`}
         >
-          <MenuIcon className={classes.menuIcon} />
-        </Container>
+          <MenuIcon
+            className={`${classes.menuIcon} ${
+              menuButtonClicked && classes.menuIconMoveOut
+            }`}
+            onClick={menuButtonHandler}
+          />
+        </div>
+        <PremadeKanjiFilterMenu menuButtonClicked={menuButtonClicked} />
         {kanjiCardsDB.length !== 0 &&
           kanjiCardsDB.map((card, index) => (
             <PremadeKanjiCard

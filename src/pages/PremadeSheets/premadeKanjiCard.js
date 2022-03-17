@@ -8,11 +8,18 @@ import KanjiPreviewSide from "./kanjiPreviewSide";
 import { useSelector } from "react-redux";
 const PremadeKanjiCard = ({ photo, title, description, bannerText }) => {
   const [previewIconClicked, setPreviewIconClicked] = useState(false);
-  const [kanjiList, setKanjiList] = useState();
+  const [kanjiList, setKanjiList] = useState([]);
   const previewIconHandler = () => {
     setPreviewIconClicked(!previewIconClicked);
   };
+
   const kanjiCardsDB = useSelector((state) => state.kanjiCardsDB);
+  const [kanjiIdClicked, setKanjiIdClicked] = useState(null);
+  const [previewButtons, setPreviewButtons] = useState();
+  const kanjiButtonHandler = (id) => {
+    setKanjiIdClicked(id);
+  };
+
   useEffect(() => {
     if (kanjiCardsDB.length !== 0) {
       let tempArray = [];
@@ -27,6 +34,27 @@ const PremadeKanjiCard = ({ photo, title, description, bannerText }) => {
       setKanjiList(tempArray);
     }
   }, []);
+  useEffect(() => {
+    console.log(previewButtons);
+    if (kanjiList.length !== 0) {
+      console.log(kanjiIdClicked);
+      setPreviewButtons(
+        <>
+          {kanjiList.length !== 0 &&
+            kanjiList.map((card) => (
+              <KanjiPreviewSide
+                kanji={card.kanji}
+                card={card}
+                id={card.id}
+                key={card.id}
+                kanjiClickedFunction={kanjiButtonHandler}
+                activeKanji={kanjiIdClicked}
+              />
+            ))}
+        </>
+      );
+    }
+  }, [kanjiIdClicked, previewIconClicked]);
 
   return (
     <div className={classes.cardContainer}>
@@ -43,17 +71,7 @@ const PremadeKanjiCard = ({ photo, title, description, bannerText }) => {
 
       {previewIconClicked ? (
         <div className={classes.kanjiSelectionContainer}>
-          <div className={classes.kanjiSelectorButtons}>
-            {kanjiList.length !== 0 &&
-              kanjiList.map((card) => (
-                <KanjiPreviewSide
-                  kanji={card.kanji}
-                  card={card}
-                  id={card.id}
-                  key={card.id}
-                />
-              ))}
-          </div>
+          <div className={classes.kanjiSelectorButtons}>{previewButtons}</div>
         </div>
       ) : (
         <>

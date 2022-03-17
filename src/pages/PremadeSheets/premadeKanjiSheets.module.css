@@ -2,6 +2,20 @@
   width: max(90%, 90%);
   height: max(90%, 90%);
 }
+.menuIconContainer {
+  position: absolute;
+  width: max(50px, 50px);
+  height: max(50px, 50px);
+  background-color: #dc5357;
+  top: 5%;
+  left: 0%;
+  display: grid;
+  place-items: center;
+  z-index: 10;
+}
+.menuIconMoveOut {
+  left: 400px;
+}
 .cardGrid {
   display: grid;
   position: relative;
