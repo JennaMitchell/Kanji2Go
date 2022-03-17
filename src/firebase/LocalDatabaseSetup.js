@@ -4,6 +4,7 @@ import { storeActions } from "../store/store";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import classes from "./LocalDatabaseSetup.module.css";
+import { useSelector } from "react-redux";
 
 const LocalDatabaseSetup = () => {
   const databaseRef = ref(databaseTest);
@@ -11,6 +12,8 @@ const LocalDatabaseSetup = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
+  const [renderText, setRenderText] = useState();
+  const kanjiCardsDB = useSelector((state) => state.kanjiCardsDB);
 
   useEffect(() => {
     const awaitDatabaseData = async () => {
@@ -52,20 +55,22 @@ const LocalDatabaseSetup = () => {
     };
     awaitDatabaseData();
   }, [dispatch, databaseRef]);
-  if (isLoading) {
-    return (
-      <section className={classes.flashcardsLoading}>
-        <p>Loading...</p>
-      </section>
-    );
-  }
-  if (httpError) {
-    return (
-      <section className={classes.httpRequestError}>
-        <p>{httpError}</p>
-      </section>
-    );
-  }
-  return null;
+  useDispatch(() => {
+    if (kanjiCardsDB.length !== 0) {
+      setRenderText(null);
+    }
+    if (isLoading) {
+      setRenderText("Loading...");
+    }
+    if (httpError) {
+      setRenderText(httpError);
+    }
+  }, [kanjiCardsDB]);
+
+  return (
+    <section className={classes.flashcardsLoading}>
+      <p>{renderText}</p>
+    </section>
+  );
 };
 export default LocalDatabaseSetup;

@@ -19,7 +19,6 @@ const KanjiPreviewSide = ({
     kanjiClickedFunction(savedId);
   };
   useEffect(() => {
-    console.log("useEffect Entered");
     if (kanjiClicked === true && activeKanji === savedId) {
       setKanjiClicked(false);
     } else if (activeKanji === savedId) {

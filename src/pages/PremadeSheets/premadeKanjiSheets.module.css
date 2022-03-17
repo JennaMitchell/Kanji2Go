@@ -6,26 +6,29 @@
   position: absolute;
   width: max(50px, 50px);
   height: max(50px, 50px);
-  background-color: #dc5357;
+  background-color: #221f1f;
   top: 5%;
   left: 0%;
   display: grid;
   place-items: center;
   z-index: 10;
+  transition: all 1s ease-in;
 }
 .menuIconMoveOut {
-  left: 400px;
+  left: 450px;
+  transition: all 1s ease-out;
 }
 .cardGrid {
   display: grid;
   position: relative;
   height: max(1200px, 1200px);
   width: max(100%, 100%);
-  background-color: #f3bdbd;
+  background-color: #f7d5d5;
 
   grid-template-columns: repeat(5, 1fr);
 
   align-items: center;
   justify-items: center;
   overflow-y: scroll;
+  transition: all 1s;
 }

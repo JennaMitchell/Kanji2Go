@@ -35,9 +35,7 @@ const PremadeKanjiCard = ({ photo, title, description, bannerText }) => {
     }
   }, []);
   useEffect(() => {
-    console.log(previewButtons);
     if (kanjiList.length !== 0) {
-      console.log(kanjiIdClicked);
       setPreviewButtons(
         <>
           {kanjiList.length !== 0 &&

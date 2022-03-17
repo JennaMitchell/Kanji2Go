@@ -9,6 +9,7 @@ const initialState = {
   vocabCardsDB: [],
   kanjiIdClicked: false,
   activePreviewKanjiData: [],
+  premadeKanjiFilterArray: [],
 };
 
 const storeSlice = createSlice({
@@ -41,6 +42,9 @@ const storeSlice = createSlice({
     },
     setActivePreviewKanjiData(state, { payload }) {
       state.activePreviewKanjiData = payload;
+    },
+    setPremadeKanjiFilterArray(state, { payload }) {
+      state.premadeKanjiFilterArray = payload;
     },
   },
 });

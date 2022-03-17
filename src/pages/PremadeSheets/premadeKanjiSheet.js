@@ -14,10 +14,14 @@ import MountainStart from "../../img/mountainStart.jpg";
 import Gate from "../../img/gate.jpg";
 
 import SunsetCity from "../../img/sunset.jpg";
-import PremadeKanjiFilterMenu from "./premadeKanjiMenu";
-import { useState } from "react";
+import PremadeKanjiFilterMenu from "./filterMenu/premadeKanjiMenu";
+import { useEffect, useState } from "react";
 
 const PreMadeKanjiSheets = () => {
+  const [grammarCardEnabler, setGrammarCardEnabler] = useState(true);
+  const [kanjiCardEnabler, setKanjiCardEnabler] = useState(true);
+  const [vocabCardEnabler, setVocabCardEnabler] = useState(true);
+  const [lengthOfSearchTermArray, setLengthOfSearchTermArray] = useState(0);
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
   const shopNavButtonClicked = useSelector(
     (state) => state.shopNavButtonClicked
@@ -29,7 +33,70 @@ const PreMadeKanjiSheets = () => {
   const [menuButtonClicked, setMenuButtonClicked] = useState(false);
   const menuButtonHandler = () => {
     setMenuButtonClicked(!menuButtonClicked);
+    setGrammarCardEnabler(false);
+    setKanjiCardEnabler(false);
+    setVocabCardEnabler(false);
   };
+  const premadeKanjiFilterArray = useSelector(
+    (state) => state.premadeKanjiFilterArray
+  );
+  const jlptTests = ["JLPT1", "JPLT2", "JLPT3", "JLPT4", "JLPT5"];
+
+  useEffect(() => {
+    if (premadeKanjiFilterArray.length !== 0) {
+      if (premadeKanjiFilterArray.includes("Grammar")) {
+        setGrammarCardEnabler(true);
+      } else {
+        if (grammarCardEnabler) {
+          setGrammarCardEnabler(false);
+        }
+      }
+      if (premadeKanjiFilterArray.includes("Kanji")) {
+        setKanjiCardEnabler(true);
+      } else {
+        if (kanjiCardEnabler) {
+          setKanjiCardEnabler(false);
+        }
+      }
+      if (premadeKanjiFilterArray.includes("Vocab")) {
+        setVocabCardEnabler(true);
+      } else {
+        if (vocabCardEnabler) {
+          setVocabCardEnabler(false);
+        }
+      }
+    } else {
+      if (!vocabCardEnabler) {
+        setVocabCardEnabler(true);
+      }
+      if (!kanjiCardEnabler) {
+        setKanjiCardEnabler(true);
+      }
+      if (!grammarCardEnabler) {
+        setGrammarCardEnabler(true);
+      }
+    }
+  }, [premadeKanjiFilterArray]);
+
+  useEffect(() => {
+    if (premadeKanjiFilterArray.length !== 0) {
+      let jlptFilteredSearch = premadeKanjiFilterArray
+        .slice()
+        .filter((x) => jlptTests.includes(x));
+      if (
+        premadeKanjiFilterArray.includes("Grammar") &&
+        jlptFilteredSearch.length !== 0
+      ) {
+        let tempArray = grammarCardsDB.slice();
+        for (let i = 0; i < jlptFilteredSearch.length; i++) {
+          tempArray = tempArray.filter(
+            (x) => x.title === jlptFilteredSearch[i]
+          );
+        }
+        console.log(tempArray);
+      }
+    }
+  }, [premadeKanjiFilterArray]);
 
   return (
     <div className={`${loginButtonClicked ? classes.loginClickedHompage : ""}`}>
@@ -43,6 +110,7 @@ const PreMadeKanjiSheets = () => {
         display="flex"
         justifyContent="center"
         alignItems="center"
+        transition="1s"
       >
         {pageButtonClicked ? <PageMenu /> : ""}
         {shopNavButtonClicked ? <ShopMenu /> : ""}
@@ -73,7 +141,8 @@ const PreMadeKanjiSheets = () => {
           />
         </div>
         <PremadeKanjiFilterMenu menuButtonClicked={menuButtonClicked} />
-        {kanjiCardsDB.length !== 0 &&
+        {kanjiCardEnabler &&
+          kanjiCardsDB.length !== 0 &&
           kanjiCardsDB.map((card, index) => (
             <PremadeKanjiCard
               key={index}
@@ -84,7 +153,8 @@ const PreMadeKanjiSheets = () => {
               bannerText="Kanji"
             ></PremadeKanjiCard>
           ))}
-        {vocabCardsDB.length !== 0 &&
+        {vocabCardEnabler &&
+          vocabCardsDB.length !== 0 &&
           vocabCardsDB.map((card, index) => (
             <PremadeKanjiCard
               key={index}
@@ -95,7 +165,8 @@ const PreMadeKanjiSheets = () => {
               bannerText="Vocab"
             ></PremadeKanjiCard>
           ))}
-        {grammarCardsDB.length !== 0 &&
+        {grammarCardEnabler &&
+          grammarCardsDB.length !== 0 &&
           grammarCardsDB.map((card, index) => (
             <PremadeKanjiCard
               key={index}
