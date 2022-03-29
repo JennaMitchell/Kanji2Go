@@ -1,11 +1,9 @@
-.closingIcon {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  width: max(45px, 45px);
-  height: max(45px, 45px);
-  background-color: #d00404;
-  border-radius: 50%;
-  padding: 5px;
-  color: white;
+.blurBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: max(100vw, 100vw);
+  height: max(100vh, 100vh);
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2;
 }

@@ -33,6 +33,7 @@ import PageMenu from "./pageMenu";
 import ShopMenu from "./shopMenu";
 import LoginPopup from "../login/loginPopup";
 import Footer from "../components/footer";
+import NavBar from "../nav/navBar";
 
 const HomePage = () => {
   //const dispatch = useDispatch();
@@ -43,133 +44,171 @@ const HomePage = () => {
   const loginButtonClicked = useSelector((state) => state.loginButtonClicked);
   const signUpButtonClicked = useSelector((state) => state.signUpButtonClicked);
   return (
-    <div className={`${loginButtonClicked ? classes.loginClickedHompage : ""}`}>
-      <Container
-        maxW="100%"
-        h="900px"
-        p="0"
-        bgColor="#dc5357"
-        m="0"
-        pos="relative"
+    <>
+      {loginButtonClicked && <div className={classes.blurBackground}></div>}
+      <div
+        className={`${loginButtonClicked ? classes.loginClickedHomepage : ""}`}
       >
-        {pageButtonClicked ? <PageMenu /> : ""}
-        {shopNavButtonClicked ? <ShopMenu /> : ""}
-        {loginButtonClicked ? <LoginPopup /> : ""}
-
-        <SimpleGrid
-          columns={2}
-          alignItems="center"
-          justifyItems="center"
-          w="100%"
-          h="100%"
-        >
-          <GridItem colSpan={1} h="max-content" w="75%" transform="auto">
-            <Heading fontSize="80px" textAlign="center">
-              Custom Kanji Sheet Generator
-            </Heading>
-            <Text fontSize="36px" textAlign="left" mt="30px">
-              Create custom practice kanji practice material or use our premade
-              ones with our kanji sheet generator.
-            </Text>
-            <Button
-              h="100px"
-              w="100%"
-              mt="30px"
-              fontSize="36px"
-              bgColor="#221f1f"
-            >
-              Kanji Sheets
-            </Button>
-          </GridItem>
-
-          <GridItem h="max-content" w="max-content" colSpan={1}>
-            <Image
-              src={kanjiSheet}
-              alt="kanji sheets"
-              h="800px"
-              w="800px"
-            ></Image>
-          </GridItem>
-        </SimpleGrid>
-      </Container>
-      <Container maxW="100%" h="900px" p="0" bgColor="brand.100" m="0">
-        <VStack gap="15px">
-          <Text color="brand.900" fontWeight="bold" mt="40px" fontSize="20px">
-            EDUCATION ANYWHERE
-          </Text>
-          <Heading color="brand.900" maxW="600px" textAlign="center">
-            Online Practice or Downloadable Sheets for Remote Learning
-          </Heading>
-          <Text
-            color="brand.900"
-            maxW="600px"
-            textAlign="center"
-            fontSize="18px"
-          >
-            Find the latest, and most popular sheets below, or select custom
-            practice sheets based on your JLPT Level.
-          </Text>
-        </VStack>
-
-        <Grid
-          w="100%"
-          h="400px"
-          bgColor="brand.100"
-          alignItems="center"
-          templateColumns="repeat(3,1fr)"
-          justifyContent="center"
-          mt="3%"
-        >
-          <BannerBox
-            title="JLPT5"
-            subtext="Kanji"
-            img={cityStreetOne}
-            marginLeft="40%"
-            ribbon={true}
-          ></BannerBox>
-          <BannerBox
-            title="Custom"
-            subtext="Kanji"
-            img={kanjiSheet}
-            marginLeft="30%"
-          ></BannerBox>
-
-          <BannerBox
-            title="Custom"
-            subtext="Vocab"
-            img={cityStreetTwo}
-            marginLeft="20%"
-          ></BannerBox>
-        </Grid>
-      </Container>
-      <Container
-        maxW="100%"
-        h="900px"
-        p="0"
-        bgColor="brand.200"
-        m="0"
-        pos="relative"
-      >
-        <Grid
-          templateColumns="repeat(2,1fr)"
-          templateRows="100%"
-          justifyContent="center"
-          alignItems="center"
+        <NavBar />
+        <Container
           maxW="100%"
           h="900px"
+          p="0"
+          bgColor="#dc5357"
+          m="0"
+          pos="relative"
         >
-          <Image src={tablet} h="70%" w="70%" ml="10%" mt="0" alt="tablet" />
-          <GridItem w="80%" h="50%" p="10px" colSpan={1} ml="10%">
-            <Text fontSize="26px" color="black">
-              Real Time Learning
+          {pageButtonClicked ? <PageMenu /> : ""}
+          {shopNavButtonClicked ? <ShopMenu /> : ""}
+          {loginButtonClicked ? <LoginPopup /> : ""}
+
+          <SimpleGrid
+            columns={2}
+            alignItems="center"
+            justifyItems="center"
+            w="100%"
+            h="100%"
+          >
+            <GridItem colSpan={1} h="max-content" w="75%" transform="auto">
+              <Heading fontSize="80px" textAlign="center">
+                Custom Kanji Sheet Generator
+              </Heading>
+              <Text fontSize="36px" textAlign="left" mt="30px">
+                Create custom practice kanji practice material or use our
+                premade ones with our kanji sheet generator.
+              </Text>
+              <Button
+                h="100px"
+                w="100%"
+                mt="30px"
+                fontSize="36px"
+                bgColor="#221f1f"
+              >
+                Kanji Sheets
+              </Button>
+            </GridItem>
+
+            <GridItem h="max-content" w="max-content" colSpan={1}>
+              <Image
+                src={kanjiSheet}
+                alt="kanji sheets"
+                h="800px"
+                w="800px"
+              ></Image>
+            </GridItem>
+          </SimpleGrid>
+        </Container>
+        <Container maxW="100%" h="900px" p="0" bgColor="brand.100" m="0">
+          <VStack gap="15px">
+            <Text color="brand.900" fontWeight="bold" mt="40px" fontSize="20px">
+              EDUCATION ANYWHERE
             </Text>
-            <Heading fontSize="80px" color="black">
-              Practice Kanji Live. Immediate Feedback
+            <Heading color="brand.900" maxW="600px" textAlign="center">
+              Online Practice or Downloadable Sheets for Remote Learning
             </Heading>
-            <Text fontSize="26px" color="black">
-              With Kanji2Go you can practice kanji live on the web and get
-              automatic feedback. To busy? Try downloading our randomly
-              generated kanji quiz sheet, based on kanji you want to practice.
+            <Text
+              color="brand.900"
+              maxW="600px"
+              textAlign="center"
+              fontSize="18px"
+            >
+              Find the latest, and most popular sheets below, or select custom
+              practice sheets based on your JLPT Level.
+            </Text>
+          </VStack>
+
+          <Grid
+            w="100%"
+            h="400px"
+            bgColor="brand.100"
+            alignItems="center"
+            templateColumns="repeat(3,1fr)"
+            justifyContent="center"
+            mt="3%"
+          >
+            <BannerBox
+              title="JLPT5"
+              subtext="Kanji"
+              img={cityStreetOne}
+              marginLeft="40%"
+              ribbon={true}
+            ></BannerBox>
+            <BannerBox
+              title="Custom"
+              subtext="Kanji"
+              img={kanjiSheet}
+              marginLeft="30%"
+            ></BannerBox>
+
+            <BannerBox
+              title="Custom"
+              subtext="Vocab"
+              img={cityStreetTwo}
+              marginLeft="20%"
+            ></BannerBox>
+          </Grid>
+        </Container>
+        <Container
+          maxW="100%"
+          h="900px"
+          p="0"
+          bgColor="brand.200"
+          m="0"
+          pos="relative"
+        >
+          <Grid
+            templateColumns="repeat(2,1fr)"
+            templateRows="100%"
+            justifyContent="center"
+            alignItems="center"
+            maxW="100%"
+            h="900px"
+          >
+            <Image src={tablet} h="70%" w="70%" ml="10%" mt="0" alt="tablet" />
+            <GridItem w="80%" h="50%" p="10px" colSpan={1} ml="10%">
+              <Text fontSize="26px" color="black">
+                Real Time Learning
+              </Text>
+              <Heading fontSize="80px" color="black">
+                Practice Kanji Live. Immediate Feedback
+              </Heading>
+              <Text fontSize="26px" color="black">
+                With Kanji2Go you can practice kanji live on the web and get
+                automatic feedback. To busy? Try downloading our randomly
+                generated kanji quiz sheet, based on kanji you want to practice.
+              </Text>
+              <Button
+                bgColor="brand.700"
+                mt="2%"
+                w="30%"
+                height="15%"
+                fontSize="22px"
+                textAlign="left"
+              >
+                View Live Test
+              </Button>
+            </GridItem>
+          </Grid>
+        </Container>
+
+        <Grid
+          maxW="100%"
+          h="900px"
+          p="0"
+          bgColor="#dc5357"
+          m="0"
+          templateColumns="repeat(2,1fr)"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <GridItem w="80%" h="50%" p="10px" colSpan={1} ml="10%" mt="10%">
+            <Text fontSize="26px">Get Started Today!</Text>
+            <Heading fontSize="80px" mt="10px">
+              Save Your Progress
+            </Heading>
+            <Text fontSize="26px" mt="20px">
+              Create a free account today to save your custom made sheets, and
+              track your quiz progress.
             </Text>
             <Button
               bgColor="brand.700"
@@ -178,48 +217,16 @@ const HomePage = () => {
               height="15%"
               fontSize="22px"
               textAlign="left"
+              marginTop="20px"
             >
-              View Live Test
+              Register
             </Button>
           </GridItem>
+          <Image src={books} h="70%" w="70%" ml="10%" mt="0" alt="tablet" />
         </Grid>
-      </Container>
-
-      <Grid
-        maxW="100%"
-        h="900px"
-        p="0"
-        bgColor="#dc5357"
-        m="0"
-        templateColumns="repeat(2,1fr)"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <GridItem w="80%" h="50%" p="10px" colSpan={1} ml="10%" mt="10%">
-          <Text fontSize="26px">Get Started Today!</Text>
-          <Heading fontSize="80px" mt="10px">
-            Save Your Progress
-          </Heading>
-          <Text fontSize="26px" mt="20px">
-            Create a free account today to save your custom made sheets, and
-            track your quiz progress.
-          </Text>
-          <Button
-            bgColor="brand.700"
-            mt="2%"
-            w="30%"
-            height="15%"
-            fontSize="22px"
-            textAlign="left"
-            marginTop="20px"
-          >
-            Register
-          </Button>
-        </GridItem>
-        <Image src={books} h="70%" w="70%" ml="10%" mt="0" alt="tablet" />
-      </Grid>
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 export default HomePage;

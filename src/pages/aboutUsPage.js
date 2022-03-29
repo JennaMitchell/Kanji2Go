@@ -20,6 +20,7 @@ import ShopMenu from "../main/shopMenu";
 import LoginPopup from "../login/loginPopup";
 
 import codingPhoto from "../img/coding.jpg";
+import NavBar from "../nav/navBar";
 
 const AboutUsPage = () => {
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
@@ -30,6 +31,7 @@ const AboutUsPage = () => {
 
   return (
     <div className={`${loginButtonClicked ? classes.loginClickedHompage : ""}`}>
+      <NavBar />
       <Container
         maxW="100%"
         h="150px"

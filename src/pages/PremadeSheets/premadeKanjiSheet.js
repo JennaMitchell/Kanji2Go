@@ -16,12 +16,13 @@ import Gate from "../../img/gate.jpg";
 import SunsetCity from "../../img/sunset.jpg";
 import PremadeKanjiFilterMenu from "./filterMenu/premadeKanjiMenu";
 import { useEffect, useState } from "react";
+import NavBar from "../../nav/navBar";
 
 const PreMadeKanjiSheets = () => {
   const [grammarCardEnabler, setGrammarCardEnabler] = useState(true);
   const [kanjiCardEnabler, setKanjiCardEnabler] = useState(true);
   const [vocabCardEnabler, setVocabCardEnabler] = useState(true);
-  const [lengthOfSearchTermArray, setLengthOfSearchTermArray] = useState(0);
+
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
   const shopNavButtonClicked = useSelector(
     (state) => state.shopNavButtonClicked
@@ -30,6 +31,9 @@ const PreMadeKanjiSheets = () => {
   const kanjiCardsDB = useSelector((state) => state.kanjiCardsDB);
   const vocabCardsDB = useSelector((state) => state.vocabCardsDB);
   const grammarCardsDB = useSelector((state) => state.grammarCardsDB);
+  const [filteredGrammarDB, setFilteredGrammarDB] = useState(grammarCardsDB);
+  const [filteredKanjiDB, setFilteredKanjiDB] = useState(kanjiCardsDB);
+  const [filteredVocabDB, setFilteredVocabDB] = useState(vocabCardsDB);
   const [menuButtonClicked, setMenuButtonClicked] = useState(false);
   const menuButtonHandler = () => {
     setMenuButtonClicked(!menuButtonClicked);
@@ -93,13 +97,38 @@ const PreMadeKanjiSheets = () => {
             (x) => x.title === jlptFilteredSearch[i]
           );
         }
-        console.log(tempArray);
+        setFilteredGrammarDB(tempArray);
+      }
+      if (
+        premadeKanjiFilterArray.includes("Vocab") &&
+        jlptFilteredSearch.length !== 0
+      ) {
+        let tempArray = vocabCardsDB.slice();
+        for (let i = 0; i < jlptFilteredSearch.length; i++) {
+          tempArray = tempArray.filter(
+            (x) => x.title === jlptFilteredSearch[i]
+          );
+        }
+        setFilteredVocabDB(tempArray);
+      }
+      if (
+        premadeKanjiFilterArray.includes("Vocab") &&
+        jlptFilteredSearch.length !== 0
+      ) {
+        let tempArray = kanjiCardsDB.slice();
+        for (let i = 0; i < jlptFilteredSearch.length; i++) {
+          tempArray = tempArray.filter(
+            (x) => x.title === jlptFilteredSearch[i]
+          );
+        }
+        setFilteredKanjiDB(tempArray);
       }
     }
   }, [premadeKanjiFilterArray]);
 
   return (
     <div className={`${loginButtonClicked ? classes.loginClickedHompage : ""}`}>
+      <NavBar />
       <Container
         maxW="100%"
         h="150px"
@@ -142,8 +171,8 @@ const PreMadeKanjiSheets = () => {
         </div>
         <PremadeKanjiFilterMenu menuButtonClicked={menuButtonClicked} />
         {kanjiCardEnabler &&
-          kanjiCardsDB.length !== 0 &&
-          kanjiCardsDB.map((card, index) => (
+          filteredKanjiDB.length !== 0 &&
+          filteredKanjiDB.map((card, index) => (
             <PremadeKanjiCard
               key={index}
               id={index}
@@ -154,8 +183,8 @@ const PreMadeKanjiSheets = () => {
             ></PremadeKanjiCard>
           ))}
         {vocabCardEnabler &&
-          vocabCardsDB.length !== 0 &&
-          vocabCardsDB.map((card, index) => (
+          filteredVocabDB.length !== 0 &&
+          filteredVocabDB.map((card, index) => (
             <PremadeKanjiCard
               key={index}
               id={index}
@@ -166,8 +195,8 @@ const PreMadeKanjiSheets = () => {
             ></PremadeKanjiCard>
           ))}
         {grammarCardEnabler &&
-          grammarCardsDB.length !== 0 &&
-          grammarCardsDB.map((card, index) => (
+          filteredGrammarDB.length !== 0 &&
+          filteredGrammarDB.map((card, index) => (
             <PremadeKanjiCard
               key={index}
               id={index}

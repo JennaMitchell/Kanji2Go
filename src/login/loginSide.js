@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { XIcon } from "@heroicons/react/solid";
 import { useDispatch, useSelector } from "react-redux";
-import classes from "./loginPopup.module.css";
+import classes from "./loginSide.module.css";
 import blueTwitter from "../icons/twitter-blue.png";
 import blueFacebook from "../icons/facebook-blue.png";
 import google from "../icons/google.png";
@@ -29,21 +29,7 @@ const LoginSide = () => {
   };
 
   return (
-    <Container
-      zIndex={3}
-      maxW="30vw"
-      w="25vw"
-      h="60vh"
-      pos="absolute"
-      top="15%"
-      left="38%"
-      bg="brand.100"
-      translate="yes"
-      translateX="-50%"
-      translateY="50%"
-      borderRadius="40px"
-      color="black"
-    >
+    <div className={classes.mainContainer}>
       <XIcon
         className={classes.closingIcon}
         onClick={closingIconHandler}
@@ -199,7 +185,7 @@ const LoginSide = () => {
           </Text>
         </GridItem>
       </SimpleGrid>
-    </Container>
+    </div>
   );
 };
 export default LoginSide;

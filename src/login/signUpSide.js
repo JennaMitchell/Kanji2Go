@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { XIcon } from "@heroicons/react/solid";
 import { useDispatch } from "react-redux";
-import classes from "./loginPopup.module.css";
+import classes from "./signUpSide.module.css";
 
 import { storeActions } from "../store/store";
 
@@ -25,21 +25,7 @@ const SignUpSide = () => {
   };
 
   return (
-    <Container
-      zIndex={3}
-      maxW="30vw"
-      w="25vw"
-      h="60vh"
-      pos="absolute"
-      top="15%"
-      left="38%"
-      bg="brand.100"
-      translate="yes"
-      translateX="-50%"
-      translateY="50%"
-      borderRadius="40px"
-      color="black"
-    >
+    <div className={classes.mainContainer}>
       <XIcon
         className={classes.closingIcon}
         onClick={closingIconHandler}
@@ -126,6 +112,7 @@ const SignUpSide = () => {
           bottom="2.25%"
           left="27%"
           display="flex"
+          mb="10px"
         >
           <Text>Already have an account? </Text>
           <Text
@@ -138,7 +125,7 @@ const SignUpSide = () => {
           </Text>
         </Container>
       </SimpleGrid>
-    </Container>
+    </div>
   );
 };
 export default SignUpSide;

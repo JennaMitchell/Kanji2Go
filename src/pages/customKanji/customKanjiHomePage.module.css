@@ -1,0 +1,96 @@
+.exportButton {
+  width: max(400px, 400px);
+  height: max(200px, 200px);
+  background-color: blue;
+  margin-left: 400px;
+  z-index: 1;
+}
+.parent {
+  width: max(100vw, 100vw);
+  height: max(1000px, 1000px);
+  background-color: black;
+  color: white;
+}
+.loginClickedHomepage {
+  overflow: hidden;
+  width: max(100vw, 100vw);
+  height: max(100vh, 100vh);
+}
+.blurBackground {
+  height: max(100vh, 100vh);
+  width: max(100vw, 100vw);
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.kanjiSheet {
+  width: max(1530px, 1530px);
+  height: max(1000px, 1000px);
+  background-color: white;
+
+  position: relative;
+}
+.box {
+  width: max(80%, 80%);
+  height: max(10%, 10%);
+  margin: 20px;
+  background-color: blue;
+}
+
+.addIcon {
+  width: max(85%, 85%);
+  height: max(85%, 85%);
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  color: black;
+}
+.addIconClicked {
+  width: max(45px, 35px);
+  height: max(45px, 35px);
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  color: black;
+}
+.addMenuContainer {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: max(50px, 50px);
+  height: max(50px, 50px);
+
+  background-color: #e15e5e;
+  z-index: 1;
+  transition: all 0.5s ease-in;
+  border-radius: 50%;
+}
+.addMenuContainerClicked {
+  width: max(max-content, max-content);
+  height: max(max-content, max-content);
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  background-color: #e15e5e;
+  z-index: 1;
+  display: grid;
+  transition: all 0.5s ease-out;
+}
+.addIconClicked:hover,
+.addMenuContainer:hover {
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+}
+.mainContainer {
+  width: max(100%, 100%);
+  height: max(900px, 900px);
+  padding: 0;
+  background-color: #dc5357;
+  margin: 0;
+  position: relative;
+}

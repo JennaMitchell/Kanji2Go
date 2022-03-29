@@ -9,3 +9,16 @@
   padding: 5px;
   color: white;
 }
+
+.mainContainer {
+  width: max(25vw, 25vw);
+  height: max(60vh, 60vh);
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: #f3bdbd;
+  transform: translate(-50%, -50%);
+  border-radius: 40px;
+  color: black;
+}

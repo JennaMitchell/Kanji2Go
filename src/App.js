@@ -6,6 +6,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import AboutUsPage from "./pages/aboutUsPage";
 import PreMadeKanjiSheets from "./pages/PremadeSheets/premadeKanjiSheet";
 import LocalDatabaseSetup from "./firebase/LocalDatabaseSetup";
+import CustomKanjiHomePage from "./pages/customKanji/customKanjiHomePage";
 
 function App() {
   return (
@@ -17,7 +18,6 @@ function App() {
           path="/home"
           element={
             <>
-              <NavBar />
               <HomePage />
             </>
           }
@@ -27,7 +27,6 @@ function App() {
           path="/aboutus"
           element={
             <>
-              <NavBar />
               <AboutUsPage />
             </>
           }
@@ -36,8 +35,15 @@ function App() {
           path="/premadeKanjiSheets"
           element={
             <>
-              <NavBar />
               <PreMadeKanjiSheets />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/customKanjiSheets"
+          element={
+            <>
+              <CustomKanjiHomePage />
             </>
           }
         ></Route>

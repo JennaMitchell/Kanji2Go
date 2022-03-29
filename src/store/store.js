@@ -10,6 +10,10 @@ const initialState = {
   kanjiIdClicked: false,
   activePreviewKanjiData: [],
   premadeKanjiFilterArray: [],
+  addKanjiMenu: false,
+  setBlankSquareMenu: false,
+  customKanjiSelectorClickedId: -1,
+  kanjiClicked: "",
 };
 
 const storeSlice = createSlice({
@@ -45,6 +49,18 @@ const storeSlice = createSlice({
     },
     setPremadeKanjiFilterArray(state, { payload }) {
       state.premadeKanjiFilterArray = payload;
+    },
+    setAddKanjiMenu(state, { payload }) {
+      state.addKanjiMenu = payload;
+    },
+    setCustomKanjiSelectorClickedId(state, { payload }) {
+      state.customKanjiSelectorClickedId = payload;
+    },
+    setKanjiClicked(state, { payload }) {
+      state.kanjiClicked = payload;
+    },
+    setBlankSquareMenu(state, { payload }) {
+      state.blankSquareMenu = payload;
     },
   },
 });

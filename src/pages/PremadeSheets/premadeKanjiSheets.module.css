@@ -32,3 +32,9 @@
   overflow-y: scroll;
   transition: all 1s;
 }
+.loginClickedHomepage {
+  position: static;
+  overflow: hidden;
+  width: max(100vw, 100vw);
+  height: max(90vh, 90vh);
+}

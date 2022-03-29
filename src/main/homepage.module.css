@@ -9,9 +9,26 @@
   height: max(25px, 20px);
 }
 
-.loginClickedHompage {
-  position: static;
+.loginClickedHomepage {
   overflow: hidden;
   width: max(100vw, 100vw);
-  height: max(90vh, 90vh);
+  height: max(100vh, 100vh);
+}
+.mainContainer {
+  width: max(100%, 100%);
+  height: max(900px, 900px);
+  padding: 0;
+  background-color: #dc5357;
+  margin: 0;
+  position: relative;
+}
+.blurBackground {
+  height: max(100vh, 100vh);
+  width: max(100vw, 100vw);
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }

@@ -1,3 +1,11 @@
+.mainContainer {
+  width: max(100%, 100%);
+  height: max(100px, 100px);
+  padding: 0;
+  background-color: #221f1f;
+  margin: 0;
+}
+
 .searchIcon {
   width: max(30px, 30px);
   height: max(30px, 30px);

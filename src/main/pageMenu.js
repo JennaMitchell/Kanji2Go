@@ -47,7 +47,7 @@ const PageMenu = () => {
         backgroundColor="inherit"
         onClick={navButtonHandler}
       >
-        Kanji Sheets Creator
+        <NavLink to="/customKanjiSheets">Kanji Sheets Creator</NavLink>
       </Button>
       <Button
         fontSize="20px"
