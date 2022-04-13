@@ -15,7 +15,7 @@ const DefinitionSelectorBlock = ({ stateReturnFunction }) => {
       setStrokeOrderOnlyClicked(false);
       setStrokeOrderAndDefinitionClicked(false);
       setKanjiOnlyClicked(false);
-      stateReturnFunction("Definition Only");
+      stateReturnFunction("Kanji and Definition");
     } else {
       setDefinitionOnlyClicked(false);
     }
@@ -26,7 +26,7 @@ const DefinitionSelectorBlock = ({ stateReturnFunction }) => {
       setDefinitionOnlyClicked(false);
       setStrokeOrderAndDefinitionClicked(false);
       setKanjiOnlyClicked(false);
-      stateReturnFunction("Stroke Order Only");
+      stateReturnFunction("Kanji and Stroke Order");
     } else {
       setStrokeOrderOnlyClicked(false);
     }
@@ -37,7 +37,7 @@ const DefinitionSelectorBlock = ({ stateReturnFunction }) => {
       setStrokeOrderOnlyClicked(false);
       setDefinitionOnlyClicked(false);
       setKanjiOnlyClicked(false);
-      stateReturnFunction("Stroke Order and Definitions");
+      stateReturnFunction("Kanji, Stroke Order and Definitions");
     } else {
       setStrokeOrderAndDefinitionClicked(false);
     }

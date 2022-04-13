@@ -1,8 +1,8 @@
 import classes from "./kanjiPreviewSideDataBox.module.css";
-import { useSelector } from "react-redux";
+
 
 const KanjiPreviewSideDataBox = (card) => {
-  const kanjiClickedId = useSelector((state) => state.kanjiClickedId);
+ 
 
   const data = card["card"];
 

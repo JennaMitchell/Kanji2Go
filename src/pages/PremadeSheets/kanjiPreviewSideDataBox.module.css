@@ -9,9 +9,10 @@
   width: max(85%, 85%);
   height: max(55%, 55%);
 
-  background-color: #c2b280;
+  background-color: #221f1f;
   gap: 0;
-  color: #221f1f;
+  color: white;
+  border-radius: 10px;
 }
 .kanjiPicture {
   grid-column: 1 / span 1;
@@ -19,10 +20,11 @@
   height: max(100%, 100%);
   width: max(100%, 100%);
   font-size: 64px;
-  background-color: #c2b280;
-  color: #221f1f;
+  background-color: #221f1f;
+  color: white;
   display: grid;
   place-items: center;
+  border-radius: 10px;
 }
 .radMeaningContainer {
   grid-column: 2 / span 1;

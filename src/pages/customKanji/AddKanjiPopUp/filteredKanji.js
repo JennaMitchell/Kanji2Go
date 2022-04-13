@@ -10,9 +10,10 @@ const FilteredKanji = ({ testFilters, numberOfStrokes }) => {
     } else {
       let currentCard = kanjiCardsDB[i].kanjiList;
 
-      for (let j = 1; j < 11; j++) {
+      for (let j = 0; j < 10; j++) {
         if (typeof currentCard[`kanji${j}`] != "undefined") {
           if (j === 10) {
+            console.log("J ==10");
             let newObject = {
               kanji: currentCard[`kanji91`].kanji,
               strokes: currentCard[`kanji91`].strokes,

@@ -14,6 +14,13 @@ const initialState = {
   setBlankSquareMenu: false,
   customKanjiSelectorClickedId: -1,
   kanjiClicked: "",
+  blankSquaresArray: "",
+  customKanjiSelected: "",
+  kanjiDatabase: [],
+  customKanjiBoxData: [],
+  customKanjiGridData: [],
+  customKanjiDeleteIconClicked: false,
+  newPageClicked: false,
 };
 
 const storeSlice = createSlice({
@@ -61,6 +68,27 @@ const storeSlice = createSlice({
     },
     setBlankSquareMenu(state, { payload }) {
       state.blankSquareMenu = payload;
+    },
+    setBlankSquaresArray(state, { payload }) {
+      state.blankSquaresArray = payload;
+    },
+    setCustomKanjiSelected(state, { payload }) {
+      state.customKanjiSelected = payload;
+    },
+    setKanjiDatabase(state, { payload }) {
+      state.kanjiDatabase = payload;
+    },
+    setCustomKanjiBoxData(state, { payload }) {
+      state.customKanjiBoxData = payload;
+    },
+    setCustomKanjiGridData(state, { payload }) {
+      state.customKanjiGridData = payload;
+    },
+    setCustomKanjiDeleteIconClicked(state, { payload }) {
+      state.customKanjiDeleteIconClicked = payload;
+    },
+    setNewPageClicked(state, { payload }) {
+      state.newPageClicked = payload;
     },
   },
 });

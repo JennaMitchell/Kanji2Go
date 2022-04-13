@@ -77,6 +77,7 @@ const NavBar = () => {
           alignItems="center"
           w="100%"
           h="100%"
+          position="relative"
         >
           <GridItem colSpan={1} maxW="100%" height="100px">
             <Flex

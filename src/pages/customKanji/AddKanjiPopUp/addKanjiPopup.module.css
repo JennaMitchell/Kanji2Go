@@ -25,12 +25,14 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background-color: white;
+  background-color: #dc5357;
   display: grid;
   place-items: center;
   border-radius: 50%;
 }
-
+.closingIcon:hover {
+  background-color: #f3bdbd;
+}
 .filterTitle {
   font-size: 36px;
   margin-top: 24px;

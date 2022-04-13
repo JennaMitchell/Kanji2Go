@@ -6,7 +6,6 @@ import DefinitionSelectorBlock from "./definitionSelectorBlock";
 import { useDispatch, useSelector } from "react-redux";
 import { storeActions } from "../../../store/store";
 
-
 const AddKanjiPopup = () => {
   const [jlpt1FilterClicked, setJlpt1FilterClicked] = useState(false);
   const [jlpt2FilterClicked, setJlpt2FilterClicked] = useState(false);
@@ -14,9 +13,12 @@ const AddKanjiPopup = () => {
   const [jlpt4FilterClicked, setJlpt4FilterClicked] = useState(false);
   const [jlpt5FilterClicked, setJlpt5FilterClicked] = useState(false);
   const [testFilterClicked, setTestFilterClicked] = useState(false);
+
   const [strokeNumberSelected, setStrokeNumberSelected] = useState("All");
   const [testFilters, setTestFilters] = useState([]);
   const dispatch = useDispatch();
+
+  const kanjiDatabase = useSelector((state) => state.kanjiDatabase);
 
   const [selectedHelperBlock, setSelectedHelperBlock] = useState();
   const dropDownMenuHandler = (e) => {
@@ -32,6 +34,17 @@ const AddKanjiPopup = () => {
   const closingBtnHandler = () => {
     dispatch(storeActions.setAddKanjiMenu(false));
   };
+
+  const kanjiSubmitHandler = () => {
+    let kanjiData = kanjiDatabase[selectedKanji];
+    let tempObject = {
+      type: [selectedHelperBlock],
+      data: kanjiData,
+    };
+    dispatch(storeActions.setCustomKanjiBoxData(tempObject));
+    dispatch(storeActions.setAddKanjiMenu(false));
+  };
+
   useEffect(() => {
     if (testFilterClicked === 1) {
       if (jlpt1FilterClicked) {
@@ -105,8 +118,6 @@ const AddKanjiPopup = () => {
     arrayOfStrokeNumbers[i] = i;
   }
   arrayOfStrokeNumbers.unshift("All");
-  console.log(selectedKanji);
-  console.log(selectedHelperBlock);
 
   return (
     <div className={classes.popupWindow}>
@@ -203,7 +214,12 @@ const AddKanjiPopup = () => {
         />
       </div>
       {selectedHelperBlock && selectedKanji && (
-        <button className={classes.submitEnabledButton}>Submit</button>
+        <button
+          className={classes.submitEnabledButton}
+          onClick={kanjiSubmitHandler}
+        >
+          Submit
+        </button>
       )}
       {(!selectedHelperBlock || !selectedKanji) && (
         <button className={classes.submitDisabledButton}>Submit</button>

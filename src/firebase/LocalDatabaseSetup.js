@@ -1,10 +1,11 @@
 import { ref, child, get } from "firebase/database";
 import databaseTest from "./firebaseInitialization";
-import { storeActions } from "../store/store";
+import store, { storeActions } from "../store/store";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import classes from "./LocalDatabaseSetup.module.css";
 import { useSelector } from "react-redux";
+import gridData from "../pages/customKanji/dragNdropSection/gridData";
 
 const LocalDatabaseSetup = () => {
   const databaseRef = ref(databaseTest);
@@ -32,6 +33,7 @@ const LocalDatabaseSetup = () => {
                 title: val[key].title,
                 description: val[key].description,
                 kanjiList: val[key].kanjiList,
+                vocabData: val[key].vocabData,
               });
             }
             if (databaseType === "grammarCards") {
@@ -39,7 +41,27 @@ const LocalDatabaseSetup = () => {
             } else if (databaseType === "vocabCards") {
               dispatch(storeActions.setVocabCardsDB(loadedCards));
             } else if (databaseType === "kanjiCards") {
+              let megaKanjiArray = {};
+              for (let i = 0; i < loadedCards.length; i++) {
+                let kanjiList = loadedCards[i].kanjiList;
+                for (let q = 0; q < 10; q++) {
+                  let keyVal = `kanji${q}`;
+                  let kanji = kanjiList[keyVal].kanji;
+                  megaKanjiArray[kanji] = {
+                    kunyomi: [kanjiList[keyVal].kunyomi],
+                    kunyomiEnglish: [kanjiList[keyVal].kunyomiEnglish],
+                    meaning: [kanjiList[keyVal].meaning],
+                    onyomiEnglish: [kanjiList[keyVal].onyomiEnglish],
+                    onyomiKana: [kanjiList[keyVal].onyomiKana],
+                    radical: [kanjiList[keyVal].radical],
+                    strokes: [kanjiList[keyVal].strokes],
+                    kanji: [kanji],
+                  };
+                }
+              }
+              dispatch(storeActions.setKanjiDatabase(megaKanjiArray));
               dispatch(storeActions.setKanjiCardsDB(loadedCards));
+              dispatch(storeActions.setCustomKanjiGridData(gridData));
               setIsLoading(false);
             }
           } else {
@@ -50,8 +72,8 @@ const LocalDatabaseSetup = () => {
         }
       };
       takeDatabaseSnapshot(grammarCardDB, "grammarCards");
-      takeDatabaseSnapshot(kanjiCardDB, "kanjiCards");
       takeDatabaseSnapshot(vocabCardDB, "vocabCards");
+      takeDatabaseSnapshot(kanjiCardDB, "kanjiCards");
     };
     awaitDatabaseData();
   }, [dispatch, databaseRef]);

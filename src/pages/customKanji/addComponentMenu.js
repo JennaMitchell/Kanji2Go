@@ -1,10 +1,11 @@
 import classes from "./addComponentMenu.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { storeActions } from "../../store/store";
 
-import { useState } from "react";
-
 const AddComponentMenu = () => {
+  //setCustomKanjiGridData
+  const customKanjiGridData = useSelector((state) => state.customKanjiGridData);
+
   const dispatch = useDispatch();
   const kanjiBtnHandler = () => {
     dispatch(storeActions.setAddKanjiMenu(true));
@@ -12,6 +13,24 @@ const AddComponentMenu = () => {
 
   const blankSquareHandler = () => {
     dispatch(storeActions.setBlankSquareMenu(true));
+  };
+  const newPageHandler = () => {
+    let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
+
+    const lastColumnIndex = tempArray.columnOrder.length;
+    for (let i = 0; i < 10; i++) {
+      tempArray.columnOrder[lastColumnIndex + i] = `column-${
+        lastColumnIndex + i + 1
+      }`;
+      tempArray.columns[`column-${lastColumnIndex + i + 1}`] = {
+        id: `column-${lastColumnIndex + i + 1}`,
+        idContainer: [],
+        numberOfItems: 0,
+      };
+    }
+    console.log(tempArray);
+    dispatch(storeActions.setCustomKanjiGridData(tempArray));
+    dispatch(storeActions.setNewPageClicked(true));
   };
 
   return (
@@ -28,7 +47,10 @@ const AddComponentMenu = () => {
       >
         Blank Squares
       </button>
-      <button className={`${classes.newPageButton} ${classes.btn}`}>
+      <button
+        className={`${classes.newPageButton} ${classes.btn}`}
+        onClick={newPageHandler}
+      >
         New Page
       </button>
     </div>

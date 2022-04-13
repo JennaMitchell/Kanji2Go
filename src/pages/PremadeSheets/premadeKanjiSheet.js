@@ -36,16 +36,44 @@ const PreMadeKanjiSheets = () => {
   const [filteredVocabDB, setFilteredVocabDB] = useState(vocabCardsDB);
   const [menuButtonClicked, setMenuButtonClicked] = useState(false);
   const menuButtonHandler = () => {
-    setMenuButtonClicked(!menuButtonClicked);
-    setGrammarCardEnabler(false);
-    setKanjiCardEnabler(false);
-    setVocabCardEnabler(false);
+    if (!menuButtonClicked) {
+      setMenuButtonClicked(true);
+      setGrammarCardEnabler(false);
+      setKanjiCardEnabler(false);
+      setVocabCardEnabler(false);
+    } else {
+      if (premadeKanjiFilterArray.length === 0) {
+        setMenuButtonClicked(false);
+        setGrammarCardEnabler(true);
+        setKanjiCardEnabler(true);
+        setVocabCardEnabler(true);
+      } else {
+        setMenuButtonClicked(false);
+      }
+    }
   };
   const premadeKanjiFilterArray = useSelector(
     (state) => state.premadeKanjiFilterArray
   );
   const jlptTests = ["JLPT1", "JPLT2", "JLPT3", "JLPT4", "JLPT5"];
 
+  // used to handle refreshing
+  useEffect(() => {
+    if (kanjiCardsDB.length !== 0) {
+      setFilteredKanjiDB(kanjiCardsDB);
+    }
+    if (kanjiCardsDB.length !== 0) {
+      setFilteredGrammarDB(grammarCardsDB);
+    }
+  }, [kanjiCardsDB]);
+  useEffect(() => {
+    if (vocabCardsDB.length !== 0) {
+      console.log("Vocab");
+      setFilteredVocabDB(vocabCardsDB);
+    }
+  }, [vocabCardsDB]);
+
+  // filtering
   useEffect(() => {
     if (premadeKanjiFilterArray.length !== 0) {
       if (premadeKanjiFilterArray.includes("Grammar")) {
@@ -82,6 +110,7 @@ const PreMadeKanjiSheets = () => {
     }
   }, [premadeKanjiFilterArray]);
 
+  //fitering side effect
   useEffect(() => {
     if (premadeKanjiFilterArray.length !== 0) {
       let jlptFilteredSearch = premadeKanjiFilterArray
@@ -104,6 +133,7 @@ const PreMadeKanjiSheets = () => {
         jlptFilteredSearch.length !== 0
       ) {
         let tempArray = vocabCardsDB.slice();
+        console.log("line 134");
         for (let i = 0; i < jlptFilteredSearch.length; i++) {
           tempArray = tempArray.filter(
             (x) => x.title === jlptFilteredSearch[i]
@@ -125,7 +155,6 @@ const PreMadeKanjiSheets = () => {
       }
     }
   }, [premadeKanjiFilterArray]);
-
   return (
     <div className={`${loginButtonClicked ? classes.loginClickedHompage : ""}`}>
       <NavBar />

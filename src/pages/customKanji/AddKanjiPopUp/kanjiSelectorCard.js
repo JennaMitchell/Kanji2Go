@@ -21,10 +21,12 @@ const KanjiSelectorCard = ({ kanji, id }) => {
         if (selectorClicked) {
           setSelectorClicked(false);
           dispatch(storeActions.setCustomKanjiSelectorClickedId(-1));
+          // used to trigger the useEffect
           dispatch(storeActions.setKanjiClicked(false));
         } else {
           setSelectorClicked(true);
           dispatch(storeActions.setCustomKanjiSelectorClickedId(-1));
+          // used to trigger the useEffect
           dispatch(storeActions.setKanjiClicked(savedKanji));
         }
       } else {
@@ -44,7 +46,7 @@ const KanjiSelectorCard = ({ kanji, id }) => {
     >
       <h2 className={classes.kanji}>{kanji}</h2>
       <button className={classes.icon}>
-        {selectorClicked ? <PlusIcon></PlusIcon> : <MinusIcon></MinusIcon>}
+        {selectorClicked ? <MinusIcon></MinusIcon> : <PlusIcon></PlusIcon>}
       </button>
     </div>
   );

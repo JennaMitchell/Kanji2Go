@@ -1,0 +1,59 @@
+.infoContainer {
+  position: absolute;
+  top: 50%;
+  left: 7.5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100%;
+
+  width: max(85%, 85%);
+  height: max(47.5%, 47.5%);
+
+  background-color: #221f1f;
+  gap: 0;
+  color: white;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: flex-start;
+}
+.term {
+  width: max(90%, 90%);
+  height: max(90%, 90%);
+  font-size: 48px;
+  text-align: center;
+  display: grid;
+  place-items: center;
+}
+.dataContainer {
+  width: max(100%, 100%);
+  height: max(160px, 160px);
+
+  display: grid;
+  grid-template-rows: 90px 90px;
+  margin: 0;
+  gap: 0;
+
+  row-gap: 0px;
+}
+.hiraganaContainer {
+  height: max(80px, 80px);
+  width: max(90%, 90%);
+  display: grid;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.definitionContainer {
+  height: max(70px, 70px);
+  width: max(80%, 80%);
+  display: grid;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.definitionTitle,
+.hiraganaTitle {
+  font-size: 20px;
+  font-weight: bolder;
+}
+.dataText {
+  font-size: 18px;
+}

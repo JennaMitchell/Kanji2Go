@@ -4,55 +4,89 @@ import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
 import { Image, Text, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import KanjiPreviewSide from "./kanjiPreviewSide";
+import VocabPreviewSide from "./vocabPreviewSIde/vocabPreviewSide";
 
 import { useSelector } from "react-redux";
-const PremadeKanjiCard = ({ photo, title, description, bannerText }) => {
+const PremadeKanjiCard = ({ photo, title, description, bannerText, id }) => {
   const [previewIconClicked, setPreviewIconClicked] = useState(false);
-  const [kanjiList, setKanjiList] = useState([]);
+  const [cardList, setCardList] = useState([]);
   const previewIconHandler = () => {
     setPreviewIconClicked(!previewIconClicked);
   };
 
   const kanjiCardsDB = useSelector((state) => state.kanjiCardsDB);
-  const [kanjiIdClicked, setKanjiIdClicked] = useState(null);
+  const vocabCardsDB = useSelector((state) => state.vocabCardsDB);
+  const [idClicked, setIdClicked] = useState(null);
   const [previewButtons, setPreviewButtons] = useState();
-  const kanjiButtonHandler = (id) => {
-    setKanjiIdClicked(id);
+  const [savedBannerText, setSavedBannerText] = useState(bannerText);
+  const idButtonHandler = (id) => {
+    setIdClicked(id);
   };
 
   useEffect(() => {
-    if (kanjiCardsDB.length !== 0) {
-      let tempArray = [];
-      let objectToBeFiltered = kanjiCardsDB[0].kanjiList;
-      for (let i = 1; i < 11; i++) {
-        if (i === 10) {
-          tempArray.push(objectToBeFiltered["kanji91"]);
-        } else {
+    if (bannerText === "Kanji") {
+      if (kanjiCardsDB.length !== 0) {
+        let tempArray = [];
+        let objectToBeFiltered = kanjiCardsDB[id].kanjiList;
+        for (let i = 0; i < 10; i++) {
           tempArray.push(objectToBeFiltered[`kanji${i}`]);
         }
+        setCardList(tempArray);
       }
-      setKanjiList(tempArray);
+    }
+    if (bannerText === "Vocab") {
+      if (vocabCardsDB.length !== 0) {
+        let tempArray = [];
+        let objectToBeFiltered = vocabCardsDB[id].vocabData;
+        console.log(vocabCardsDB[id]);
+        for (let i = 1; i < 10; i++) {
+          tempArray.push(objectToBeFiltered[`term0${i}`]);
+        }
+        setCardList(tempArray);
+      }
     }
   }, []);
+  // creating preview side
+
   useEffect(() => {
-    if (kanjiList.length !== 0) {
-      setPreviewButtons(
-        <>
-          {kanjiList.length !== 0 &&
-            kanjiList.map((card) => (
-              <KanjiPreviewSide
-                kanji={card.kanji}
-                card={card}
-                id={card.id}
-                key={card.id}
-                kanjiClickedFunction={kanjiButtonHandler}
-                activeKanji={kanjiIdClicked}
-              />
-            ))}
-        </>
-      );
+    if (cardList.length !== 0) {
+      if (savedBannerText === "Kanji") {
+        setPreviewButtons(
+          <>
+            {cardList.length !== 0 &&
+              cardList.map((card) => (
+                <KanjiPreviewSide
+                  kanji={card.kanji}
+                  card={card}
+                  id={card.id}
+                  key={card.id}
+                  kanjiClickedFunction={idButtonHandler}
+                  activeKanji={idClicked}
+                />
+              ))}
+          </>
+        );
+      }
+
+      if (savedBannerText === "Vocab") {
+        setPreviewButtons(
+          <>
+            {cardList.length !== 0 &&
+              cardList.map((card) => (
+                <VocabPreviewSide
+                  vocab={card.term}
+                  card={card}
+                  id={card.id}
+                  key={card.id}
+                  vocabClickedFunction={idButtonHandler}
+                  activeVocab={idClicked}
+                />
+              ))}
+          </>
+        );
+      }
     }
-  }, [kanjiIdClicked, previewIconClicked]);
+  }, [idClicked, previewIconClicked]);
 
   return (
     <div className={classes.cardContainer}>
@@ -69,7 +103,15 @@ const PremadeKanjiCard = ({ photo, title, description, bannerText }) => {
 
       {previewIconClicked ? (
         <div className={classes.kanjiSelectionContainer}>
-          <div className={classes.kanjiSelectorButtons}>{previewButtons}</div>
+          <div
+            className={`${
+              savedBannerText === "Kanji" && classes.kanjiSelectorButtons
+            } ${
+              savedBannerText === "Grammar" && classes.kanjiSelectorButtons
+            } ${savedBannerText === "Vocab" && classes.vocabSelectorButtons}`}
+          >
+            {previewButtons}
+          </div>
         </div>
       ) : (
         <>
