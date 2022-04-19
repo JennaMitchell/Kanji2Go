@@ -128,7 +128,7 @@
   display: grid;
 }
 .dragNdropContainer {
-  height: max(1200px, 1200px);
+  height: max(1210px, 1210px);
   width: max(1150px, 1150px);
   position: absolute;
   top: 50%;

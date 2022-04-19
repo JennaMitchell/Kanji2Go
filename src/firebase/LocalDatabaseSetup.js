@@ -55,6 +55,7 @@ const LocalDatabaseSetup = () => {
                     onyomiKana: [kanjiList[keyVal].onyomiKana],
                     radical: [kanjiList[keyVal].radical],
                     strokes: [kanjiList[keyVal].strokes],
+                    strokeSVGs: [kanjiList[keyVal].strokeSVGs],
                     kanji: [kanji],
                   };
                 }
@@ -62,6 +63,7 @@ const LocalDatabaseSetup = () => {
               dispatch(storeActions.setKanjiDatabase(megaKanjiArray));
               dispatch(storeActions.setKanjiCardsDB(loadedCards));
               dispatch(storeActions.setCustomKanjiGridData(gridData));
+              dispatch(storeActions.setDatabaseLoaded(true));
               setIsLoading(false);
             }
           } else {

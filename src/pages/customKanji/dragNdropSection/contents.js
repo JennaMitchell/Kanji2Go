@@ -3,6 +3,8 @@ import { Draggable } from "react-beautiful-dnd";
 import KanjiAndDefinitionHelperBlock from "./kanjiHelperBlocks/kanjiAndDefinitionHelperBlock";
 import KanjiOnlyHelperBlock from "./kanjiHelperBlocks/kanjiOnlyHelperBlock";
 import BlankHelperBox from "./kanjiHelperBlocks/blankHelperBox";
+import KanjiStrokeContainer from "./kanjiHelperBlocks/kanjiStrokeContainer";
+import kanjiStrokeDatabase from "../../../kanjiStrokeSVGs/kanjiStrokeDatabase";
 
 const BlankSpaceContainer = styled.div`
   border: 1px solid black;
@@ -62,8 +64,7 @@ const KanjiContainer = styled.div`
       : "white"};
 `;
 
-const Contents = ({ content, index, dragId, type }) => {
-  console.log(dragId);
+const Contents = ({ content, index, dragId, type, stroke }) => {
   let itemToRender = "";
   switch (type) {
     case "Kanji and Definition":
@@ -82,9 +83,29 @@ const Contents = ({ content, index, dragId, type }) => {
         </Draggable>
       );
       break;
-    case "Kanji and Stroke Order":
-      break;
-    case "Kanji, Stroke Order and Definitions":
+    case "Stroke Order":
+      let kanjiStrokeData = kanjiStrokeDatabase[content[0].kanji[0]];
+      console.log(dragId);
+
+      itemToRender = (
+        <Draggable draggableId={dragId} index={index}>
+          {(provided, snapshot) => (
+            <KanjiContainer
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              ref={provided.innerRef}
+              isDragging={snapshot.isDragging}
+            >
+              <KanjiStrokeContainer
+                strokeData={kanjiStrokeData}
+                data={content}
+                id={dragId}
+                stroke={stroke}
+              />
+            </KanjiContainer>
+          )}
+        </Draggable>
+      );
       break;
     case "Kanji Only":
       itemToRender = (

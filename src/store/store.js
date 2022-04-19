@@ -21,6 +21,7 @@ const initialState = {
   customKanjiGridData: [],
   customKanjiDeleteIconClicked: false,
   newPageClicked: false,
+  databaseLoaded: false,
 };
 
 const storeSlice = createSlice({
@@ -89,6 +90,9 @@ const storeSlice = createSlice({
     },
     setNewPageClicked(state, { payload }) {
       state.newPageClicked = payload;
+    },
+    setDatabaseLoaded(state, { payload }) {
+      state.databaseLoaded = payload;
     },
   },
 });

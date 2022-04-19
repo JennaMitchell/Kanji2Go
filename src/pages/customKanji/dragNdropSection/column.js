@@ -25,8 +25,12 @@ const KanjiContainer = styled.div`
   left: auto !important;
 `;
 
-const Column = ({ column, container, index }) => {
-  // console.log(container);
+const Column = ({ column, container, strokeNum }) => {
+  // container.map((contents, i) => {
+  //   console.log(contents.id);
+  //   return "";
+  // });
+
   return (
     <Container>
       <Droppable droppableId={column.id} direction="horizontal">
@@ -44,6 +48,7 @@ const Column = ({ column, container, index }) => {
                 index={index}
                 dragId={contents.id}
                 type={contents.type}
+                stroke={index - 1}
               />
             ))}
             {provided.placeholder}

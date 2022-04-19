@@ -22,56 +22,174 @@ const DragNDropContainer = () => {
   const customKanjiBoxData = useSelector((state) => state.customKanjiBoxData);
   const customKanjiGridData = useSelector((state) => state.customKanjiGridData);
   const blankSquaresArray = useSelector((state) => state.blankSquaresArray);
+  const databaseLoaded = useSelector((state) => state.databaseLoaded);
   const dispatch = useDispatch();
   const [currentNumber, setCurrentNumber] = useState(0);
   const customKanjiDeleteIconClicked = useSelector(
     (state) => state.customKanjiDeleteIconClicked
   );
+  const [addStrokeOrder, setAddStrokeOrder] = useState(false);
   const newPageClicked = useSelector((state) => state.newPageClicked);
-  const addKanji = (tempArray, type, currentColumnId) => {
+  const [currentKanjiId, setCurrentKanjiId] = useState("");
+
+  const calculateSpotsInUse = (columnId) => {
+    let numberOfSlotsInUse = 0;
+    let activeIds = customKanjiGridData.columns[columnId].idContainer;
+
+    for (let q = 0; q < activeIds.length; q++) {
+      let columnContent = customKanjiGridData.contentContainer[activeIds[q]];
+      console.log(columnContent);
+      switch (columnContent.type) {
+        case "Kanji and Definition":
+          numberOfSlotsInUse = numberOfSlotsInUse + 4;
+          break;
+        case "Stroke Order":
+          numberOfSlotsInUse = numberOfSlotsInUse + 1;
+          break;
+        case "Kanji Only":
+          numberOfSlotsInUse = numberOfSlotsInUse + 1;
+          break;
+        default:
+          break;
+      }
+    }
+
+    return numberOfSlotsInUse;
+  };
+  const addStrokeOrderText = (
+    tempArray,
+    type,
+    currentColumnId,
+    numberOfItems,
+    strokeNum,
+    numberOfStrokesToAdd
+  ) => {
+    for (let i = 0; i < numberOfStrokesToAdd; i++) {
+      let extractableStrokeNum = "";
+      if (i < 10) {
+        extractableStrokeNum = `0${i}`;
+      } else {
+        extractableStrokeNum = `${i}`;
+      }
+
+      tempArray.contentContainer[
+        `${customKanjiBoxData.data.kanji} ${
+          currentNumber + i
+        } ${extractableStrokeNum}`
+      ] = {
+        id: `${[customKanjiBoxData.data.kanji]} ${
+          currentNumber + i
+        } ${extractableStrokeNum}`,
+        content: [customKanjiBoxData.data],
+        type: type,
+        strokeNum: i,
+      };
+      tempArray.columns[currentColumnId].idContainer.push(
+        `${customKanjiBoxData.data.kanji} ${
+          currentNumber + i
+        } ${extractableStrokeNum}`
+      );
+      tempArray.columns[currentColumnId].numberOfItems =
+        tempArray.columns[currentColumnId].numberOfItems + numberOfItems;
+    }
+    console.log(tempArray);
+    setCurrentKanjiId(
+      `${customKanjiBoxData.data.kanji} ${
+        currentNumber + numberOfStrokesToAdd - 1
+      }`
+    );
+    dispatch(storeActions.setCustomKanjiGridData(tempArray));
+    setData(tempArray);
+    setCurrentNumber(currentNumber + 1);
+  };
+  const addKanji = (
+    tempArray,
+    type,
+    currentColumnId,
+    numberOfItems,
+    strokeNum
+  ) => {
     tempArray.contentContainer[
       `${customKanjiBoxData.data.kanji} ${currentNumber}`
     ] = {
       id: `${[customKanjiBoxData.data.kanji]} ${currentNumber}`,
       content: [customKanjiBoxData.data],
       type: type,
+      strokeNum: strokeNum,
     };
     tempArray.columns[currentColumnId].idContainer.push(
       `${customKanjiBoxData.data.kanji} ${currentNumber}`
     );
+    tempArray.columns[currentColumnId].numberOfItems =
+      tempArray.columns[currentColumnId].numberOfItems + numberOfItems;
+    setCurrentKanjiId(`${customKanjiBoxData.data.kanji} ${currentNumber}`);
   };
-  const addKanjiHelperBlock = (type, numberOfSlots) => {
+
+  const addKanjiHelperBlock = (
+    type,
+    numberOfSlots,
+    strokeOrderEnabled = false,
+    strokeNum
+  ) => {
     let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
-    let tempNumberHolder = 0;
+    let contentAdded = false;
+    let numberOfStorkesToAdd = customKanjiBoxData.data.strokes[0];
+    //  console.log(customKanjiBoxData.data.strokes[0]);
 
     // <KanjiAndDefinitionHelperBlock data={customKanjiBoxData.data} />;
-    for (let index = 1; index < 11; index++) {
-      let currentColumnId = `column-${index}`;
-      tempNumberHolder =
-        tempArray.columns[currentColumnId].numberOfItems + numberOfSlots;
+    for (let index = 1; index < tempArray.columnOrder.length; index++) {
+      if (!contentAdded) {
+        let currentColumnId = `column-${index}`;
+        if (index < 10) {
+          currentColumnId = `column-0${index}`;
+        } else {
+          currentColumnId = `column-${index}`;
+        }
+        if (strokeOrderEnabled) {
+          setAddStrokeOrder(true);
+        }
+        // if (customKanjiGridData.columns[currentColumnId].numberOfItems > 11 ){}
+        let spotsInUse = calculateSpotsInUse(currentColumnId);
+        if (spotsInUse !== 11) {
+          // 11 is the max number of blank/kanji boxs one row can hold
+          switch (type) {
+            case "Kanji and Definition":
+              if (spotsInUse !== 7) {
+                // 7 is 11 - 4  - 4 comes from the number of spaces the definition block takes
+                addKanji(tempArray, type, currentColumnId, numberOfSlots);
+                dispatch(storeActions.setCustomKanjiGridData(tempArray));
+                setData(tempArray);
+                setCurrentNumber(currentNumber + 1);
+                contentAdded = true;
+              }
+              break;
+            case "Stroke Order":
+              addStrokeOrderText(
+                tempArray,
+                type,
+                currentColumnId,
+                numberOfSlots,
+                strokeNum,
+                numberOfStorkesToAdd
+              );
+              contentAdded = true;
 
-      if (tempNumberHolder > 11) {
-        if (type === "Kanji and Stroke Order") {
-          //&& type !=="Kanji, Stroke Order and Definitions")
-          let numberOfOpenSlots =
-            11 - tempArray.columns[currentColumnId].numberOfItem;
-          if (numberOfOpenSlots === 1) {
-            addKanji(tempArray, type, currentColumnId);
-          } else {
-            addKanji(tempArray);
+              break;
+            case "Kanji Only":
+              addKanji(tempArray, type, currentColumnId, numberOfSlots);
+              dispatch(storeActions.setCustomKanjiGridData(tempArray));
+              setData(tempArray);
+              setCurrentNumber(currentNumber + 1);
+              contentAdded = true;
+              break;
+            default:
+              break;
           }
         }
-      } else {
-        addKanji(tempArray, type, currentColumnId);
       }
     }
-    // need to update this
-
-    console.log(tempArray);
-    dispatch(storeActions.setCustomKanjiGridData(tempArray));
-    setData(tempArray);
-    setCurrentNumber(currentNumber + 1);
   };
+
   // useEffect helps with blankSquares
   useEffect(() => {
     if (blankSquaresArray.length !== 0) {
@@ -80,7 +198,6 @@ const DragNDropContainer = () => {
       for (let i = 0; i < blankSquaresArray.length; i++) {
         // <KanjiAndDefinitionHelperBlock data={customKanjiBoxData.data} />;
         let idString = `blank-${tempNumber}`;
-        console.log(idString);
 
         tempArray.contentContainer[idString] = {
           id: `blank-${tempNumber}`,
@@ -93,7 +210,6 @@ const DragNDropContainer = () => {
         tempNumber++;
       }
 
-      console.log(tempArray);
       dispatch(storeActions.setCustomKanjiGridData(tempArray));
       dispatch(storeActions.setBlankSquaresArray(""));
       setData(tempArray);
@@ -106,18 +222,19 @@ const DragNDropContainer = () => {
       switch (customKanjiBoxData.type[0]) {
         case "Kanji and Definition":
           addKanjiHelperBlock("Kanji and Definition", 4);
+          // kanji BLock takes 1 space and defintion takes 3
           break;
         case "Kanji and Stroke Order":
-          addKanjiHelperBlock(
-            "Kanji and Stroke Order",
-            customKanjiBoxData.data.strokes[0] + 1
-          );
+          addKanjiHelperBlock("Kanji Only", 1, true);
+          // type, numberOfStrokes, strokeOrderEnabled defualt false
+          // we need to render the kanji and stroke order box as individual elements
+          // so we start with the kanji only block
           break;
         case "Kanji, Stroke Order and Definitions":
-          addKanjiHelperBlock(
-            "Kanji, Stroke Order and Definitions",
-            customKanjiBoxData.data.strokes[0] + 5
-          );
+          addKanjiHelperBlock("Kanji and Definition", 4, true);
+          // type, numberOfStrokes, strokeOrderEnabled
+          // we need to render the kanji and defintion block sepearte from the stroke order elements
+          // so we simply run the kanji and definition block with stroke order enabled
           break;
         case "Kanji Only":
           addKanjiHelperBlock("Kanji Only", 1);
@@ -129,45 +246,19 @@ const DragNDropContainer = () => {
   }, [customKanjiBoxData]);
   //
   useEffect(() => {
-    let tempMappedData = data.columnOrder.map((columnId, index) => {
-      let currentColumnIdNumber = +columnId.slice(-2);
-      const column = data.columns[columnId];
-      const container = column.idContainer.map(
-        (id) => data.contentContainer[id]
-      );
-      if (
-        currentColumnIdNumber % 10 === 0 &&
-        index !== data.columnOrder.length - 1
-      ) {
-        return (
-          <>
-            <PageBreakColumn />
-            <Column
-              key={column.id}
-              column={column}
-              container={container}
-              index={index}
-            />
-          </>
-        );
-      } else {
-        return (
-          <Column
-            key={column.id}
-            column={column}
-            container={container}
-            index={index}
-          />
-        );
-      }
-    });
-
-    setMappedData(tempMappedData);
-  }, [data]);
+    // need to fix issue where this is running twice;
+    if (typeof customKanjiGridData.columnOrder !== "undefined") {
+      updateRenderedGridData();
+      console.log("208");
+    }
+  }, [data, databaseLoaded]);
   const updateRenderedGridData = () => {
     let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
+    console.log(tempArray);
+
     let pageBreakAdded = false;
     let tempMappedData = [];
+    let strokeNum = "";
 
     let numberOfBreaks = tempArray.columnOrder.length / 10 - 1;
     let newArrayLength = tempArray.columnOrder.length + numberOfBreaks;
@@ -177,19 +268,20 @@ const DragNDropContainer = () => {
     for (let index = 0; index < newArrayLength; index++) {
       let columnId = tempArray.columnOrder[columnIdIndex];
       let currentColumnIdNumber = +columnId.slice(-2);
-      console.log(`current Column Id = ${currentColumnIdNumber}`);
-      console.log(`index = ${index}`);
+      // console.log(`current Column Id = ${currentColumnIdNumber}`);
+      // console.log(`index = ${index}`);
       const column = tempArray.columns[columnId];
+      console.log(column);
       let container = column.idContainer.map(
         (id) => tempArray.contentContainer[id]
       );
+      console.log(container);
 
       if (
         currentColumnIdNumber % 11 === 0 &&
         currentColumnIdNumber !== data.columnOrder.length + 10 &&
         !pageBreakAdded
       ) {
-        console.log(data.columnOrder.length);
         pageBreakAdded = true;
         tempMappedData.push(
           <PageBreakColumn
@@ -208,11 +300,13 @@ const DragNDropContainer = () => {
             column={column}
             container={container}
             index={index}
+            strokeNum={strokeNum}
           />
         );
         columnIdIndex++;
       }
     }
+
     setMappedData(tempMappedData);
   };
   useEffect(() => {
@@ -228,6 +322,12 @@ const DragNDropContainer = () => {
       dispatch(storeActions.setNewPageClicked(false));
     }
   }, [newPageClicked]);
+  // useEffect to handle Adding Stroke Orders
+  useEffect(() => {
+    if (addStrokeOrder) {
+      addKanjiHelperBlock("Stroke Order", 1, false, 0);
+    }
+  }, [addStrokeOrder]);
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -249,8 +349,10 @@ const DragNDropContainer = () => {
     // since the columns are also draggable we need to check the type of what is being moved
 
     // user dropped into original position
+
     const start = data.columns[source.droppableId];
     const finish = data.columns[destination.droppableId];
+
     if (start === finish) {
       const newContainerIds = Array.from(start.container);
       // best practice to create new object and not mutate source
@@ -270,19 +372,21 @@ const DragNDropContainer = () => {
         },
       };
       setData(newState);
+      dispatch(storeActions.setCustomKanjiGridData(newState));
+
       return;
     }
     // below handles if drag and drop columns are not equal
     if (start !== finish) {
       const startContainerIds = Array.from(start.idContainer);
-      console.log(startContainerIds);
+
       startContainerIds.splice(source.index, 1);
       const newStart = {
         ...start,
         idContainer: startContainerIds,
       };
       const finishContainerIds = Array.from(finish.idContainer);
-      console.log(finishContainerIds);
+
       finishContainerIds.splice(destination.index, 0, draggableId);
       const newFinish = {
         ...finish,
@@ -297,6 +401,7 @@ const DragNDropContainer = () => {
         },
       };
       setData(newState);
+      dispatch(storeActions.setCustomKanjiGridData(newState));
       return;
     }
   };
