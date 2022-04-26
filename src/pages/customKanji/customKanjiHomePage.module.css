@@ -8,7 +8,6 @@
   color: white;
 }
 .loginClickedHomepage {
-  overflow: hidden;
   width: max(100vw, 100vw);
   height: max(100vh, 100vh);
 }
@@ -121,37 +120,37 @@
 }
 .imageButtonMenu {
   position: absolute;
-  top: 5%;
-  right: 20%;
+  top: 1%;
+  right: 5%;
   width: max(300px, 300px);
   height: max(300px, 300px);
   display: grid;
+  grid-template-rows: 150px 150px;
+  grid-template-columns: 200px;
+  align-items: center;
+  justify-content: space-between;
 }
 .dragNdropContainer {
-  height: max(1210px, 1210px);
-  width: max(1150px, 1150px);
+  height: max(1220px, 1220px);
+  width: max(1190px, 1190px);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: grid;
   place-items: center;
-
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
-.exportButton,
+.clearButton,
 .previewButton {
   width: max(200px, 200px);
   height: max(100px, 100px);
   background-color: #dc5357;
-  margin: 0;
-  margin-left: 400px;
   z-index: 1;
   border-radius: 15px;
   font-size: 28px;
+  position: relative;
 }
-.exportButton:hover,
+.clearButton:hover,
 .previewButton:hover {
   background-color: #ec9898;
   color: black;

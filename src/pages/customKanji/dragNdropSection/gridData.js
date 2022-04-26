@@ -21,6 +21,10 @@ let gridData = {
     "column-08": { id: "column-08", idContainer: [], numberOfItems: 0 },
     "column-09": { id: "column-09", idContainer: [], numberOfItems: 0 },
     "column-10": { id: "column-10", idContainer: [], numberOfItems: 0 },
+    "column-11": { id: "column-11", idContainer: [], numberOfItems: 0 },
+    "column-12": { id: "column-12", idContainer: [], numberOfItems: 0 },
+    "column-13": { id: "column-13", idContainer: [], numberOfItems: 0 },
+    "column-14": { id: "column-14", idContainer: [], numberOfItems: 0 },
   },
   columnOrder: [
     "column-01",
@@ -33,6 +37,10 @@ let gridData = {
     "column-08",
     "column-09",
     "column-10",
+    "column-11",
+    "column-12",
+    "column-13",
+    "column-14",
   ],
 };
 export default gridData;

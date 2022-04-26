@@ -1,11 +1,10 @@
-import classes from "./pageMenu.module.css";
 import { Grid, Button } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { storeActions } from "../store/store";
 const PageMenu = () => {
-  const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
+  // const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
   const dispatch = useDispatch();
   const navButtonHandler = () => {
     dispatch(storeActions.setShopNavButtonClicked(false));
@@ -26,12 +25,14 @@ const PageMenu = () => {
       borderEndEndRadius="20px"
       borderEndStartRadius="20px"
       zIndex={10}
+      color="white"
     >
       <Button
         fontSize="20px"
         backgroundColor="inherit"
         textAlign="start"
         onClick={navButtonHandler}
+        _hover={{ color: "black", bgColor: "brand.300" }}
       >
         <NavLink to="/aboutus"> About Us</NavLink>
       </Button>
@@ -39,6 +40,7 @@ const PageMenu = () => {
         fontSize="20px"
         backgroundColor="inherit"
         onClick={navButtonHandler}
+        _hover={{ color: "black", bgColor: "brand.300" }}
       >
         <NavLink to="/premadeKanjiSheets">Premade Kanji Sheets</NavLink>
       </Button>
@@ -46,6 +48,7 @@ const PageMenu = () => {
         fontSize="20px"
         backgroundColor="inherit"
         onClick={navButtonHandler}
+        _hover={{ color: "black", bgColor: "brand.300" }}
       >
         <NavLink to="/customKanjiSheets">Kanji Sheets Creator</NavLink>
       </Button>
@@ -53,13 +56,15 @@ const PageMenu = () => {
         fontSize="20px"
         backgroundColor="inherit"
         onClick={navButtonHandler}
+        _hover={{ color: "black", bgColor: "brand.300" }}
       >
-        Kanji Test
+        <NavLink to="/kanjiQuiz">Kanji Test</NavLink>
       </Button>
       <Button
         fontSize="20px"
         backgroundColor="inherit"
         onClick={navButtonHandler}
+        _hover={{ color: "black", bgColor: "brand.300" }}
       >
         Tutorials
       </Button>
@@ -67,6 +72,7 @@ const PageMenu = () => {
         fontSize="20px"
         backgroundColor="inherit"
         onClick={navButtonHandler}
+        _hover={{ color: "black", bgColor: "brand.300" }}
       >
         Contact Us
       </Button>
@@ -74,6 +80,7 @@ const PageMenu = () => {
         fontSize="20px"
         backgroundColor="inherit"
         onClick={navButtonHandler}
+        _hover={{ color: "black", bgColor: "brand.300" }}
       >
         Privacy Policy
       </Button>
@@ -81,6 +88,7 @@ const PageMenu = () => {
         fontSize="20px"
         backgroundColor="inherit"
         onClick={navButtonHandler}
+        _hover={{ color: "black", bgColor: "brand.300" }}
       >
         Terms of Service
       </Button>

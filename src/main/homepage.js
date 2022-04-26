@@ -2,7 +2,6 @@ import {
   Container,
   VStack,
   Image,
-  HStack,
   Text,
   SimpleGrid,
   GridItem,
@@ -15,18 +14,10 @@ import cityStreetTwo from "../img/city_street2.jpg";
 import kanjiSheet from "../img/kanji_Sheet.jpg";
 import tablet from "../img/tablet.jpg";
 import books from "../img/books.jpg";
-import facebookIcon from "../icons/facebook-app-symbol.png";
-import instagramIcon from "../icons/instagram.png";
-import linkedinIcon from "../icons/linkedin.png";
-import twitterIcon from "../icons/twitter.png";
 
 import BannerBox from "../components/BannerBox";
 import classes from "./homepage.module.css";
-import {
-  LocationMarkerIcon,
-  PhoneIcon,
-  MailIcon,
-} from "@heroicons/react/solid";
+
 import { useSelector } from "react-redux";
 
 import PageMenu from "./pageMenu";
@@ -42,7 +33,7 @@ const HomePage = () => {
     (state) => state.shopNavButtonClicked
   );
   const loginButtonClicked = useSelector((state) => state.loginButtonClicked);
-  const signUpButtonClicked = useSelector((state) => state.signUpButtonClicked);
+  // const signUpButtonClicked = useSelector((state) => state.signUpButtonClicked);
   return (
     <>
       {loginButtonClicked && <div className={classes.blurBackground}></div>}
@@ -83,6 +74,7 @@ const HomePage = () => {
                 mt="30px"
                 fontSize="36px"
                 bgColor="#221f1f"
+                color="white"
               >
                 Kanji Sheets
               </Button>
@@ -184,6 +176,7 @@ const HomePage = () => {
                 height="15%"
                 fontSize="22px"
                 textAlign="left"
+                color="white"
               >
                 View Live Test
               </Button>
@@ -218,6 +211,7 @@ const HomePage = () => {
               fontSize="22px"
               textAlign="left"
               marginTop="20px"
+              color="white"
             >
               Register
             </Button>

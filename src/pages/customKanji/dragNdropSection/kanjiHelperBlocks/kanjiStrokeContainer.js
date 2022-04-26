@@ -3,7 +3,6 @@ import { TrashIcon } from "@heroicons/react/solid";
 import classes from "./icon.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { storeActions } from "../../../../store/store";
-import { useState } from "react";
 
 const KanjiContainer = styled.div`
   width: min(80px, 80px);
@@ -46,18 +45,22 @@ const TrachIconContainer = styled.button`
 // `;
 const KanjiStrokeContainer = ({ data, id, stroke, strokeData }) => {
   let extractedStroke = +id.slice(-2);
-  console.log(extractedStroke);
 
   let strokeToRender = strokeData[extractedStroke];
   const dispatch = useDispatch();
 
   const customKanjiGridData = useSelector((state) => state.customKanjiGridData);
-
   const trashIconHandler = () => {
     let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
+    console.log(tempArray);
     // finding the coluumn where the object we want to delete is at
-    for (let i = 1; i < 11; i++) {
-      let columnId = `column-${i}`;
+    for (let i = 1; i < tempArray.columnOrder.length; i++) {
+      let columnId = "";
+      if (i < 10) {
+        columnId = `column-0${i}`;
+      } else {
+        columnId = `column-${i}`;
+      }
 
       if (tempArray.columns[columnId].idContainer.includes(id)) {
         let indexOfId = tempArray.columns[columnId].idContainer.indexOf(id);

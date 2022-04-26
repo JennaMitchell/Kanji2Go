@@ -33,8 +33,13 @@ const BlankHelperBox = ({ id }) => {
     let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
     console.log(tempArray);
     // finding the coluumn where the object we want to delete is at
-    for (let i = 1; i < 11; i++) {
-      let columnId = `column-${i}`;
+    for (let i = 1; i < tempArray.columnOrder.length; i++) {
+      let columnId = "";
+      if (i < 10) {
+        columnId = `column-0${i}`;
+      } else {
+        columnId = `column-${i}`;
+      }
 
       if (tempArray.columns[columnId].idContainer.includes(id)) {
         let indexOfId = tempArray.columns[columnId].idContainer.indexOf(id);

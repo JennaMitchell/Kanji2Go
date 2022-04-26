@@ -129,6 +129,7 @@ const NavBar = () => {
                   fontSize="24px"
                   paddingRight="10px"
                   bg="inherit"
+                  _hover={{ color: "black", bgColor: "brand.300" }}
                 >
                   <NavLink to="/home">Home</NavLink>
                 </Button>
@@ -142,6 +143,7 @@ const NavBar = () => {
                   onClick={pageButtonHandler}
                   bgColor="inherit"
                   _focus={{ border: "none" }}
+                  _hover={{ color: "black", bgColor: "brand.300" }}
                 >
                   Pages
                 </Button>
@@ -163,6 +165,7 @@ const NavBar = () => {
                   onClick={shopButtonHandler}
                   bgColor="inherit"
                   _focus={{ border: "none" }}
+                  _hover={{ color: "black", bgColor: "brand.300" }}
                 >
                   Shop
                 </Button>
@@ -209,6 +212,7 @@ const NavBar = () => {
                 w="170px"
                 bgColor="brand.300"
                 onClick={loginButtonHandler}
+                _hover={{ color: "black", bgColor: "brand.300" }}
               >
                 <UserIcon className={classes.userIcon} />
                 Login/Register

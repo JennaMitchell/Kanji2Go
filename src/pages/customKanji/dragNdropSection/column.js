@@ -3,14 +3,12 @@ import styled from "styled-components";
 import { Droppable } from "react-beautiful-dnd";
 import Contents from "./contents";
 const Container = styled.div`
-  border: 1px solid lightgrey;
+  border: 2px solid black;
   border-radius: 2px;
-  width: 1150px;
+  width: max(1190px, 1190px);
   justify-content: center;
   background-color: white;
   height: 120px;
-  top: auto !important;
-  left: auto !important;
 `;
 
 const KanjiContainer = styled.div`
@@ -18,8 +16,8 @@ const KanjiContainer = styled.div`
   background-color: ${(props) =>
     props.isDraggingOver ? "skyblue" : "inherit"};
   transition: background-color 0.2s ease;
-  height: 120px;
-  width: 1150px;
+  height: 118px;
+  width: max(1190px, 1190px);
   display: flex;
   top: auto !important;
   left: auto !important;
@@ -29,8 +27,7 @@ const Column = ({ column, container, strokeNum }) => {
   // container.map((contents, i) => {
   //   console.log(contents.id);
   //   return "";
-  // });
-
+  // })
   return (
     <Container>
       <Droppable droppableId={column.id} direction="horizontal">

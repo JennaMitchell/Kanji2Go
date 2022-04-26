@@ -1,7 +1,5 @@
-import classes from "./shopMenu.module.css";
-import { Container } from "@chakra-ui/react";
-import { Grid, Button, SlideFade } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
+import { Grid, Button } from "@chakra-ui/react";
+
 import { useDispatch } from "react-redux";
 import { storeActions } from "../store/store";
 const ShopMenu = () => {
@@ -24,12 +22,14 @@ const ShopMenu = () => {
       borderEndEndRadius="20px"
       borderEndStartRadius="20px"
       zIndex={10}
+      color="white"
     >
       <Button
         fontSize="20px"
         backgroundColor="inherit"
         textAlign="start"
         onClick={navButtonHandler}
+        _hover={{ color: "black", bgColor: "brand.300" }}
       >
         Swag
       </Button>
@@ -37,6 +37,7 @@ const ShopMenu = () => {
         fontSize="20px"
         backgroundColor="inherit"
         onClick={navButtonHandler}
+        _hover={{ color: "black", bgColor: "brand.300" }}
       >
         Books
       </Button>
@@ -44,6 +45,7 @@ const ShopMenu = () => {
         fontSize="20px"
         backgroundColor="inherit"
         onClick={navButtonHandler}
+        _hover={{ color: "black", bgColor: "brand.300" }}
       >
         Cart
       </Button>
@@ -51,6 +53,7 @@ const ShopMenu = () => {
         fontSize="20px"
         backgroundColor="inherit"
         onClick={navButtonHandler}
+        _hover={{ color: "black", bgColor: "brand.300" }}
       >
         Checkout
       </Button>

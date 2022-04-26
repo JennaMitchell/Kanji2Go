@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import PageMenu from "../../main/pageMenu";
 import ShopMenu from "../../main/shopMenu";
-import exportAsImage from "../../components/exportElementAsImage";
 import LoginPopup from "../../login/loginPopup";
 
 import { MinusIcon, PlusIcon } from "@heroicons/react/solid";
@@ -16,24 +15,20 @@ import BlankSquareAdder from "./blankSquareAdder";
 import DragNDropContainer from "./dragNdropSection/dragNdropContainer";
 import Footer from "../../components/footer";
 import PreviewSheet from "./previewSheet";
+import ClearButtonWarning from "./clearButtonWarning";
 
 const CustomKanjiHomePage = () => {
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
   const shopNavButtonClicked = useSelector(
     (state) => state.shopNavButtonClicked
   );
-
   const newPageClicked = useSelector((state) => state.newPageClicked);
   const loginButtonClicked = useSelector((state) => state.loginButtonClicked);
-
-  const captureClicked = () => {
-    console.log(exportRef.current);
-    exportAsImage(exportRef.current, "test");
-  };
 
   const exportRef = useRef();
   // use this to create a reference to teh DOM element and pass it to the exportAsImage function
   const [addButtonClicked, setAddButtonClicked] = useState(false);
+  const [clearButtonClicked, setClearButtonClicked] = useState(false);
   const addButtonHandler = () => {
     setAddButtonClicked(!addButtonClicked);
   };
@@ -49,6 +44,10 @@ const CustomKanjiHomePage = () => {
       setAddButtonClicked(false);
     }
   }, [newPageClicked]);
+  const clearButtonHandler = () => {
+    console.log("hello");
+    setClearButtonClicked(!clearButtonClicked);
+  };
 
   return (
     <>
@@ -61,13 +60,19 @@ const CustomKanjiHomePage = () => {
       {previewButtonClicked && (
         <PreviewSheet closingBtnHandler={previewButtonHandler} />
       )}
+      {clearButtonClicked && (
+        <ClearButtonWarning
+          parentCancelButtonHandler={clearButtonHandler}
+        ></ClearButtonWarning>
+      )}
+      {clearButtonClicked && <div className={classes.blurBackground}></div>}
 
       <div
         className={`${loginButtonClicked && classes.loginClickedHomepage} ${
-          addKanjiMenu && classes.loginClickedHomepage
-        } ${previewButtonClicked && classes.loginClickedHomepage} ${
-          classes.mainContainer
-        }`}
+          clearButtonClicked && classes.loginClickedHomepage
+        } ${addKanjiMenu && classes.loginClickedHomepage} ${
+          previewButtonClicked && classes.loginClickedHomepage
+        } ${classes.mainContainer}`}
       >
         <NavBar />
         <Container
@@ -134,8 +139,11 @@ const CustomKanjiHomePage = () => {
             >
               Preview
             </button>
-            <button className={classes.exportButton} onClick={captureClicked}>
-              Download
+            <button
+              className={classes.clearButton}
+              onClick={clearButtonHandler}
+            >
+              Clear
             </button>
           </div>
 

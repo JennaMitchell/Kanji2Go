@@ -1,20 +1,33 @@
 import classes from "./previewSheet.module.css";
-import { useRef } from "react";
-import DragNDropContainer from "./dragNdropSection/dragNdropContainer";
+import { useEffect, useRef } from "react";
 import exportAsImage from "../../components/exportElementAsImage";
-import { XIcon } from "@heroicons/react/solid";
+import { XIcon, DownloadIcon } from "@heroicons/react/solid";
+import PreviewMainPage from "./preview/previewMainPage";
+import { useState } from "react";
 
 const PreviewSheet = ({ closingBtnHandler }) => {
   const exportRef = useRef();
+  const [downloadButtonClicked, setDownloadButtonClicked] = useState(false);
+  const [reRenderComplete, setReRenderComplete] = useState(false);
   const captureClicked = () => {
-    console.log(exportRef.current);
-    exportAsImage(exportRef.current, "test");
+    setDownloadButtonClicked(true);
+    console.log("hello3");
   };
+  const rerenderCompleteHandler = () => {
+    console.log("hello");
+    setReRenderComplete("x");
+  };
+  useEffect(() => {
+    if (reRenderComplete === "x") {
+      const targetElement = document.getElementById("pdfContainer");
+      exportAsImage(targetElement, "test");
+    }
+  }, [reRenderComplete]);
 
   return (
-    <div className={classes.dragNdropPreviewContainer} ref={exportRef}>
+    <div className={classes.dragNdropPreviewContainer}>
       <button className={`${classes.downloadButton}`} onClick={captureClicked}>
-        Download
+        <DownloadIcon className={classes.closingIcon} />
       </button>
       <button
         className={`${classes.closingIconContainer}`}
@@ -22,8 +35,16 @@ const PreviewSheet = ({ closingBtnHandler }) => {
       >
         <XIcon className={classes.closingIcon} />
       </button>
-
-      <DragNDropContainer />
+      <div
+        className={classes.dragndropSheetContainer}
+        id="pdfContainer"
+        ref={exportRef}
+      >
+        <PreviewMainPage
+          downloadClicked={downloadButtonClicked}
+          reRenderCompleteFunction={rerenderCompleteHandler}
+        />
+      </div>
     </div>
   );
 };

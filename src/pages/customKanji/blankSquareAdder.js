@@ -26,6 +26,10 @@ const BlankSquareAdder = () => {
     dispatch(storeActions.setBlankSquaresArray(numberArray));
     dispatch(storeActions.setBlankSquareMenu(false));
   };
+  const fillButtonHandler = () => {
+    dispatch(storeActions.setFillButtonClicked(true));
+    dispatch(storeActions.setBlankSquareMenu(false));
+  };
 
   return (
     <div className={classes.blankAddContainer}>
@@ -49,7 +53,10 @@ const BlankSquareAdder = () => {
         </select>
       </div>
       <div className={classes.btnContainer}>
-        <button className={`${classes.button} ${classes.activeButton}`}>
+        <button
+          className={`${classes.button} ${classes.activeButton}`}
+          onClick={fillButtonHandler}
+        >
           Fill
         </button>
         <button

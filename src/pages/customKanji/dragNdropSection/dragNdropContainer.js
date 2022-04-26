@@ -2,27 +2,21 @@ import gridData from "./gridData";
 import { DragDropContext } from "react-beautiful-dnd";
 import { useEffect, useState } from "react";
 import Column from "./column";
-import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { storeActions } from "../../../store/store";
 import PageBreakColumn from "./pageBreakColumn";
-
-const StylizedContainer = styled.div`
-  display: grid;
-  height: 100%;
-  width: 100%;
-  grid-template-rows: repeat(10, 120px);
-  column-gap: 0;
-  color: black;
-`;
+import classes from "./dragNdropContainer.module.css";
+import { useBeforeunload } from "react-beforeunload";
 
 const DragNDropContainer = () => {
   const [data, setData] = useState(gridData);
   const [mappedData, setMappedData] = useState();
   const customKanjiBoxData = useSelector((state) => state.customKanjiBoxData);
   const customKanjiGridData = useSelector((state) => state.customKanjiGridData);
+
   const blankSquaresArray = useSelector((state) => state.blankSquaresArray);
   const databaseLoaded = useSelector((state) => state.databaseLoaded);
+  const fillButtonClicked = useSelector((state) => state.fillButtonClicked);
   const dispatch = useDispatch();
   const [currentNumber, setCurrentNumber] = useState(0);
   const customKanjiDeleteIconClicked = useSelector(
@@ -31,14 +25,41 @@ const DragNDropContainer = () => {
   const [addStrokeOrder, setAddStrokeOrder] = useState(false);
   const newPageClicked = useSelector((state) => state.newPageClicked);
   const [currentKanjiId, setCurrentKanjiId] = useState("");
+  const [renderDataUpdated, setRenderDataUpdated] = useState(false);
+  const okayClearButtonClicked = useSelector(
+    (state) => state.okayClearButtonClicked
+  );
+  let refreshed = JSON.parse(localStorage.getItem("refreshed"));
+  useEffect(() => {
+    if (refreshed) {
+      setData(JSON.parse(localStorage.getItem("data")));
+      dispatch(
+        storeActions.setCustomKanjiGridData(
+          JSON.parse(localStorage.getItem("customKanjiGridData"))
+        )
+      );
+      localStorage.removeItem("refreshed");
+      localStorage.removeItem("customKanjiGridData");
+      localStorage.setItem("refreshed", "false");
+    }
+  }, [refreshed]);
 
-  const calculateSpotsInUse = (columnId) => {
+  // The useBeforeUnload is called when the user refreshs the page
+  useBeforeunload(() => {
+    console.log("useBeforeunload");
+    localStorage.setItem("data", JSON.stringify(customKanjiGridData));
+    localStorage.setItem(
+      "customKanjiGridData",
+      JSON.stringify(customKanjiGridData)
+    );
+    localStorage.setItem("refreshed", "true");
+  });
+
+  const calculateSpotsInUse = (columnId, data) => {
     let numberOfSlotsInUse = 0;
-    let activeIds = customKanjiGridData.columns[columnId].idContainer;
-
+    let activeIds = data.columns[columnId].idContainer;
     for (let q = 0; q < activeIds.length; q++) {
-      let columnContent = customKanjiGridData.contentContainer[activeIds[q]];
-      console.log(columnContent);
+      let columnContent = data.contentContainer[activeIds[q]];
       switch (columnContent.type) {
         case "Kanji and Definition":
           numberOfSlotsInUse = numberOfSlotsInUse + 4;
@@ -49,6 +70,9 @@ const DragNDropContainer = () => {
         case "Kanji Only":
           numberOfSlotsInUse = numberOfSlotsInUse + 1;
           break;
+        case "Blank":
+          numberOfSlotsInUse = numberOfSlotsInUse + 1;
+          break;
         default:
           break;
       }
@@ -56,52 +80,84 @@ const DragNDropContainer = () => {
 
     return numberOfSlotsInUse;
   };
-  const addStrokeOrderText = (
-    tempArray,
-    type,
-    currentColumnId,
-    numberOfItems,
-    strokeNum,
-    numberOfStrokesToAdd
-  ) => {
-    for (let i = 0; i < numberOfStrokesToAdd; i++) {
-      let extractableStrokeNum = "";
-      if (i < 10) {
-        extractableStrokeNum = `0${i}`;
-      } else {
-        extractableStrokeNum = `${i}`;
-      }
 
-      tempArray.contentContainer[
-        `${customKanjiBoxData.data.kanji} ${
-          currentNumber + i
-        } ${extractableStrokeNum}`
-      ] = {
-        id: `${[customKanjiBoxData.data.kanji]} ${
-          currentNumber + i
-        } ${extractableStrokeNum}`,
-        content: [customKanjiBoxData.data],
-        type: type,
-        strokeNum: i,
-      };
-      tempArray.columns[currentColumnId].idContainer.push(
-        `${customKanjiBoxData.data.kanji} ${
-          currentNumber + i
-        } ${extractableStrokeNum}`
-      );
-      tempArray.columns[currentColumnId].numberOfItems =
-        tempArray.columns[currentColumnId].numberOfItems + numberOfItems;
+  const spacesAvailableCalculator = (array) => {
+    let spacesAvailableArray = [];
+    for (let w = 1; w < array.columnOrder.length + 1; w++) {
+      let columnId = "";
+      if (w < 10) {
+        columnId = `column-0${w}`;
+      } else {
+        columnId = `column-${w}`;
+      }
+      let numberOfSpacesInUse = calculateSpotsInUse(columnId, array);
+      let numberOfAvailableSpaces = 11 - numberOfSpacesInUse;
+      if (numberOfAvailableSpaces < 0) {
+        numberOfAvailableSpaces = 0;
+      }
+      spacesAvailableArray.push([numberOfAvailableSpaces, columnId]);
     }
-    console.log(tempArray);
-    setCurrentKanjiId(
-      `${customKanjiBoxData.data.kanji} ${
-        currentNumber + numberOfStrokesToAdd - 1
-      }`
-    );
-    dispatch(storeActions.setCustomKanjiGridData(tempArray));
-    setData(tempArray);
-    setCurrentNumber(currentNumber + 1);
+    return spacesAvailableArray;
   };
+
+  const strokeOrderHandler = (tempArray, type) => {
+    let numberOfStrokesToAdd = customKanjiBoxData.data.strokes[0];
+    let spacesAvailable = [];
+    spacesAvailable = spacesAvailableCalculator(tempArray);
+
+    for (let arr of spacesAvailable) {
+      if (numberOfStrokesToAdd === 0) {
+        break;
+      }
+      if (arr[0] !== 0) {
+        if (numberOfStrokesToAdd > arr[0]) {
+          arr[2] = arr[0];
+          numberOfStrokesToAdd = numberOfStrokesToAdd - arr[0];
+        } else if (numberOfStrokesToAdd < arr[0]) {
+          arr[2] = numberOfStrokesToAdd;
+          numberOfStrokesToAdd = 0;
+        }
+      } else {
+        arr[2] = 0;
+      }
+    }
+    let newStrokeNum = 0;
+    let extractableStrokeNum = 0;
+    for (let arr2 of spacesAvailable) {
+      if (arr2[2] !== 0) {
+        for (let r = 0; r < arr2[2]; r++) {
+          if (newStrokeNum < 10) {
+            extractableStrokeNum = `0${newStrokeNum}`;
+          } else {
+            extractableStrokeNum = newStrokeNum;
+          }
+
+          // adding content data.
+
+          tempArray.contentContainer[
+            `${customKanjiBoxData.data.kanji} ${
+              currentNumber + newStrokeNum
+            } ${extractableStrokeNum}`
+          ] = {
+            id: `${[customKanjiBoxData.data.kanji]} ${
+              currentNumber + newStrokeNum
+            } ${extractableStrokeNum}`,
+            content: [customKanjiBoxData.data],
+            type: type,
+            strokeNum: newStrokeNum,
+          };
+          /// adding to empty columns
+          tempArray.columns[arr2[1]].idContainer.push(
+            `${customKanjiBoxData.data.kanji} ${
+              currentNumber + newStrokeNum
+            } ${extractableStrokeNum}`
+          );
+          newStrokeNum++;
+        }
+      }
+    }
+  };
+
   const addKanji = (
     tempArray,
     type,
@@ -133,7 +189,7 @@ const DragNDropContainer = () => {
   ) => {
     let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
     let contentAdded = false;
-    let numberOfStorkesToAdd = customKanjiBoxData.data.strokes[0];
+    // let numberOfStorkesToAdd = customKanjiBoxData.data.strokes[0];
     //  console.log(customKanjiBoxData.data.strokes[0]);
 
     // <KanjiAndDefinitionHelperBlock data={customKanjiBoxData.data} />;
@@ -149,14 +205,16 @@ const DragNDropContainer = () => {
           setAddStrokeOrder(true);
         }
         // if (customKanjiGridData.columns[currentColumnId].numberOfItems > 11 ){}
-        let spotsInUse = calculateSpotsInUse(currentColumnId);
-        if (spotsInUse !== 11) {
+        let spotsInUse = calculateSpotsInUse(currentColumnId, tempArray);
+        if (spotsInUse < 11) {
           // 11 is the max number of blank/kanji boxs one row can hold
           switch (type) {
             case "Kanji and Definition":
-              if (spotsInUse !== 7) {
+              if (spotsInUse <= 7) {
                 // 7 is 11 - 4  - 4 comes from the number of spaces the definition block takes
                 addKanji(tempArray, type, currentColumnId, numberOfSlots);
+
+                setRenderDataUpdated(false);
                 dispatch(storeActions.setCustomKanjiGridData(tempArray));
                 setData(tempArray);
                 setCurrentNumber(currentNumber + 1);
@@ -164,19 +222,94 @@ const DragNDropContainer = () => {
               }
               break;
             case "Stroke Order":
-              addStrokeOrderText(
+              strokeOrderHandler(
                 tempArray,
                 type,
                 currentColumnId,
                 numberOfSlots,
-                strokeNum,
-                numberOfStorkesToAdd
+                strokeNum
               );
+              setRenderDataUpdated(false);
+
+              setCurrentKanjiId(
+                `${customKanjiBoxData.data.kanji} ${currentNumber}`
+              );
+
+              dispatch(storeActions.setCustomKanjiGridData(tempArray));
+              setData(tempArray);
+              setCurrentNumber(currentNumber + 1);
+
               contentAdded = true;
 
               break;
             case "Kanji Only":
               addKanji(tempArray, type, currentColumnId, numberOfSlots);
+              setRenderDataUpdated(false);
+
+              dispatch(storeActions.setCustomKanjiGridData(tempArray));
+              setData(tempArray);
+              setCurrentNumber(currentNumber + 1);
+              contentAdded = true;
+              break;
+            default:
+              break;
+          }
+        }
+        if (
+          spotsInUse === 11 &&
+          !contentAdded &&
+          index === tempArray.columnOrder.length - 1
+        ) {
+          // in this scenario no content can be added since all the spaces have been taken
+          // In the case above we should create a new page for the added content to go onto
+
+          const lastColumnIndex = tempArray.columnOrder.length;
+          for (let i = 0; i < 14; i++) {
+            tempArray.columnOrder[lastColumnIndex + i] = `column-${
+              lastColumnIndex + i + 1
+            }`;
+            tempArray.columns[`column-${lastColumnIndex + i + 1}`] = {
+              id: `column-${lastColumnIndex + i + 1}`,
+              idContainer: [],
+              numberOfItems: 0,
+            };
+          }
+          currentColumnId = `column-${lastColumnIndex + 1}`;
+          switch (type) {
+            case "Kanji and Definition":
+              addKanji(tempArray, type, currentColumnId, numberOfSlots);
+              console.log(274);
+              dispatch(storeActions.setCustomKanjiGridData(tempArray));
+              setData(tempArray);
+              setCurrentNumber(currentNumber + 1);
+              setRenderDataUpdated(false);
+              contentAdded = true;
+              break;
+            case "Stroke Order":
+              strokeOrderHandler(
+                tempArray,
+                type,
+                currentColumnId,
+                numberOfSlots,
+                strokeNum
+              );
+
+              setCurrentKanjiId(
+                `${customKanjiBoxData.data.kanji} ${currentNumber}`
+              );
+              console.log(292);
+              dispatch(storeActions.setCustomKanjiGridData(tempArray));
+              setData(tempArray);
+              setCurrentNumber(currentNumber + 1);
+              setRenderDataUpdated(false);
+
+              contentAdded = true;
+
+              break;
+            case "Kanji Only":
+              setRenderDataUpdated(false);
+              addKanji(tempArray, type, currentColumnId, numberOfSlots);
+              console.log(302);
               dispatch(storeActions.setCustomKanjiGridData(tempArray));
               setData(tempArray);
               setCurrentNumber(currentNumber + 1);
@@ -190,6 +323,39 @@ const DragNDropContainer = () => {
     }
   };
 
+  const fillButtonHandler = () => {
+    let openSpaceArray = spacesAvailableCalculator(customKanjiGridData);
+    let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
+    let tempNumber = currentNumber;
+    for (let arr of openSpaceArray) {
+      let numberOfOpenSpaces = arr[0];
+      let columnId = arr[1];
+
+      if (numberOfOpenSpaces > 0) {
+        for (let u = 0; u < numberOfOpenSpaces; u++) {
+          let idString = `blank-${tempNumber}`;
+          tempArray.contentContainer[idString] = {
+            id: `blank-${tempNumber}`,
+            content: { contents: [] },
+            type: "Blank",
+          };
+          tempArray.columns[columnId].idContainer.push(`blank-${tempNumber}`);
+          tempNumber++;
+        }
+      }
+    }
+    setCurrentNumber(tempNumber);
+    console.log(338);
+    dispatch(storeActions.setCustomKanjiGridData(tempArray));
+    setData(tempArray);
+  };
+  useEffect(() => {
+    if (fillButtonClicked) {
+      fillButtonHandler();
+      dispatch(storeActions.setFillButtonClicked(false));
+    }
+  }, [fillButtonClicked]);
+
   // useEffect helps with blankSquares
   useEffect(() => {
     if (blankSquaresArray.length !== 0) {
@@ -198,18 +364,29 @@ const DragNDropContainer = () => {
       for (let i = 0; i < blankSquaresArray.length; i++) {
         // <KanjiAndDefinitionHelperBlock data={customKanjiBoxData.data} />;
         let idString = `blank-${tempNumber}`;
+        let blankSpaceAdded = false;
 
         tempArray.contentContainer[idString] = {
           id: `blank-${tempNumber}`,
-          content: [customKanjiBoxData.data],
+          content: { contents: [] },
           type: "Blank",
         };
-
-        tempArray.columns["column-1"].idContainer.push(`blank-${tempNumber}`);
-        // need to update this
+        for (let q = 1; q < tempArray.columnOrder.length + 1; q++) {
+          let columnId = "";
+          if (q < 10) {
+            columnId = `column-0${q}`;
+          } else {
+            columnId = `column-${q}`;
+          }
+          let numberOfSpotsInUse = calculateSpotsInUse(columnId, tempArray);
+          if (numberOfSpotsInUse <= 10 && !blankSpaceAdded) {
+            tempArray.columns[columnId].idContainer.push(`blank-${tempNumber}`);
+            blankSpaceAdded = true;
+          }
+        }
         tempNumber++;
       }
-
+      console.log(380);
       dispatch(storeActions.setCustomKanjiGridData(tempArray));
       dispatch(storeActions.setBlankSquaresArray(""));
       setData(tempArray);
@@ -246,40 +423,55 @@ const DragNDropContainer = () => {
   }, [customKanjiBoxData]);
   //
   useEffect(() => {
-    // need to fix issue where this is running twice;
-    if (typeof customKanjiGridData.columnOrder !== "undefined") {
+    if (
+      typeof customKanjiGridData.columnOrder !== "undefined" &&
+      !renderDataUpdated
+    ) {
       updateRenderedGridData();
-      console.log("208");
+      setRenderDataUpdated(true);
     }
   }, [data, databaseLoaded]);
+  useEffect(() => {
+    if (okayClearButtonClicked) {
+      updateRenderedGridData();
+      dispatch(storeActions.setOkayClearButtonClicked(false));
+    }
+  }, [okayClearButtonClicked]);
+
   const updateRenderedGridData = () => {
     let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
+    console.log("update");
     console.log(tempArray);
 
     let pageBreakAdded = false;
     let tempMappedData = [];
     let strokeNum = "";
 
-    let numberOfBreaks = tempArray.columnOrder.length / 10 - 1;
+    let numberOfBreaks = tempArray.columnOrder.length / 14 - 1;
     let newArrayLength = tempArray.columnOrder.length + numberOfBreaks;
     let columnIdIndex = 0;
-    let pageBreakIndex = 1;
+    let pageBreakIndex = 0;
+    let pageBreakNumbers = [];
+    // handling pagebreaks
+    if (numberOfBreaks > 0) {
+      for (let t = 0; t < numberOfBreaks; t++) {
+        pageBreakNumbers[t] = 14 + 14 * t + 1;
+      }
+    }
 
-    for (let index = 0; index < newArrayLength; index++) {
+    for (let index = 0; index < newArrayLength - numberOfBreaks; index++) {
       let columnId = tempArray.columnOrder[columnIdIndex];
-      let currentColumnIdNumber = +columnId.slice(-2);
-      // console.log(`current Column Id = ${currentColumnIdNumber}`);
-      // console.log(`index = ${index}`);
+      let indexOfDash = columnId.indexOf("-");
+      let currentColumnIdNumber = +columnId.slice(indexOfDash);
       const column = tempArray.columns[columnId];
-      console.log(column);
+
       let container = column.idContainer.map(
         (id) => tempArray.contentContainer[id]
       );
-      console.log(container);
 
       if (
-        currentColumnIdNumber % 11 === 0 &&
-        currentColumnIdNumber !== data.columnOrder.length + 10 &&
+        currentColumnIdNumber % pageBreakNumbers[pageBreakIndex] === 0 &&
+        currentColumnIdNumber !== tempArray.columnOrder.length + 15 &&
         !pageBreakAdded
       ) {
         pageBreakAdded = true;
@@ -292,25 +484,25 @@ const DragNDropContainer = () => {
           />
         );
         pageBreakIndex++;
-      } else {
-        pageBreakAdded = false;
-        tempMappedData.push(
-          <Column
-            key={column.id}
-            column={column}
-            container={container}
-            index={index}
-            strokeNum={strokeNum}
-          />
-        );
-        columnIdIndex++;
       }
+      pageBreakAdded = false;
+      tempMappedData.push(
+        <Column
+          key={column.id}
+          column={column}
+          container={container}
+          index={index}
+          strokeNum={strokeNum}
+        />
+      );
+      columnIdIndex++;
     }
 
     setMappedData(tempMappedData);
   };
   useEffect(() => {
     if (customKanjiDeleteIconClicked) {
+      console.log(484);
       updateRenderedGridData();
       dispatch(storeActions.setCustomKanjiDeleteIconClicked(false));
     }
@@ -318,6 +510,7 @@ const DragNDropContainer = () => {
   // handling newPageCreation
   useEffect(() => {
     if (newPageClicked) {
+      console.log(491);
       updateRenderedGridData();
       dispatch(storeActions.setNewPageClicked(false));
     }
@@ -352,8 +545,19 @@ const DragNDropContainer = () => {
 
     const start = data.columns[source.droppableId];
     const finish = data.columns[destination.droppableId];
+    // Before the drop event can occur we need to check if there is enough free space for the element to enter the column
+    // Step 1. Calculating the number of open Spaces on the column the eleemnt is being dragged into
+    const spotsInUseAtFinish = calculateSpotsInUse(
+      finish.id,
+      customKanjiGridData
+    );
+    // const activeDraggedElementId = result.draggableId;
+    if (spotsInUseAtFinish >= 11) {
+      return;
+    }
 
     if (start === finish) {
+      // if you place it in the same column
       const newContainerIds = Array.from(start.container);
       // best practice to create new object and not mutate source
       newContainerIds.splice(source.index, 1);
@@ -372,6 +576,7 @@ const DragNDropContainer = () => {
         },
       };
       setData(newState);
+      console.log(549);
       dispatch(storeActions.setCustomKanjiGridData(newState));
 
       return;
@@ -401,6 +606,7 @@ const DragNDropContainer = () => {
         },
       };
       setData(newState);
+      console.log(586);
       dispatch(storeActions.setCustomKanjiGridData(newState));
       return;
     }
@@ -409,7 +615,9 @@ const DragNDropContainer = () => {
   return (
     <>
       <DragDropContext onDragEnd={onDragEnd}>
-        <StylizedContainer>{mappedData}</StylizedContainer>
+        <div onDragEnd={onDragEnd} className={classes.mainContainer}>
+          {mappedData}
+        </div>
       </DragDropContext>
     </>
   );

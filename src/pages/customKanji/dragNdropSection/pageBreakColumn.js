@@ -6,7 +6,7 @@ import { Droppable } from "react-beautiful-dnd";
 import Contents from "./contents";
 const Container = styled.div`
   border-radius: 2px;
-  width: 1150px;
+  width: 1300px;
   justify-content: center;
   background-color: black
   height: 120px;
@@ -20,14 +20,14 @@ const KanjiContainer = styled.div`
     props.isDraggingOver ? "skyblue" : "inherit"};
   transition: background-color 0.2s ease;
   height: 120px;
-  width: 1150px;
+  width: 1300px;
   display: flex;
   top: auto !important;
   left: auto !important;
 `;
 
 const PageBreakColumn = ({ column, container, index }) => {
-  // console.log(container);
+ 
   return (
     <Container>
       <Droppable

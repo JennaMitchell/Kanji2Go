@@ -1,0 +1,35 @@
+.mainContainer {
+  position: relative;
+}
+
+.titleContainer {
+  width: max(100%, 100%);
+  height: max(150px, 150px);
+  background-color: #dc5357;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.titleHeading {
+  width: max(max-content, max-content);
+  text-align: center;
+  height: max(max-content, max-content);
+  color: #221f1f;
+  border-bottom: 2px solid #221f1f;
+
+  font-family: var(--chakra-fonts-heading);
+  font-weight: var(--chakra-fontWeights-bold);
+  font-size: 64px;
+}
+.quizContainer {
+  width: max(100%, 100%);
+  height: max(1300px, 1300px);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #221f1f;
+  border-bottom: 1px solid white;
+}

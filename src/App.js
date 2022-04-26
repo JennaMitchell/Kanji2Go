@@ -1,5 +1,4 @@
 import "./App.css";
-import NavBar from "./nav/navBar";
 import HomePage from "./main/homepage";
 import "./theme/style.css";
 import { Route, Routes, Navigate } from "react-router-dom";
@@ -7,6 +6,7 @@ import AboutUsPage from "./pages/aboutUsPage";
 import PreMadeKanjiSheets from "./pages/PremadeSheets/premadeKanjiSheet";
 import LocalDatabaseSetup from "./firebase/LocalDatabaseSetup";
 import CustomKanjiHomePage from "./pages/customKanji/customKanjiHomePage";
+import KanjiQuizMainPage from "./pages/kanjiQuiz/kanjiQuizMainPage";
 
 function App() {
   return (
@@ -44,6 +44,14 @@ function App() {
           element={
             <>
               <CustomKanjiHomePage />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/kanjiQuiz"
+          element={
+            <>
+              <KanjiQuizMainPage />
             </>
           }
         ></Route>

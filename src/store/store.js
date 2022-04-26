@@ -22,6 +22,8 @@ const initialState = {
   customKanjiDeleteIconClicked: false,
   newPageClicked: false,
   databaseLoaded: false,
+  fillButtonClicked: false,
+  okayClearButtonClicked: false,
 };
 
 const storeSlice = createSlice({
@@ -93,6 +95,12 @@ const storeSlice = createSlice({
     },
     setDatabaseLoaded(state, { payload }) {
       state.databaseLoaded = payload;
+    },
+    setFillButtonClicked(state, { payload }) {
+      state.fillButtonClicked = payload;
+    },
+    setOkayClearButtonClicked(state, { payload }) {
+      state.okayClearButtonClicked = payload;
     },
   },
 });

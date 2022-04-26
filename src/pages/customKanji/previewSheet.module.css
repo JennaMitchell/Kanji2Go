@@ -1,6 +1,6 @@
 .dragNdropPreviewContainer {
   height: max(85vh, 85vh);
-  width: max(1600px, 1600px);
+  width: max(1350px, 1350px);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -13,27 +13,31 @@
   overflow-y: scroll;
   border-radius: 10px;
 }
+.dragndropSheetContainer {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding-top: 2px;
+}
 .downloadButton {
-  width: max(165px, 165px);
-  height: max(100px, 100px);
+  width: max(50px, 50px);
+  height: max(50px, 50px);
   background-color: #dc5357;
-  margin: 0;
-  margin-left: 400px;
   z-index: 1;
-  border-radius: 15px;
+  border-radius: 50%;
   font-size: 28px;
   position: absolute;
-  top: 20%;
-  right: 1.25%;
-
+  top: 120px;
+  right: 5px;
+  display: grid;
+  place-items: center;
   font-weight: bolder;
 }
 
 .closingIconContainer {
-  width: max(60px, 60px);
-  height: max(60px, 60px);
-  top: 50px;
-  right: 50px;
+  width: max(50px, 50px);
+  height: max(50px, 50px);
+  top: 20px;
+  right: 5px;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -42,8 +46,8 @@
 }
 
 .closingIcon {
-  width: max(80%, 80%);
-  height: max(80%, 80%);
+  width: max(75%, 75%);
+  height: max(75%, 75%);
 }
 
 .closingIconContainer:hover,

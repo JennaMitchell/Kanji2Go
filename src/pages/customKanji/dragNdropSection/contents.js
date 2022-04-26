@@ -46,7 +46,7 @@ const KDContainer = styled.div`
       : "white"};
 `;
 const KanjiContainer = styled.div`
-  width: min(120px, 120px);
+  width: min(100px, 100px);
   height: min(100px, 100px);
   display: grid;
   border: 2px solid black;
@@ -64,7 +64,7 @@ const KanjiContainer = styled.div`
       : "white"};
 `;
 
-const Contents = ({ content, index, dragId, type, stroke }) => {
+const Contents = ({ content = [], index, dragId, type, stroke }) => {
   let itemToRender = "";
   switch (type) {
     case "Kanji and Definition":
@@ -85,8 +85,6 @@ const Contents = ({ content, index, dragId, type, stroke }) => {
       break;
     case "Stroke Order":
       let kanjiStrokeData = kanjiStrokeDatabase[content[0].kanji[0]];
-      console.log(dragId);
-
       itemToRender = (
         <Draggable draggableId={dragId} index={index}>
           {(provided, snapshot) => (

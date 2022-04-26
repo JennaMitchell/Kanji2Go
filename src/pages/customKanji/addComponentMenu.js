@@ -18,7 +18,7 @@ const AddComponentMenu = () => {
     let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
 
     const lastColumnIndex = tempArray.columnOrder.length;
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 14; i++) {
       tempArray.columnOrder[lastColumnIndex + i] = `column-${
         lastColumnIndex + i + 1
       }`;
@@ -28,7 +28,7 @@ const AddComponentMenu = () => {
         numberOfItems: 0,
       };
     }
-    console.log(tempArray);
+
     dispatch(storeActions.setCustomKanjiGridData(tempArray));
     dispatch(storeActions.setNewPageClicked(true));
   };

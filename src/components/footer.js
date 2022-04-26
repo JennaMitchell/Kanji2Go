@@ -35,6 +35,7 @@ const Footer = () => {
       justifyItems="center"
       paddingBottom="80px"
       paddingTop="40px"
+      color="white"
     >
       <GridItem
         h="max-content"

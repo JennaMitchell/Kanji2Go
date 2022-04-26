@@ -24,6 +24,7 @@ const BannerBox = ({
       _hover={{
         boxShadow: "dark-lg",
       }}
+      color="white"
     >
       {ribbon ? (
         <>

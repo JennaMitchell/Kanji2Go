@@ -1,6 +1,7 @@
 .menuIcon {
   width: max(90%, 90%);
   height: max(90%, 90%);
+  color: white;
 }
 .menuIconContainer {
   position: absolute;
@@ -13,6 +14,7 @@
   place-items: center;
   z-index: 10;
   transition: all 1s ease-in;
+  color: white;
 }
 .menuIconMoveOut {
   left: 450px;
@@ -31,6 +33,7 @@
   justify-items: center;
   overflow-y: scroll;
   transition: all 1s;
+  color: white;
 }
 .loginClickedHomepage {
   position: static;
