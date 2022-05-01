@@ -14,7 +14,6 @@ const PreviewSheet = ({ closingBtnHandler }) => {
     console.log("hello3");
   };
   const rerenderCompleteHandler = () => {
-    console.log("hello");
     setReRenderComplete("x");
   };
   useEffect(() => {

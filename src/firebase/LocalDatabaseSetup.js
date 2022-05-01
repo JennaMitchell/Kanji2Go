@@ -60,6 +60,39 @@ const LocalDatabaseSetup = () => {
                   };
                 }
               }
+              /// setting up Kanji with JLPT TestLevel
+              let tempArray = [];
+              for (let i = 0; i < loadedCards.length; i++) {
+                if (typeof loadedCards[i].kanjiList == "undefined") {
+                } else {
+                  let currentCard = loadedCards[i].kanjiList;
+
+                  for (let j = 0; j < 10; j++) {
+                    if (typeof currentCard[`kanji${j}`] != "undefined") {
+                      if (j === 10) {
+                        let newObject = {
+                          kanji: currentCard[`kanji91`].kanji,
+                          strokes: currentCard[`kanji91`].strokes,
+                          jlptLevel: loadedCards[i].title,
+                        };
+                        tempArray.push(newObject);
+                      } else {
+                        let newObject = {
+                          kanji: currentCard[`kanji${j}`].kanji,
+                          strokes: currentCard[`kanji${j}`].strokes,
+                          jlptLevel: loadedCards[i].title,
+                        };
+                        tempArray.push(newObject);
+                      }
+                    } else {
+                      break;
+                    }
+                  }
+                }
+              }
+
+              dispatch(storeActions.setKanjiWithJLPTTestLevel(tempArray));
+              console.log("hello");
               dispatch(storeActions.setKanjiDatabase(megaKanjiArray));
               dispatch(storeActions.setKanjiCardsDB(loadedCards));
               dispatch(storeActions.setCustomKanjiGridData(gridData));

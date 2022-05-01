@@ -24,6 +24,11 @@ const initialState = {
   databaseLoaded: false,
   fillButtonClicked: false,
   okayClearButtonClicked: false,
+  quizKanjiClickedId: -1,
+  quizKanjiClicked: "",
+  quizKanjiArray: [],
+  kanjiWithJLPTTestLevel: [],
+  deleteSelectedKanji: "",
 };
 
 const storeSlice = createSlice({
@@ -101,6 +106,21 @@ const storeSlice = createSlice({
     },
     setOkayClearButtonClicked(state, { payload }) {
       state.okayClearButtonClicked = payload;
+    },
+    setQuizKanjiClickedId(state, { payload }) {
+      state.quizKanjiClickedId = payload;
+    },
+    setQuizKanjiClicked(state, { payload }) {
+      state.quizKanjiClicked = payload;
+    },
+    setQuizKanjiArray(state, { payload }) {
+      state.quizKanjiArray = payload;
+    },
+    setKanjiWithJLPTTestLevel(state, { payload }) {
+      state.kanjiWithJLPTTestLevel = payload;
+    },
+    setDeleteSelectedKanji(state, { payload }) {
+      state.deleteSelectedKanji = payload;
     },
   },
 });

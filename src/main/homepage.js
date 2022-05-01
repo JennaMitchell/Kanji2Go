@@ -75,6 +75,7 @@ const HomePage = () => {
                 fontSize="36px"
                 bgColor="#221f1f"
                 color="white"
+                _hover={{ color: "black", bgColor: "brand.200" }}
               >
                 Kanji Sheets
               </Button>

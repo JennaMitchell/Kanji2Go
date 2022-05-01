@@ -22,10 +22,27 @@ const AddKanjiPopup = () => {
 
   const [selectedHelperBlock, setSelectedHelperBlock] = useState();
   const dropDownMenuHandler = (e) => {
-    setStrokeNumberSelected(e.target.value);
+    if (+e.target.value <= 64 && +e.target.value > 0) {
+      setStrokeNumberSelected(e.target.value);
+    } else if (e.target.value === "All") {
+      setStrokeNumberSelected(e.target.value);
+    }
   };
-  const testFilterHandler = (e) => {
-    setTestFilterClicked(+e.target.closest("button").value);
+
+  const jlptOneFilterHandler = () => {
+    setTestFilterClicked(1);
+  };
+  const jlptTwoFilterHandler = () => {
+    setTestFilterClicked(2);
+  };
+  const jlptThreeFilterHandler = () => {
+    setTestFilterClicked(3);
+  };
+  const jlptFourFilterHandler = () => {
+    setTestFilterClicked(4);
+  };
+  const jlptFiveFilterHandler = () => {
+    setTestFilterClicked(5);
   };
   const selectedKanji = useSelector((state) => state.kanjiClicked);
   const selectHelperBlockHandler = (block) => {
@@ -132,8 +149,7 @@ const AddKanjiPopup = () => {
           <div className={classes.filterSelector}>
             <button
               className={classes.filterBtn}
-              value="1"
-              onClick={testFilterHandler}
+              onClick={jlptOneFilterHandler}
             >
               {jlpt1FilterClicked && <CheckIcon className={classes.icon} />}
             </button>
@@ -142,8 +158,7 @@ const AddKanjiPopup = () => {
           <div className={classes.filterSelector}>
             <button
               className={classes.filterBtn}
-              value="2"
-              onClick={testFilterHandler}
+              onClick={jlptTwoFilterHandler}
             >
               {jlpt2FilterClicked && <CheckIcon className={classes.icon} />}
             </button>
@@ -152,8 +167,7 @@ const AddKanjiPopup = () => {
           <div className={classes.filterSelector}>
             <button
               className={classes.filterBtn}
-              value="3"
-              onClick={testFilterHandler}
+              onClick={jlptThreeFilterHandler}
             >
               {jlpt3FilterClicked && <CheckIcon className={classes.icon} />}
             </button>
@@ -164,22 +178,18 @@ const AddKanjiPopup = () => {
           <div className={classes.filterSelector}>
             <button
               className={classes.filterBtn}
-              value="4"
-              onClick={testFilterHandler}
+              onClick={jlptFourFilterHandler}
             >
               {jlpt4FilterClicked && <CheckIcon className={classes.icon} />}
             </button>
             <p className={classes.filterText}>JLPT4</p>
           </div>
-          <div className={classes.filterSelector} value="5">
+          <div className={classes.filterSelector}>
             <button
               className={classes.filterBtn}
-              value="5"
-              onClick={testFilterHandler}
+              onClick={jlptFiveFilterHandler}
             >
-              {jlpt5FilterClicked && (
-                <CheckIcon className={classes.icon} value="5" />
-              )}
+              {jlpt5FilterClicked && <CheckIcon className={classes.icon} />}
             </button>
             <p className={classes.filterText}>JLPT5</p>
           </div>

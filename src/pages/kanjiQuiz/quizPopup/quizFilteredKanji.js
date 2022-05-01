@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import KanjiSelectorCard from "./kanjiSelectorCard";
+import QuizKanjiSelectorCard from "./quizKanjiSelectorCard";
 
-const FilteredKanji = ({ testFilters, numberOfStrokes }) => {
+const QuizFilteredKanji = ({ testFilters, numberOfStrokes }) => {
   const kanjiWithJLPTTestLevel = useSelector(
     (state) => state.kanjiWithJLPTTestLevel
   );
@@ -25,13 +25,13 @@ const FilteredKanji = ({ testFilters, numberOfStrokes }) => {
   return (
     <>
       {sortedKanjiArray.map((card, index) => (
-        <KanjiSelectorCard
+        <QuizKanjiSelectorCard
           kanji={card.kanji}
           id={index}
           key={index}
-        ></KanjiSelectorCard>
+        ></QuizKanjiSelectorCard>
       ))}
     </>
   );
 };
-export default FilteredKanji;
+export default QuizFilteredKanji;

@@ -58,7 +58,7 @@ const PageMenu = () => {
         onClick={navButtonHandler}
         _hover={{ color: "black", bgColor: "brand.300" }}
       >
-        <NavLink to="/kanjiQuiz">Kanji Test</NavLink>
+        <NavLink to="/kanjiQuiz">Kanji Quiz</NavLink>
       </Button>
       <Button
         fontSize="20px"

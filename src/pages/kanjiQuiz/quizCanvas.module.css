@@ -1,0 +1,37 @@
+#kanjiCanvas {
+  background-color: white;
+}
+.clearButton,
+.eraseButton,
+.submitButton {
+  width: max(100px, 100px);
+  height: max(60px, 60px);
+  position: absolute;
+  background-color: #dc5357;
+  color: black;
+  border-radius: 10px;
+  font-size: 26px;
+}
+.clearButton:hover,
+.eraseButton:hover,
+.submitButton:hover {
+  box-shadow: 0 0 10px white;
+}
+.clearButton {
+  top: 0;
+  right: -120px;
+}
+.eraseButton {
+  top: 100px;
+  right: -120px;
+}
+.eraseButtonActive,
+.clearButtonActive {
+  box-shadow: 0 0 10px white;
+  background-color: #f3bdbd;
+  color: black;
+}
+.submitButton {
+  top: 200px;
+  right: -120px;
+}
