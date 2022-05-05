@@ -22,8 +22,37 @@ const NewQuizJLPTKanjiSelector = ({
     kanjiWithJLPTTestLevel.slice()
   );
   const ref = useRef(null);
+
+  const getRandomInt = (max) => {
+    return Math.floor(Math.random() * max);
+  };
+
+  const selectingRandomNumberOfKanji = (kanjiArray, numberOfQuestions) => {
+    let randomlySelectedKanjiArray = [];
+    let arrayOfRemovedKanji = kanjiArray.slice();
+    for (let i = 0; i < numberOfQuestions; i++) {
+      let numberOfKanji = arrayOfRemovedKanji.length - 1;
+      let randomInt = getRandomInt(numberOfKanji);
+      randomlySelectedKanjiArray[i] = arrayOfRemovedKanji[randomInt];
+      arrayOfRemovedKanji.splice(randomInt, 1);
+    }
+    return randomlySelectedKanjiArray;
+  };
+
   const submitButtonHandler = () => {
-    retreiveKanjiSelectedFunction(filteredKanji, numberOfQuestionsSelected);
+    let finalSelectedKanji = [];
+    if (numberOfQuestionsSelected !== 0) {
+      finalSelectedKanji = selectingRandomNumberOfKanji(
+        filteredKanji,
+        numberOfQuestionsSelected
+      );
+    }
+    console.log(finalSelectedKanji);
+    retreiveKanjiSelectedFunction(
+      finalSelectedKanji,
+      numberOfQuestionsSelected
+    );
+    onCloseFunction();
   };
 
   useEffect(() => {

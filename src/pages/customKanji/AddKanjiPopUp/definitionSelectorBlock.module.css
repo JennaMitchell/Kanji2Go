@@ -45,3 +45,18 @@
   width: max(90%, 90%);
   color: black;
 }
+@media (max-width: 750px) {
+  .headerTitle {
+    font-size: 28px;
+    margin-left: 10px;
+  }
+  .selector {
+    font-size: 22px;
+  }
+  .mainContainer {
+    width: max(90%, 90%);
+    align-items: center;
+    justify-items: center;
+    margin-left: 20px;
+  }
+}

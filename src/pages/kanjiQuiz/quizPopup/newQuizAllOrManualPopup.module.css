@@ -1,9 +1,13 @@
 .dialogContainer {
   width: max(max-content, max-content);
   height: max(max-content, max-content);
-
+  padding: 0;
+  box-shadow: 0 0 10px white;
   background-color: #221f1f;
   border-radius: 20px;
+}
+.dialogContainer::backdrop {
+  background-color: rgba(0, 0, 0, 0.538);
 }
 .mainContainer {
   width: max(500px, 500px);
@@ -18,9 +22,13 @@
   grid-template-rows: repeat(3, 50px) 200px;
   font-size: 32px;
 }
-.firstTitle,
+
 .secondTitle,
 .orDivider {
+  text-align: center;
+  margin-top: 30px;
+}
+.firstTitle {
   text-align: center;
   margin-top: 30px;
 }
@@ -28,6 +36,8 @@
   font-size: 26px;
 }
 .btnContainer {
+  width: max(400px, 400px);
+  height: max(100px, 100px);
   display: grid;
   justify-content: space-between;
   align-items: center;

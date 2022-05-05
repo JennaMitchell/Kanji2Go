@@ -34,6 +34,7 @@
   overflow-y: scroll;
   transition: all 1s;
   color: white;
+  gap: 10px;
 }
 .loginClickedHomepage {
   position: static;
@@ -41,3 +42,28 @@
   width: max(100vw, 100vw);
   height: max(90vh, 90vh);
 }
+@media (min-width: 320px) {
+  .cardGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+@media (min-width: 768px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .cardGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1400px) {
+  .cardGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 1800px) {
+  .cardGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+} ;

@@ -120,9 +120,9 @@
 }
 .imageButtonMenu {
   position: absolute;
-  top: 1%;
-  right: 5%;
-  width: max(300px, 300px);
+  top: 0px;
+  right: 50px;
+  width: max(100px, 100px);
   height: max(300px, 300px);
   display: grid;
   grid-template-rows: 150px 150px;
@@ -130,6 +130,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .dragNdropContainer {
   height: max(1220px, 1220px);
   width: max(1190px, 1190px);
@@ -142,8 +143,8 @@
 }
 .clearButton,
 .previewButton {
-  width: max(200px, 200px);
-  height: max(100px, 100px);
+  width: max(120px, 120px);
+  height: max(80px, 80px);
   background-color: #dc5357;
   z-index: 1;
   border-radius: 15px;
@@ -155,4 +156,29 @@
   background-color: #ec9898;
   color: black;
   box-shadow: 1px 1px 5px white;
+}
+
+@media (max-width: 1500px) {
+  .imageButtonMenu {
+    top: 10px;
+    right: 25px;
+    display: grid;
+    grid-template-rows: 100px;
+    grid-template-columns: 150px 150px;
+    width: max(300px, 300px);
+    height: max(100px, 100px);
+  }
+  .dragNdropContainer {
+    margin-top: 80px;
+
+    width: max(100vw, 100vw);
+  }
+  .addMenuContainer {
+    top: 35px;
+    left: 30px;
+  }
+  .addMenuContainerClicked {
+    top: 35px;
+    left: 30px;
+  }
 }

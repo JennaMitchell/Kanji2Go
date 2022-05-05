@@ -25,3 +25,16 @@
   border-radius: 10px;
   font-weight: bolder;
 }
+@media (max-width: 620px) {
+  .btn {
+    width: max(150px, 150px);
+    height: max (50px, 50px);
+    font-size: 24px;
+    margin-top: 15px;
+  }
+  .kanjiButton {
+    margin-top: 25px;
+    width: max(150px, 150px);
+    height: max (50px, 50px);
+  }
+}

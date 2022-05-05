@@ -1,4 +1,4 @@
-import "./App.css";
+import classes from "./App.css";
 import HomePage from "./main/homepage";
 import "./theme/style.css";
 import { Route, Routes, Navigate } from "react-router-dom";
@@ -7,10 +7,11 @@ import PreMadeKanjiSheets from "./pages/PremadeSheets/premadeKanjiSheet";
 import LocalDatabaseSetup from "./firebase/LocalDatabaseSetup";
 import CustomKanjiHomePage from "./pages/customKanji/customKanjiHomePage";
 import KanjiQuizMainPage from "./pages/kanjiQuiz/kanjiQuizMainPage";
+import SentencePracticeMainPage from "./pages/sentencePractice/sentencePracticeMainPage";
 
 function App() {
   return (
-    <>
+    <div className={classes.appContainer}>
       <LocalDatabaseSetup></LocalDatabaseSetup>
       <Routes>
         <Route path="/" element={<Navigate replace to="/home" />}></Route>
@@ -55,8 +56,16 @@ function App() {
             </>
           }
         ></Route>
+        <Route
+          path="/sentencePractice"
+          element={
+            <>
+              <SentencePracticeMainPage />
+            </>
+          }
+        ></Route>
       </Routes>
-    </>
+    </div>
   );
 }
 

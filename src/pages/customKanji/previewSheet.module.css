@@ -56,3 +56,24 @@
   color: black;
   box-shadow: 1px 1px 5px white;
 }
+@media (max-width: 1500px) {
+  .dragNdropPreviewContainer {
+    height: max(85vh, 85vh);
+    width: max(70vw, 70vw);
+    padding: 0;
+  }
+  .dragndropSheetContainer {
+    height: max(90%, 80%);
+    width: max(90%, 80%);
+    display: grid;
+    place-items: center;
+  }
+  .downloadButton {
+    top: 20px;
+    right: 100px;
+  }
+  .closingIconContainer {
+    top: 20px;
+    right: 5px;
+  }
+}

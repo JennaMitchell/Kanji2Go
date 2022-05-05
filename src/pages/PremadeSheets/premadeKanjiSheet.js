@@ -178,7 +178,7 @@ const PreMadeKanjiSheets = () => {
           w="max-content"
           textAlign="center"
           h="max-content"
-          fontSize="64px"
+          fontSize={{ sm: "52px", lg: "64px" }}
           color="brand.900"
           borderBottom="2px"
         >

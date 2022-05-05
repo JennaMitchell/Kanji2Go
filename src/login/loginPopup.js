@@ -1,6 +1,6 @@
-import { Container, Fade } from "@chakra-ui/react";
+import { Fade } from "@chakra-ui/react";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import LoginSide from "./loginSide";
 import SignUpSide from "./signUpSide";

@@ -37,7 +37,7 @@ const SignUpSide = () => {
         columns={1}
         columnGap={3}
         rowGap={6}
-        mt="7%"
+        mt="4%"
         ml="5%"
         justifyItems="center"
         alignItems="center"
@@ -94,7 +94,7 @@ const SignUpSide = () => {
             />
           </FormControl>
         </GridItem>
-        <GridItem w="80%" marginBottom="30px">
+        <GridItem w="80%" marginBottom="20px">
           <Button
             colorScheme="brand"
             size="lg"
@@ -106,13 +106,11 @@ const SignUpSide = () => {
           </Button>
         </GridItem>
         <Container
-          pos="absolute"
-          w="80%"
+          w="100%"
           h="max-content"
-          bottom="2.25%"
-          left="27%"
           display="flex"
-          mb="10px"
+          justifyContent="center"
+          textAlign={"center"}
         >
           <Text>Already have an account? </Text>
           <Text

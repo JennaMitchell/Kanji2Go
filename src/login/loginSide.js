@@ -1,5 +1,4 @@
 import {
-  Container,
   Input,
   SimpleGrid,
   GridItem,
@@ -13,7 +12,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { XIcon } from "@heroicons/react/solid";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import classes from "./loginSide.module.css";
 import blueTwitter from "../icons/twitter-blue.png";
 import blueFacebook from "../icons/facebook-blue.png";
@@ -88,7 +87,7 @@ const LoginSide = () => {
             colorScheme="brand"
             size="lg"
             w="100%"
-            bg="brand.300"
+            bg="brand.500"
             fontSize="22px"
           >
             Submit
@@ -166,13 +165,12 @@ const LoginSide = () => {
           </Flex>
         </HStack>
         <GridItem
-          w="80%"
+          w="100%"
           h="max-content"
           marginBottom="30px"
           display="flex"
-          justifyItems="center"
-          alignItems="center"
-          ml="20%"
+          justifyContent="center"
+          textAlign={"center"}
         >
           <Text>Dont'have an account? </Text>
           <Text

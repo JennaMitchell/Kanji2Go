@@ -32,3 +32,9 @@
   background-color: rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
+.navLink {
+  width: max(100%, 100%);
+  height: max(100%, 100%);
+  display: grid;
+  place-items: center;
+}

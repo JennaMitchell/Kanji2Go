@@ -1,5 +1,5 @@
 .cardContainer {
-  width: max(70%, 70%);
+  width: max(300px, 300px);
   height: max(337.833px, 337.833px);
   background-color: #dc5357;
   display: flex;
@@ -8,6 +8,25 @@
   align-items: center;
   border-radius: 10px;
   position: relative;
+}
+@media (min-width: 320px) {
+  .cardContainer {
+    margin-top: 10px;
+  }
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 960px) {
+}
+@media (min-width: 1200px) {
+  .cardContainer {
+    width: max(300px, 300px);
+  }
+}
+@media (min-width: 1800px) {
+  .cardContainer {
+    height: max(337.833px, 337.833px);
+  }
 }
 
 .cardContainer:hover {

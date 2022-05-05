@@ -4,9 +4,6 @@
   height: max(100vh, 100vh);
   width: max(100vw, 100vw);
   font-size: 2rem;
-  position: fixed;
-  top: 0;
-  left: 0;
 }
 .flashcardsLoading {
   text-align: center;
@@ -14,7 +11,13 @@
   height: max(100vh, 100vh);
   width: max(100vw, 100vw);
   font-size: 6rem;
-  position: fixed;
-  top: 0;
-  left: 0;
+}
+.text {
+  height: max(100vh, 100vh);
+  width: max(100vw, 100vw);
+}
+.flashcardsFinishedLoading {
+  display: none;
+  height: max(0, 0);
+  width: max(0, 0);
 }

@@ -25,15 +25,24 @@ import ShopMenu from "./shopMenu";
 import LoginPopup from "../login/loginPopup";
 import Footer from "../components/footer";
 import NavBar from "../nav/navBar";
+import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { storeActions } from "../store/store";
 
 const HomePage = () => {
   //const dispatch = useDispatch();
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
+  const dispatch = useDispatch();
   const shopNavButtonClicked = useSelector(
     (state) => state.shopNavButtonClicked
   );
   const loginButtonClicked = useSelector((state) => state.loginButtonClicked);
   // const signUpButtonClicked = useSelector((state) => state.signUpButtonClicked);
+  const loginButtonHandler = () => {
+    dispatch(storeActions.setLoginButtonClicked(true));
+    dispatch(storeActions.setPageButtonClicked(false));
+    dispatch(storeActions.setShopNavButtonClicked(false));
+  };
   return (
     <>
       {loginButtonClicked && <div className={classes.blurBackground}></div>}
@@ -43,7 +52,7 @@ const HomePage = () => {
         <NavBar />
         <Container
           maxW="100%"
-          h="900px"
+          h={["400px", "450px", "500px", "800px", "800px", "900px"]}
           p="0"
           bgColor="#dc5357"
           m="0"
@@ -61,37 +70,58 @@ const HomePage = () => {
             h="100%"
           >
             <GridItem colSpan={1} h="max-content" w="75%" transform="auto">
-              <Heading fontSize="80px" textAlign="center">
+              <Heading
+                fontSize={{ base: "28px", md: "50px", lg: "60px", xl: "80px" }}
+                textAlign="center"
+              >
                 Custom Kanji Sheet Generator
               </Heading>
-              <Text fontSize="36px" textAlign="left" mt="30px">
+              <Text
+                fontSize={{ base: "18px", lg: "22px", xl: "36px" }}
+                textAlign="left"
+                mt="30px"
+              >
                 Create custom practice kanji practice material or use our
                 premade ones with our kanji sheet generator.
               </Text>
               <Button
-                h="100px"
-                w="100%"
+                h={["50px", "60px", "75px", "80px", "100px", "100px"]}
+                w={["100%", "100%", "100%", "100%", "100%", "100%"]}
                 mt="30px"
-                fontSize="36px"
+                fontSize={{ base: "24px", lg: "30px", xl: "36px" }}
                 bgColor="#221f1f"
                 color="white"
                 _hover={{ color: "black", bgColor: "brand.200" }}
               >
-                Kanji Sheets
+                <NavLink to="/customKanjiSheets" className={classes.navLink}>
+                  Kanji Sheets
+                </NavLink>
               </Button>
             </GridItem>
 
-            <GridItem h="max-content" w="max-content" colSpan={1}>
+            <GridItem
+              h="100%"
+              w="100%"
+              colSpan={1}
+              display={"grid"}
+              placeItems={"center"}
+            >
               <Image
                 src={kanjiSheet}
                 alt="kanji sheets"
-                h="800px"
-                w="800px"
+                h={["60%", "60%", "60%", "60%", "60%", "80%"]}
+                w={["70%", "70%", "70%", "70%", "70%", "70%"]}
               ></Image>
             </GridItem>
           </SimpleGrid>
         </Container>
-        <Container maxW="100%" h="900px" p="0" bgColor="brand.100" m="0">
+        <Container
+          maxW="100%"
+          h={["300px", "300px", "300px", "300px", "750px", "800px"]}
+          p="0"
+          bgColor="brand.100"
+          m="0"
+        >
           <VStack gap="15px">
             <Text color="brand.900" fontWeight="bold" mt="40px" fontSize="20px">
               EDUCATION ANYWHERE
@@ -111,75 +141,111 @@ const HomePage = () => {
           </VStack>
 
           <Grid
-            w="100%"
+            w={["100%"]}
             h="400px"
             bgColor="brand.100"
-            alignItems="center"
-            templateColumns="repeat(3,1fr)"
-            justifyContent="center"
+            alignContent="center"
+            templateColumns={{
+              xl: "repeat(3,1fr)",
+            }}
+            justifyItems="center"
             mt="3%"
+            display={{ base: "none", lg: "none", xl: "grid" }}
           >
             <BannerBox
               title="JLPT5"
               subtext="Kanji"
               img={cityStreetOne}
-              marginLeft="40%"
               ribbon={true}
             ></BannerBox>
             <BannerBox
-              title="Custom"
-              subtext="Kanji"
+              title="JLPT5"
+              subtext="Vocab"
               img={kanjiSheet}
-              marginLeft="30%"
             ></BannerBox>
 
             <BannerBox
               title="Custom"
-              subtext="Vocab"
+              subtext="Kanji"
               img={cityStreetTwo}
-              marginLeft="20%"
             ></BannerBox>
           </Grid>
         </Container>
         <Container
           maxW="100%"
-          h="900px"
+          h={["400px", "400px", "400px", "400px", "800px", "900px"]}
           p="0"
           bgColor="brand.200"
           m="0"
           pos="relative"
         >
           <Grid
-            templateColumns="repeat(2,1fr)"
+            templateColumns={{ base: "100%", lg: "100%", xl: "repeat(2,1fr)" }}
             templateRows="100%"
-            justifyContent="center"
+            justifyItems="center"
             alignItems="center"
-            maxW="100%"
-            h="900px"
+            maxW={["100%", "100%", "100%", "100%", "100%", "100%"]}
+            h={"100%"}
           >
-            <Image src={tablet} h="70%" w="70%" ml="10%" mt="0" alt="tablet" />
-            <GridItem w="80%" h="50%" p="10px" colSpan={1} ml="10%">
-              <Text fontSize="26px" color="black">
+            <Image
+              src={tablet}
+              h={["40%", "30%", "40%", "50%", "70%", "70%"]}
+              w="70%"
+              ml={["5%", "5%", "10%", "10%", "10%", "10%"]}
+              mt="0"
+              alt="tablet"
+              display={{ base: "none", lg: "none", xl: "grid" }}
+            />
+            <GridItem
+              w="80%"
+              h="max-content"
+              p="10px"
+              colSpan={1}
+              ml="10%"
+              display={{ base: "grid", lg: "grid", xl: "auto" }}
+              alignItems={{ base: "center", lg: "center", xl: "auto" }}
+              justifyItems={{ base: "center", lg: "center", xl: "auto" }}
+              gap={"20px"}
+            >
+              <Text
+                fontSize={{ base: "18px", md: "22px", lg: "24px", xl: "26px" }}
+                color="black"
+              >
                 Real Time Learning
               </Text>
-              <Heading fontSize="80px" color="black">
+              <Heading
+                fontSize={{
+                  base: "18px",
+                  sm: "24px",
+                  md: "32px",
+                  lg: "40px",
+                  xl: "70px",
+                }}
+                color="black"
+              >
                 Practice Kanji Live. Immediate Feedback
               </Heading>
-              <Text fontSize="26px" color="black">
+              <Text
+                fontSize={{ base: "16px", md: "18px", lg: "20px", xl: "26px" }}
+                color="black"
+              >
                 With Kanji2Go you can practice kanji live on the web and get
                 automatic feedback. To busy? Try downloading our randomly
                 generated kanji quiz sheet, based on kanji you want to practice.
               </Text>
               <Button
-                bgColor="brand.700"
-                mt="2%"
-                w="30%"
-                height="15%"
-                fontSize="22px"
+                bgColor="brand.600"
+                mt={"10px"}
+                h={["50px", "60px", "75px", "80px", "100px", "100px"]}
+                w={["100%", "100%", "100%", "100%", "100%", "100%"]}
+                fontSize={{ base: "24px", lg: "30px", xl: "36px" }}
                 textAlign="left"
                 color="white"
+                _hover={{ bgColor: "brand.100", color: "black" }}
               >
-                View Live Test
+                <NavLink to="/kanjiQuiz" className={classes.navLink}>
+                  View Live Test
+                </NavLink>
               </Button>
             </GridItem>
           </Grid>
@@ -187,37 +253,66 @@ const HomePage = () => {
 
         <Grid
           maxW="100%"
-          h="900px"
+          h={["400px", "500px", "600px", "700px", "800px", "900px"]}
           p="0"
           bgColor="#dc5357"
           m="0"
           templateColumns="repeat(2,1fr)"
-          justifyContent="center"
+          justifyItems="center"
           alignItems="center"
         >
-          <GridItem w="80%" h="50%" p="10px" colSpan={1} ml="10%" mt="10%">
-            <Text fontSize="26px">Get Started Today!</Text>
-            <Heading fontSize="80px" mt="10px">
+          <GridItem
+            w="80%"
+            h={"max-content"}
+            p="10px"
+            colSpan={1}
+            display="flex"
+            flexDirection={"column"}
+            alignItems={"flex-start"}
+            justifyItems={"center"}
+            gap="0"
+          >
+            <Text
+              fontSize={{ base: "16px", md: "20px", lg: "26px", xl: "26px" }}
+            >
+              Get Started Today!
+            </Text>
+            <Heading
+              fontSize={{ base: "22px", md: "30px", lg: "42px", xl: "80px" }}
+              mt="10px"
+            >
               Save Your Progress
             </Heading>
-            <Text fontSize="26px" mt="20px">
+            <Text
+              fontSize={{ base: "16px", md: "20px", lg: "26px", xl: "26px" }}
+              mt="20px"
+            >
               Create a free account today to save your custom made sheets, and
               track your quiz progress.
             </Text>
             <Button
-              bgColor="brand.700"
+              bgColor="brand.900"
               mt="2%"
-              w="30%"
-              height="15%"
-              fontSize="22px"
+              h={["50px", "60px", "75px", "80px", "100px", "100px"]}
+              w={["100%", "100%", "100%", "100%", "100%", "100%"]}
+              fontSize={{ base: "26px", lg: "30px", xl: "36px" }}
               textAlign="left"
               marginTop="20px"
               color="white"
+              _hover={{ bgColor: "brand.100", color: "black" }}
+              onClick={loginButtonHandler}
             >
               Register
             </Button>
           </GridItem>
-          <Image src={books} h="70%" w="70%" ml="10%" mt="0" alt="tablet" />
+          <Image
+            src={books}
+            h={["50%", "50%", "60%", "60%", "60%", "70%"]}
+            w={["70%", "70%", "70%", "70%", "70%", "70%"]}
+            ml="10%"
+            mt="0"
+            alt="tablet"
+          />
         </Grid>
         <Footer />
       </div>

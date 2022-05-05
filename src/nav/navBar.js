@@ -93,11 +93,11 @@ const NavBar = () => {
                 maxH="60px"
                 borderRadius="50%"
                 border="none"
-                ml={50}
+                ml={["30px", "40px", "40px", "50px", "50px", "50px"]}
               />
               <Flex w="max-content" h="60%" ml="10%">
                 <HStack>
-                  <InputGroup>
+                  {/* <InputGroup>
                     <Input
                       placeholder="search for anything"
                       w="15vw"
@@ -108,7 +108,7 @@ const NavBar = () => {
                     <InputRightElement
                       children={<SearchIcon className={classes.searchIcon} />}
                     />
-                  </InputGroup>
+                  </InputGroup> */}
                 </HStack>
               </Flex>
             </Flex>
@@ -158,7 +158,7 @@ const NavBar = () => {
                 )}
               </Flex>
               <Flex mr="20px" justifyContent="center" alignItems="center">
-                <Button
+                {/* <Button
                   w="80%"
                   h="80%"
                   fontSize="24px"
@@ -177,19 +177,19 @@ const NavBar = () => {
                   <ChevronDownIcon
                     className={classes.chevronDownIcon}
                   ></ChevronDownIcon>
-                )}
+                )} */}
               </Flex>
 
-              <Flex
+              {/* <Flex
                 mr="20px"
                 justifyContent="center"
                 alignItems="center"
                 pos="relative"
-              >
-                <ShoppingCartIcon
+              > */}
+              {/* <ShoppingCartIcon
                   className={classes.shoppingCardIcon}
-                ></ShoppingCartIcon>
-                <Flex
+                ></ShoppingCartIcon> */}
+              {/* <Flex
                   pos="absolute"
                   bgColor="brand.300"
                   h="17.5px"
@@ -205,11 +205,11 @@ const NavBar = () => {
                 >
                   0
                 </Flex>
-              </Flex>
+              </Flex> */}
 
               <Button
                 h="50px"
-                w="170px"
+                w={["140px", "140px", "170px", "170px", "170px", "170px"]}
                 bgColor="brand.300"
                 onClick={loginButtonHandler}
                 _hover={{ color: "black", bgColor: "brand.300" }}

@@ -1,9 +1,13 @@
+import { CheckIcon } from "@heroicons/react/solid";
 import { useRef, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { storeActions } from "../../store/store";
 import classes from "./quizCanvas.module.css";
 
-const QuizCanvas = () => {
+const QuizCanvas = ({ numberOfQuestions }) => {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
+  const dispatch = useDispatch();
   const [clearButtonClicked, setClearButtonClicked] = useState(false);
   const [eraseButtonClicked, setEraseButtonClicked] = useState(false);
 
@@ -11,13 +15,28 @@ const QuizCanvas = () => {
   // contextRef is used to store info on the canvas ref
   const [isDrawing, setIsDrawing] = useState(false);
   const [firstTimeRendered, setFirstTimeRendered] = useState(false);
+
+  const activeQuizQuestionNumber = useSelector(
+    (state) => state.activeQuizQuestionNumber
+  );
+
+  const savedQuizImageArray = useSelector((state) => state.savedQuizImageArray);
   useEffect(() => {
     const canvas = canvasRef.current;
-    canvas.width = 600;
-    canvas.height = 600;
-    // styling canvas below
-    canvas.style.width = `600px`;
-    canvas.style.height = `600px`;
+
+    const windowSize = window.matchMedia("(max-width: 920px)");
+    if (windowSize.matches) {
+      canvas.width = 400;
+      canvas.height = 400;
+      canvas.style.width = `400px`;
+      canvas.style.height = `400px`;
+    } else {
+      canvas.width = 600;
+      canvas.height = 600;
+      // styling canvas below
+      canvas.style.width = `600px`;
+      canvas.style.height = `600px`;
+    }
 
     const context = canvas.getContext("2d");
     context.scale(1, 1);
@@ -69,7 +88,31 @@ const QuizCanvas = () => {
   const eraseButtonHandler = () => {
     setEraseButtonClicked(!eraseButtonClicked);
   };
+  let copyOfSavedQuizImageArray = savedQuizImageArray.slice();
+  const submitButtonHandler = () => {
+    let canvas = canvasRef.current;
 
+    copyOfSavedQuizImageArray[activeQuizQuestionNumber - 1] =
+      canvas.toDataURL();
+    let numberOfAnsweredQuestions = 0;
+    for (let j = 0; j < copyOfSavedQuizImageArray.length; j++) {
+      if (copyOfSavedQuizImageArray[j] !== undefined) {
+        numberOfAnsweredQuestions++;
+      }
+    }
+    if (numberOfAnsweredQuestions === numberOfQuestions) {
+      dispatch(storeActions.setAllQuizQuestionsAnswered(true));
+    }
+
+    dispatch(storeActions.setSavedQuizImageArray(copyOfSavedQuizImageArray));
+    setClearButtonClicked(true);
+  };
+  //setSavedImageArray
+  let imageSubmitted = false;
+
+  if (copyOfSavedQuizImageArray[activeQuizQuestionNumber - 1] !== undefined) {
+    imageSubmitted = true;
+  }
   return (
     <>
       <canvas
@@ -96,11 +139,33 @@ const QuizCanvas = () => {
       </button>
       <button
         className={`${classes.submitButton}`}
-        onClick={clearButtonHandler}
+        onClick={submitButtonHandler}
       >
         Submit
       </button>
+      <button
+        className={
+          imageSubmitted
+            ? `${classes.submitCheckMark} ${classes.submitCheckMarkActive}`
+            : `${classes.submitCheckMark}`
+        }
+      >
+        <CheckIcon className={classes.icon} />
+      </button>
+      {imageSubmitted && (
+        <div className={classes.prevStrokeContainer}>
+          <h3 className={classes.prevStrokeTitle}>
+            &nbsp;Previous Stroke&nbsp;
+          </h3>
+          <img
+            src={copyOfSavedQuizImageArray[activeQuizQuestionNumber - 1]}
+            alt="Past Kanji Stroke"
+            className={classes.prevStroke}
+          />
+        </div>
+      )}
     </>
   );
 };
 export default QuizCanvas;
+//    <img className={classes.testImage} alt="delete" src={submitImage}></img>

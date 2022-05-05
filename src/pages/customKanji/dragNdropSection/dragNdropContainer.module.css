@@ -1,9 +1,14 @@
 .mainContainer {
   display: grid;
-  height: 100%;
-  width: 100%;
-  grid-template-rows: repeat(13, 120px);
+  height: max(100%, 100%);
+  width: max(100%, 100%);
+  grid-template-rows: repeat(14, 120px);
   column-gap: 0;
   color: black;
-  overflow-x: hidden;
+  overflow-x: scroll;
+}
+@media (max-width: 1500px) {
+  .mainContainer {
+    width: max(100vw, 100vw);
+  }
 }

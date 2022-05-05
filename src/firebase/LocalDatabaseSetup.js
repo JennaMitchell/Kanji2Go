@@ -125,8 +125,14 @@ const LocalDatabaseSetup = () => {
   }, [kanjiCardsDB]);
 
   return (
-    <section className={classes.flashcardsLoading}>
-      <p>{renderText}</p>
+    <section
+      className={
+        renderText === "Loading..."
+          ? classes.flashcardsLoading
+          : classes.flashcardsFinishedLoading
+      }
+    >
+      <p className={classes.text}>{renderText}</p>
     </section>
   );
 };

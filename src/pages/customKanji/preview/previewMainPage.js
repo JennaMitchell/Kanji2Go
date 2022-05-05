@@ -7,11 +7,12 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: grid;
-  height: 100%;
-  width: 100%;
+  height: max(100%, 100%);
+  width: max(100%, 100%);
   grid-template-rows: repeat(14, 120px);
   column-gap: 0;
   color: black;
+  overflow-x: scroll;
 `;
 
 const PreviewMainPage = ({ downloadClicked, reRenderCompleteFunction }) => {

@@ -35,7 +35,6 @@ const NewQuizManualKanjiSelector = ({
   useEffect(() => {
     if (quizKanjiClicked !== "") {
       let tempArray = selectedKanjiArray.slice();
-      console.log(tempArray);
       if (!tempArray.includes(quizKanjiClicked)) {
         tempArray.push(quizKanjiClicked);
         setSelectedKanjiArray(tempArray);
@@ -100,7 +99,6 @@ const NewQuizManualKanjiSelector = ({
   const jlptFiveFilterHandler = () => {
     setTestFilterClicked(5);
   };
-  const selectedKanji = useSelector((state) => state.kanjiClicked);
 
   const closingBtnHandler = () => {
     onCloseFunction();
@@ -188,8 +186,37 @@ const NewQuizManualKanjiSelector = ({
     arrayOfQuestionNumbers.unshift("");
   }
   //Handling Submit Button
+
+  const getRandomInt = (max) => {
+    return Math.floor(Math.random() * max);
+  };
+
+  const selectingRandomNumberOfKanji = (kanjiArray, numberOfQuestions) => {
+    let randomlySelectedKanjiArray = [];
+    let arrayOfRemovedKanji = kanjiArray.slice();
+    for (let i = 0; i < numberOfQuestions; i++) {
+      let numberOfKanji = arrayOfRemovedKanji.length - 1;
+      let randomInt = getRandomInt(numberOfKanji);
+      randomlySelectedKanjiArray[i] = arrayOfRemovedKanji[randomInt];
+      arrayOfRemovedKanji.splice(randomInt, 1);
+    }
+    return randomlySelectedKanjiArray;
+  };
+
   const sumbitButtonHandler = () => {
-    retreiveKanjiSelectedFunction(selectedKanjiArray, numberOfQuestions);
+    let finalSelectedKanji = [];
+    finalSelectedKanji = selectingRandomNumberOfKanji(
+      selectedKanjiArray,
+      numberOfQuestions
+    );
+
+    // creating object format
+    let objectedKanjiArray = [];
+    for (let i = 0; i < finalSelectedKanji.length; i++) {
+      objectedKanjiArray[i] = { kanji: finalSelectedKanji[i] };
+    }
+
+    retreiveKanjiSelectedFunction(objectedKanjiArray, numberOfQuestions);
     onCloseFunction();
   };
 

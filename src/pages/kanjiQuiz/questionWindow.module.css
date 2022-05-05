@@ -24,13 +24,20 @@
 .previousButton:hover,
 .nextButton:hover {
   box-shadow: 0 0 10px white;
-  background-color: #f3bdbd;
   color: black;
 }
-.icon {
-  width: max(100%, 100%);
-  height: max(100%, 100%);
+.prevIcon,
+.nextIcon {
+  width: max(max-content, max-content);
+  height: max(max-content, max-content);
 }
+.prevIcon {
+  margin-right: 4px;
+}
+.nextIcon {
+  margin-left: 4px;
+}
+
 .previousButton {
   top: 50%;
   left: -13%;
@@ -67,4 +74,22 @@
   line-height: 18px;
   margin-top: 15px;
   text-align: center;
+}
+@media (max-width: 920px) {
+  .questionContainer {
+    width: max(400px, 400px);
+  }
+  .previousButton,
+  .nextButton {
+    width: max(50px, 50px);
+    height: max(50px, 50px);
+  }
+  .previousButton {
+    top: 50%;
+    left: -13%;
+  }
+  .nextButton {
+    top: 50%;
+    right: -13%;
+  }
 }

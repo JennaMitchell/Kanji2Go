@@ -1,0 +1,46 @@
+.mainContainer {
+  width: max(1300px, 1300px);
+  height: max(660px, 660px);
+  display: grid;
+  grid-template-columns: 600px 600px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.answerContainer,
+.responseContainer {
+  width: max(100%, 100%);
+  height: max(100%, 100%);
+  display: grid;
+  align-content: space-between;
+  justify-items: center;
+  font-size: 400px;
+  text-align: center;
+  line-height: 400px;
+  position: relative;
+  grid-template-rows: 60px 600px;
+}
+.responseTitle {
+  position: absolute;
+  width: max(max-content, max-content);
+  height: max(max-content, max-content);
+  text-align: center;
+  text-decoration: underline;
+  font-size: 36px;
+  grid-row: 1 / span 1;
+  color: white;
+  line-height: 36px;
+}
+.kanjiText,
+.userImage {
+  background-color: white;
+  width: max(600px, 600px);
+  height: max(600px, 600px);
+  grid-row: 2 / span 1;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+}
+.userImage {
+  font-size: 22px;
+}

@@ -103,7 +103,7 @@ const CustomKanjiHomePage = () => {
         </Container>
         <Container
           maxW="100%"
-          w="100%"
+          w={{ sm: "1300px", md: "100%" }}
           h="1300px"
           pos="relative"
           display="flex"

@@ -29,6 +29,10 @@ const initialState = {
   quizKanjiArray: [],
   kanjiWithJLPTTestLevel: [],
   deleteSelectedKanji: "",
+  activeQuizQuestionNumber: 1,
+  activeQuizQuestionChanged: false,
+  savedQuizImageArray: [],
+  allQuizQuestionsAnswered: false,
 };
 
 const storeSlice = createSlice({
@@ -121,6 +125,18 @@ const storeSlice = createSlice({
     },
     setDeleteSelectedKanji(state, { payload }) {
       state.deleteSelectedKanji = payload;
+    },
+    setActiveQuizQuestionNumber(state, { payload }) {
+      state.activeQuizQuestionNumber = payload;
+    },
+    setActiveQuizQuestionChanged(state, { payload }) {
+      state.activeQuizQuestionChanged = payload;
+    },
+    setSavedQuizImageArray(state, { payload }) {
+      state.savedQuizImageArray = payload;
+    },
+    setAllQuizQuestionsAnswered(state, { payload }) {
+      state.allQuizQuestionsAnswered = payload;
     },
   },
 });
