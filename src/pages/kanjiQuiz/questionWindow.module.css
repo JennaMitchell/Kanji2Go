@@ -7,6 +7,7 @@
   grid-template-columns: repeat(3, 1fr);
   position: relative;
   border-radius: 10px;
+  grid-auto-flow: column;
 }
 .previousButton,
 .nextButton {
@@ -50,7 +51,7 @@
 .onyomiContianer,
 .meaningContianer {
   width: max(100%, 100%);
-  height: max(100%, 100%);
+  height: max(max-content, max-content);
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -74,10 +75,18 @@
   line-height: 18px;
   margin-top: 15px;
   text-align: center;
+  overflow-wrap: break-word;
+}
+@media (max-width: 1415px) {
+  .questionContainer {
+    margin-bottom: 30px;
+    margin-top: 10px;
+  }
 }
 @media (max-width: 920px) {
   .questionContainer {
     width: max(400px, 400px);
+    /* margin-top: 110px; */
   }
   .previousButton,
   .nextButton {
@@ -91,5 +100,12 @@
   .nextButton {
     top: 50%;
     right: -13%;
+  }
+  .kunyomiJapanenseText,
+  .kunyomiEnglishText,
+  .onyomiJapanenseText,
+  .onyomiEnglish,
+  .meaningText {
+    font-size: 18px;
   }
 }

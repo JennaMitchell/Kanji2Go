@@ -15,7 +15,7 @@ const BlankSpaceContainer = styled.div`
   top: auto !important;
   left: auto !important;
   position: relative;
-  margin-right: 5px;
+  margin-left: 6px;
 `;
 const KDContainer = styled.div`
   width: min(420px, 420px);
@@ -27,7 +27,7 @@ const KDContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   position: relative;
-  margin-right: 5px;
+  margin-left: 6px;
 
   top: auto !important;
   left: auto !important;
@@ -43,7 +43,7 @@ const KanjiContainer = styled.div`
   position: relative;
   top: auto !important;
   left: auto !important;
-  margin-right: 5px;
+  margin-left: 6px;
   background-color: white;
 `;
 const PreviewContents = ({

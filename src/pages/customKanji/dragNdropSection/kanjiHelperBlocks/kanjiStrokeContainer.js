@@ -46,13 +46,16 @@ const TrachIconContainer = styled.button`
 const KanjiStrokeContainer = ({ data, id, stroke, strokeData }) => {
   let extractedStroke = +id.slice(-2);
 
-  let strokeToRender = strokeData[extractedStroke];
+  let xmlString = strokeData[extractedStroke];
+  let htmlDoc = new DOMParser().parseFromString(xmlString, "text/html");
+  console.log(htmlDoc.firstChild.innerHTML);
+
   const dispatch = useDispatch();
 
   const customKanjiGridData = useSelector((state) => state.customKanjiGridData);
   const trashIconHandler = () => {
     let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
-    console.log(tempArray);
+
     // finding the coluumn where the object we want to delete is at
     for (let i = 1; i < tempArray.columnOrder.length; i++) {
       let columnId = "";
@@ -76,7 +79,7 @@ const KanjiStrokeContainer = ({ data, id, stroke, strokeData }) => {
 
   return (
     <>
-      <KanjiContainer>{strokeToRender}</KanjiContainer>
+      <KanjiContainer></KanjiContainer>
       <TrachIconContainer onClick={trashIconHandler}>
         <TrashIcon className={classes.icon}></TrashIcon>
       </TrachIconContainer>

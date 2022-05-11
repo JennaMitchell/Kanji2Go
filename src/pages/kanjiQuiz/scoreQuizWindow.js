@@ -2,13 +2,16 @@ import classes from "./scoreQuizWindow.module.css";
 import { useSelector } from "react-redux";
 const ScoreQuizWindow = ({ activeQuestionNumber, selectedKanji }) => {
   const savedQuizImageArray = useSelector((state) => state.savedQuizImageArray);
+  console.log(selectedKanji);
+  console.log(activeQuestionNumber);
+  console.log(savedQuizImageArray);
 
   return (
     <div className={classes.mainContainer}>
       <div className={classes.answerContainer}>
         <h3 className={classes.responseTitle}>Correct Answer</h3>
         <p className={classes.kanjiText}>
-          {selectedKanji[activeQuestionNumber - 1]}
+          {selectedKanji[activeQuestionNumber - 1].kanji}
         </p>
       </div>
       <div className={classes.responseContainer}>

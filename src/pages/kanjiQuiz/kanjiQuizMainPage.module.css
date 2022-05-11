@@ -2,6 +2,7 @@
   position: relative;
   display: grid;
   place-items: center;
+  width: max(100vw, 100vw);
 }
 
 .titleContainer {
@@ -46,7 +47,7 @@
 }
 .scoreWindowContainer {
   height: max(800px, 800px);
-  width: max(1300px, 1300px);
+  width: max(100%, 100%);
   display: grid;
   grid-template-rows: 180px 660px;
   grid-template-columns: 100%;
@@ -83,20 +84,16 @@
   box-shadow: 0 0 10px white;
   color: black;
 }
-.scoreTestButtonActive {
-  box-shadow: 0 0 10px white;
-  background-color: #f3bdbd;
-  color: black;
-}
+
 .newTestButton {
   position: absolute;
-  top: 5%;
+  top: 25px;
   right: 3%;
 }
 .scoreTestButtonDisabled,
 .scoreTestButtonActive {
   position: absolute;
-  top: 20%;
+  top: 150px;
   right: 3%;
 }
 .quizCanvasBackdrop {
@@ -113,7 +110,7 @@
 .questionMenu,
 .questionDisabledMenu {
   position: absolute;
-  top: 5%;
+  top: 25px;
   left: 3%;
 }
 .questionActiveMenu {
@@ -129,7 +126,28 @@
   border-radius: 20px;
   font-size: 24px;
 }
+@media (max-width: 1415px) {
+  .quizContainer {
+    height: max(1600px, 1600px);
+    justify-content: center;
+    align-content: flex-start;
+  }
+  .quizWindowContainer {
+    margin-top: 100px;
+  }
+  .quizWindowContainer {
+    width: max(600px, 600px);
+    height: max(800px, 800px);
+    grid-template-rows: 200px 650px;
+  }
+  .scoreWindowContainer {
+    align-content: flex-start;
+  }
+}
 @media (max-width: 1260px) {
+  .scoreWindowContainer {
+    margin-top: 14px;
+  }
   .newTestButton,
   .scoreTestButtonActive,
   .questionMenu,
@@ -142,6 +160,9 @@
   }
 }
 @media (max-width: 1170px) {
+  .scoreWindowContainer {
+    margin-top: 110px;
+  }
   .newTestButton,
   .scoreTestButtonActive,
   .questionMenu,
@@ -154,24 +175,31 @@
   }
   .newTestButton {
     position: absolute;
-    top: 2.25%;
+    top: 1.25%;
     right: 20px;
   }
   .scoreTestButtonDisabled,
-  .scoreTestButtonActive {
-    top: 2.25%;
+  .scoreTestButtonActive,
+  .questionMenu {
+    top: 1.25%;
     right: 160px;
   }
   .questionDisabledMenu,
   .questionActiveMenu {
-    top: 2.25%;
+    top: 1.25%;
     left: 3%;
   }
 }
 @media (max-width: 920px) {
+  .scoreWindowContainer {
+    margin-top: 110px;
+  }
   .quizWindowContainer {
     width: max(600px, 600px);
-    height: max(600px, 600px);
-    grid-template-rows: 160px 500px;
+    height: max(660px, 660px);
+    grid-template-rows: 220px 400px;
+  }
+  .canvasContainer {
+    margin-top: 220px;
   }
 }

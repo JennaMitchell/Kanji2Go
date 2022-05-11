@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { storeActions } from "../../../store/store";
 const KanjiSelectorCard = ({ kanji, id }) => {
   const [selectorClicked, setSelectorClicked] = useState(false);
-  const [savedId, setSavedId] = useState(id);
-  const [savedKanji, setSavedKanji] = useState(kanji);
+  const savedId = id;
+  const savedKanji = kanji;
   const dispatch = useDispatch();
   const selectorHandler = () => {
     dispatch(storeActions.setCustomKanjiSelectorClickedId(id));
@@ -27,6 +27,7 @@ const KanjiSelectorCard = ({ kanji, id }) => {
           setSelectorClicked(true);
           dispatch(storeActions.setCustomKanjiSelectorClickedId(-1));
           // used to trigger the useEffect
+
           dispatch(storeActions.setKanjiClicked(savedKanji));
         }
       } else {

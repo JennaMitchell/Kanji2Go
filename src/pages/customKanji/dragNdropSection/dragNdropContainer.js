@@ -345,9 +345,10 @@ const DragNDropContainer = () => {
       }
     }
     setCurrentNumber(tempNumber);
-    console.log(338);
+
     dispatch(storeActions.setCustomKanjiGridData(tempArray));
     setData(tempArray);
+    setRenderDataUpdated(false);
   };
   useEffect(() => {
     if (fillButtonClicked) {
@@ -423,10 +424,12 @@ const DragNDropContainer = () => {
   }, [customKanjiBoxData]);
   //
   useEffect(() => {
+    console.log(426);
     if (
       typeof customKanjiGridData.columnOrder !== "undefined" &&
       !renderDataUpdated
     ) {
+      console.log(431);
       updateRenderedGridData();
       setRenderDataUpdated(true);
     }
@@ -524,11 +527,15 @@ const DragNDropContainer = () => {
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
+
     // returning if the dragged item is moved outside of the contianer
+    console.log(destination);
     if (!destination) {
+      console.log(531);
       return;
     }
     if (typeof destination === "undefined") {
+      console.log(535);
       return;
     }
     // the if statement below returns nothing when the user buts something back in
@@ -537,6 +544,7 @@ const DragNDropContainer = () => {
       destination.draggableId === source.droppableId &&
       destination.index === source.index
     ) {
+      console.log(536);
       return;
     }
     // since the columns are also draggable we need to check the type of what is being moved
@@ -553,6 +561,7 @@ const DragNDropContainer = () => {
     );
     // const activeDraggedElementId = result.draggableId;
     if (spotsInUseAtFinish >= 11) {
+      console.log(561);
       return;
     }
 
@@ -576,7 +585,7 @@ const DragNDropContainer = () => {
         },
       };
       setData(newState);
-      console.log(549);
+      setRenderDataUpdated(false);
       dispatch(storeActions.setCustomKanjiGridData(newState));
 
       return;
@@ -608,6 +617,7 @@ const DragNDropContainer = () => {
       setData(newState);
       console.log(586);
       dispatch(storeActions.setCustomKanjiGridData(newState));
+      setRenderDataUpdated(false);
       return;
     }
   };

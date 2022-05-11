@@ -100,7 +100,9 @@ const QuizCanvas = ({ numberOfQuestions }) => {
         numberOfAnsweredQuestions++;
       }
     }
-    if (numberOfAnsweredQuestions === numberOfQuestions) {
+    console.log(numberOfAnsweredQuestions);
+    console.log(numberOfQuestions);
+    if (numberOfAnsweredQuestions === +numberOfQuestions) {
       dispatch(storeActions.setAllQuizQuestionsAnswered(true));
     }
 

@@ -21,6 +21,7 @@ const LocalDatabaseSetup = () => {
       const grammarCardDB = await get(child(databaseRef, "GrammarCards/"));
       const kanjiCardDB = await get(child(databaseRef, "KanjiCards/"));
       const vocabCardDB = await get(child(databaseRef, "VocabCards/"));
+      console.log(grammarCardDB);
 
       const takeDatabaseSnapshot = (snapShot, databaseType) => {
         try {

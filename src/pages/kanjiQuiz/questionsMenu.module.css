@@ -63,3 +63,9 @@
   margin-bottom: 10px;
   color: green;
 }
+@media (max-width: 1260px) {
+  .mainContainer {
+    top: 120px;
+    left: 3%;
+  }
+}

@@ -6,6 +6,9 @@ const Container = styled.div`
   justify-content: center;
   background-color: white;
   height: 120px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
 `;
 
 const KanjiContainer = styled.div`
@@ -15,6 +18,8 @@ const KanjiContainer = styled.div`
   height: min(120px, 120px);
   width: max(1190px, 1190px);
   display: flex;
+  justify-items: center;
+  align-items: center;
 `;
 
 const PreviewColumn = ({ column, container, strokeNum, downloadClicked }) => {

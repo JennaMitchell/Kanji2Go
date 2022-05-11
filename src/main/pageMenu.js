@@ -61,14 +61,14 @@ const PageMenu = () => {
       >
         <NavLink to="/kanjiQuiz">Kanji Quiz</NavLink>
       </Button>
-      <Button
+      {/* <Button
         fontSize="20px"
         backgroundColor="inherit"
         onClick={navButtonHandler}
         _hover={{ color: "black", bgColor: "brand.300" }}
       >
         <NavLink to="/sentencePractice">Sentence Practice</NavLink>
-      </Button>
+      </Button> */}
 
       {/* <Button
         fontSize="20px"
