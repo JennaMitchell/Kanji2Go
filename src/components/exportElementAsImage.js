@@ -95,7 +95,7 @@ const exportAsImage = (targetElm, fileName = null) => {
       putOnlyUsedFonts: false,
       compress: false,
       precision: 2,
-      userUnit: 1.0,
+      userUnit: 1,
     },
     html2canvas: {
       allowTaint: false,

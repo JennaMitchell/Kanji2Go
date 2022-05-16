@@ -87,7 +87,6 @@ const Contents = ({ content = [], index, dragId, type, stroke }) => {
       );
       break;
     case "Stroke Order":
-      console.log(90);
       let kanjiStrokeData = kanjiStrokeRetreiver(content[0].kanji[0]);
 
       console.log(kanjiStrokeData);

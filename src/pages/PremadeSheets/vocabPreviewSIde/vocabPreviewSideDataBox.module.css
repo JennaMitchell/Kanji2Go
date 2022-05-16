@@ -1,12 +1,12 @@
 .infoContainer {
   position: absolute;
   top: 50%;
-  left: 7.5%;
+  left: 6.5%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 100%;
 
-  width: max(85%, 85%);
+  width: max(87.5%, 87.5%);
   height: max(47.5%, 47.5%);
 
   background-color: #221f1f;

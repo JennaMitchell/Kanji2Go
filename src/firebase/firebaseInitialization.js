@@ -2,6 +2,7 @@
 
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
+import { getStorage } from "firebase/storage";
 
 //import { getAnalytics } from "firebase/analytics";
 
@@ -37,4 +38,7 @@ const app = initializeApp(firebaseConfig);
 //const analytics = getAnalytics(app);
 const databaseTest = getDatabase(app);
 
-export default databaseTest;
+const storage = getStorage(app);
+const exportObject = [databaseTest, storage];
+
+export default exportObject;

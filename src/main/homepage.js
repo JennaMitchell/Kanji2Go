@@ -28,6 +28,8 @@ import NavBar from "../nav/navBar";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { storeActions } from "../store/store";
+import vocabPdfOne from "../img/VocabSheets/VocabSheet1.pdf";
+import kanjiSheetOne from "../img/KanjiSheets/KanjiSheetOne.pdf";
 
 const HomePage = () => {
   //const dispatch = useDispatch();
@@ -52,7 +54,7 @@ const HomePage = () => {
         <NavBar />
         <Container
           maxW="100%"
-          h={["400px", "450px", "500px", "800px", "800px", "900px"]}
+          h={["400px", "450px", "500px", "600px", "800px", "900px"]}
           p="0"
           bgColor="#dc5357"
           m="0"
@@ -109,29 +111,42 @@ const HomePage = () => {
               <Image
                 src={kanjiSheet}
                 alt="kanji sheets"
-                h={["60%", "60%", "60%", "60%", "60%", "80%"]}
-                w={["70%", "70%", "70%", "70%", "70%", "70%"]}
+                h={["65%", "65%", "75%", "75%", "75%", "80%"]}
+                w={["75%", "75%", "75%", "80%", "80%", "70%"]}
               ></Image>
             </GridItem>
           </SimpleGrid>
         </Container>
         <Container
           maxW="100%"
-          h={["300px", "300px", "300px", "300px", "750px", "800px"]}
+          w="100%"
+          h={["750px", "750px", "750px", "750px", "750px", "800px"]}
           p="0"
           bgColor="brand.100"
           m="0"
+          display={"grid"}
+          alignItems={"center"}
+          justifyContent={"center"}
+          gridTemplateRows={"max-content auto"}
+          gridTemplateColumns={[
+            "max-content",
+            "max-content",
+            "max-content",
+            "max-content",
+            "max-content",
+            "1600px",
+          ]}
         >
           <VStack gap="15px">
             <Text color="brand.900" fontWeight="bold" mt="40px" fontSize="20px">
               EDUCATION ANYWHERE
             </Text>
-            <Heading color="brand.900" maxW="600px" textAlign="center">
+            <Heading color="brand.900" maxW="550px" textAlign="center">
               Online Practice or Downloadable Sheets for Remote Learning
             </Heading>
             <Text
               color="brand.900"
-              maxW="600px"
+              maxW="550px"
               textAlign="center"
               fontSize="18px"
             >
@@ -142,45 +157,67 @@ const HomePage = () => {
 
           <Grid
             w={["100%"]}
-            h="400px"
+            h="450px"
             bgColor="brand.100"
             alignContent="center"
             templateColumns={{
+              lg: "repeat(2,1fr)",
               xl: "repeat(3,1fr)",
             }}
+            templateRows="450px"
             justifyItems="center"
-            mt="3%"
-            display={{ base: "none", lg: "none", xl: "grid" }}
+            display={"grid"}
           >
-            <BannerBox
-              title="JLPT5"
-              subtext="Kanji"
-              img={cityStreetOne}
-              ribbon={true}
-            ></BannerBox>
-            <BannerBox
-              title="JLPT5"
-              subtext="Vocab"
-              img={kanjiSheet}
-            ></BannerBox>
-
-            <BannerBox
-              title="Custom"
-              subtext="Kanji"
-              img={cityStreetTwo}
-            ></BannerBox>
+            <NavLink to="/premadeKanjiSheets" className={classes.navLinkBox}>
+              <BannerBox
+                title="JLPT5"
+                subtext="Kanji"
+                img={cityStreetOne}
+                ribbon={true}
+              ></BannerBox>
+            </NavLink>
+            <Container
+              h="max-content"
+              w="max-content"
+              display={{ base: "none", lg: "grid", xl: "grid" }}
+            >
+              <NavLink
+                display={{ base: "none", lg: "grid", xl: "grid" }}
+                to="/premadeKanjiSheets"
+                className={classes.navLinkBox}
+              >
+                <BannerBox
+                  title="JLPT5"
+                  subtext="Vocab"
+                  img={kanjiSheet}
+                ></BannerBox>
+              </NavLink>
+            </Container>
+            <Container
+              h="max-content"
+              w="max-content"
+              display={{ base: "none", lg: "none", xl: "grid" }}
+            >
+              <NavLink to="/customKanjiSheets" className={classes.navLinkBox}>
+                <BannerBox
+                  title="Custom"
+                  subtext="Kanji"
+                  img={cityStreetTwo}
+                ></BannerBox>
+              </NavLink>
+            </Container>
           </Grid>
         </Container>
         <Container
           maxW="100%"
-          h={["400px", "400px", "400px", "400px", "800px", "900px"]}
+          h={["550px", "500px", "600px", "700px", "800px", "900px"]}
           p="0"
           bgColor="brand.200"
           m="0"
           pos="relative"
         >
           <Grid
-            templateColumns={{ base: "100%", lg: "100%", xl: "repeat(2,1fr)" }}
+            templateColumns={"repeat(2,1fr)"}
             templateRows="100%"
             justifyItems="center"
             alignItems="center"
@@ -189,23 +226,22 @@ const HomePage = () => {
           >
             <Image
               src={tablet}
-              h={["40%", "30%", "40%", "50%", "70%", "70%"]}
-              w="70%"
-              ml={["5%", "5%", "10%", "10%", "10%", "10%"]}
+              h={["60%", "50%", "60%", "60%", "70%", "70%"]}
+              w={["70%", "80%", "70%", "70%", "70%", "70%"]}
+              ml={["10%", "10%", "10%", "10%", "10%", "10%"]}
               mt="0"
               alt="tablet"
-              display={{ base: "none", lg: "none", xl: "grid" }}
+              display={"grid"}
             />
             <GridItem
               w="80%"
               h="max-content"
               p="10px"
               colSpan={1}
-              ml="10%"
               display={{ base: "grid", lg: "grid", xl: "auto" }}
               alignItems={{ base: "center", lg: "center", xl: "auto" }}
               justifyItems={{ base: "center", lg: "center", xl: "auto" }}
-              gap={"20px"}
+              gap={["20px", "15px", "20px", "20px", "20px", "20px"]}
             >
               <Text
                 fontSize={{ base: "18px", md: "22px", lg: "24px", xl: "26px" }}
@@ -216,18 +252,26 @@ const HomePage = () => {
               <Heading
                 fontSize={{
                   base: "18px",
-                  sm: "24px",
+                  sm: "20px",
                   md: "32px",
                   lg: "40px",
                   xl: "70px",
                 }}
                 color="black"
+                textAlign={"center"}
               >
                 Practice Kanji Live. Immediate Feedback
               </Heading>
               <Text
-                fontSize={{ base: "16px", md: "18px", lg: "20px", xl: "26px" }}
+                fontSize={{
+                  base: "16px",
+                  sm: "16px",
+                  md: "18px",
+                  lg: "20px",
+                  xl: "26px",
+                }}
                 color="black"
+                textAlign={"center"}
               >
                 With Kanji2Go you can practice kanji live on the web and get
                 automatic feedback. To busy? Try downloading our randomly
@@ -253,7 +297,7 @@ const HomePage = () => {
 
         <Grid
           maxW="100%"
-          h={["400px", "500px", "600px", "700px", "800px", "900px"]}
+          h={["550px", "500px", "600px", "700px", "800px", "900px"]}
           p="0"
           bgColor="#dc5357"
           m="0"
@@ -273,12 +317,24 @@ const HomePage = () => {
             gap="0"
           >
             <Text
-              fontSize={{ base: "16px", md: "20px", lg: "26px", xl: "26px" }}
+              fontSize={{
+                base: "16px",
+                sm: "px",
+                md: "22px",
+                lg: "26px",
+                xl: "26px",
+              }}
             >
               Get Started Today!
             </Text>
             <Heading
-              fontSize={{ base: "22px", md: "30px", lg: "42px", xl: "80px" }}
+              fontSize={{
+                base: "22px",
+                sm: "24px",
+                md: "30px",
+                lg: "42px",
+                xl: "80px",
+              }}
               mt="10px"
             >
               Save Your Progress
@@ -307,9 +363,8 @@ const HomePage = () => {
           </GridItem>
           <Image
             src={books}
-            h={["50%", "50%", "60%", "60%", "60%", "70%"]}
-            w={["70%", "70%", "70%", "70%", "70%", "70%"]}
-            ml="10%"
+            h={["60%", "60%", "60%", "60%", "60%", "70%"]}
+            w={["80%", "80%", "80%", "70%", "70%", "70%"]}
             mt="0"
             alt="tablet"
           />

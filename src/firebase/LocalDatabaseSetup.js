@@ -1,5 +1,5 @@
 import { ref, child, get } from "firebase/database";
-import databaseTest from "./firebaseInitialization";
+import exportObject from "./firebaseInitialization";
 import store, { storeActions } from "../store/store";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import gridData from "../pages/customKanji/dragNdropSection/gridData";
 
 const LocalDatabaseSetup = () => {
-  const databaseRef = ref(databaseTest);
+  const databaseRef = ref(exportObject[0]);
   const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -35,6 +35,7 @@ const LocalDatabaseSetup = () => {
                 description: val[key].description,
                 kanjiList: val[key].kanjiList,
                 vocabData: val[key].vocabData,
+                pdfId: val[key].pdfId,
               });
             }
             if (databaseType === "grammarCards") {
@@ -93,7 +94,6 @@ const LocalDatabaseSetup = () => {
               }
 
               dispatch(storeActions.setKanjiWithJLPTTestLevel(tempArray));
-              console.log("hello");
               dispatch(storeActions.setKanjiDatabase(megaKanjiArray));
               dispatch(storeActions.setKanjiCardsDB(loadedCards));
               dispatch(storeActions.setCustomKanjiGridData(gridData));

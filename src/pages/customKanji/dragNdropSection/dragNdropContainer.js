@@ -15,6 +15,7 @@ const DragNDropContainer = () => {
   const customKanjiGridData = useSelector((state) => state.customKanjiGridData);
 
   const blankSquaresArray = useSelector((state) => state.blankSquaresArray);
+  const [renderBlankSquares, setRenderBlankSquares] = useState(false);
   const databaseLoaded = useSelector((state) => state.databaseLoaded);
   const fillButtonClicked = useSelector((state) => state.fillButtonClicked);
   const dispatch = useDispatch();
@@ -46,7 +47,6 @@ const DragNDropContainer = () => {
 
   // The useBeforeUnload is called when the user refreshs the page
   useBeforeunload(() => {
-    console.log("useBeforeunload");
     localStorage.setItem("data", JSON.stringify(customKanjiGridData));
     localStorage.setItem(
       "customKanjiGridData",
@@ -156,6 +156,7 @@ const DragNDropContainer = () => {
         }
       }
     }
+    setAddStrokeOrder(false);
   };
 
   const addKanji = (
@@ -189,8 +190,6 @@ const DragNDropContainer = () => {
   ) => {
     let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
     let contentAdded = false;
-    // let numberOfStorkesToAdd = customKanjiBoxData.data.strokes[0];
-    //  console.log(customKanjiBoxData.data.strokes[0]);
 
     // <KanjiAndDefinitionHelperBlock data={customKanjiBoxData.data} />;
     for (let index = 1; index < tempArray.columnOrder.length; index++) {
@@ -278,7 +277,7 @@ const DragNDropContainer = () => {
           switch (type) {
             case "Kanji and Definition":
               addKanji(tempArray, type, currentColumnId, numberOfSlots);
-              console.log(274);
+
               dispatch(storeActions.setCustomKanjiGridData(tempArray));
               setData(tempArray);
               setCurrentNumber(currentNumber + 1);
@@ -297,7 +296,7 @@ const DragNDropContainer = () => {
               setCurrentKanjiId(
                 `${customKanjiBoxData.data.kanji} ${currentNumber}`
               );
-              console.log(292);
+
               dispatch(storeActions.setCustomKanjiGridData(tempArray));
               setData(tempArray);
               setCurrentNumber(currentNumber + 1);
@@ -309,7 +308,7 @@ const DragNDropContainer = () => {
             case "Kanji Only":
               setRenderDataUpdated(false);
               addKanji(tempArray, type, currentColumnId, numberOfSlots);
-              console.log(302);
+
               dispatch(storeActions.setCustomKanjiGridData(tempArray));
               setData(tempArray);
               setCurrentNumber(currentNumber + 1);
@@ -387,13 +386,22 @@ const DragNDropContainer = () => {
         }
         tempNumber++;
       }
-      console.log(380);
+
       dispatch(storeActions.setCustomKanjiGridData(tempArray));
       dispatch(storeActions.setBlankSquaresArray(""));
       setData(tempArray);
       setCurrentNumber(tempNumber);
+      setRenderBlankSquares(true);
     }
   }, [blankSquaresArray]);
+
+  // rendering Blank Squares
+  useEffect(() => {
+    if (renderBlankSquares) {
+      updateRenderedGridData();
+      setRenderBlankSquares(false);
+    }
+  }, [renderBlankSquares]);
 
   useEffect(() => {
     if (typeof customKanjiBoxData.type !== "undefined") {
@@ -423,13 +431,12 @@ const DragNDropContainer = () => {
     }
   }, [customKanjiBoxData]);
   //
+
   useEffect(() => {
-    console.log(426);
     if (
       typeof customKanjiGridData.columnOrder !== "undefined" &&
       !renderDataUpdated
     ) {
-      console.log(431);
       updateRenderedGridData();
       setRenderDataUpdated(true);
     }
@@ -443,8 +450,6 @@ const DragNDropContainer = () => {
 
   const updateRenderedGridData = () => {
     let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
-    console.log("update");
-    console.log(tempArray);
 
     let pageBreakAdded = false;
     let tempMappedData = [];
@@ -505,7 +510,6 @@ const DragNDropContainer = () => {
   };
   useEffect(() => {
     if (customKanjiDeleteIconClicked) {
-      console.log(484);
       updateRenderedGridData();
       dispatch(storeActions.setCustomKanjiDeleteIconClicked(false));
     }
@@ -513,7 +517,6 @@ const DragNDropContainer = () => {
   // handling newPageCreation
   useEffect(() => {
     if (newPageClicked) {
-      console.log(491);
       updateRenderedGridData();
       dispatch(storeActions.setNewPageClicked(false));
     }
@@ -529,13 +532,11 @@ const DragNDropContainer = () => {
     const { destination, source, draggableId } = result;
 
     // returning if the dragged item is moved outside of the contianer
-    console.log(destination);
+
     if (!destination) {
-      console.log(531);
       return;
     }
     if (typeof destination === "undefined") {
-      console.log(535);
       return;
     }
     // the if statement below returns nothing when the user buts something back in
@@ -544,7 +545,6 @@ const DragNDropContainer = () => {
       destination.draggableId === source.droppableId &&
       destination.index === source.index
     ) {
-      console.log(536);
       return;
     }
     // since the columns are also draggable we need to check the type of what is being moved
@@ -561,7 +561,6 @@ const DragNDropContainer = () => {
     );
     // const activeDraggedElementId = result.draggableId;
     if (spotsInUseAtFinish >= 11) {
-      console.log(561);
       return;
     }
 
@@ -615,7 +614,7 @@ const DragNDropContainer = () => {
         },
       };
       setData(newState);
-      console.log(586);
+
       dispatch(storeActions.setCustomKanjiGridData(newState));
       setRenderDataUpdated(false);
       return;

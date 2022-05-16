@@ -111,6 +111,7 @@ const PreMadeKanjiSheets = () => {
   }, [premadeKanjiFilterArray]);
 
   //fitering side effect
+  console.log(filteredVocabDB);
   useEffect(() => {
     if (premadeKanjiFilterArray.length !== 0) {
       let jlptFilteredSearch = premadeKanjiFilterArray
@@ -133,7 +134,6 @@ const PreMadeKanjiSheets = () => {
         jlptFilteredSearch.length !== 0
       ) {
         let tempArray = vocabCardsDB.slice();
-        console.log("line 134");
         for (let i = 0; i < jlptFilteredSearch.length; i++) {
           tempArray = tempArray.filter(
             (x) => x.title === jlptFilteredSearch[i]
@@ -209,6 +209,7 @@ const PreMadeKanjiSheets = () => {
               title={card.title}
               description={card.description}
               bannerText="Kanji"
+              pdfId={card.pdfId}
             ></PremadeKanjiCard>
           ))}
         {vocabCardEnabler &&
@@ -220,6 +221,7 @@ const PreMadeKanjiSheets = () => {
               photo={Gate}
               title={card.title}
               description={card.description}
+              pdfId={card.pdfId}
               bannerText="Vocab"
             ></PremadeKanjiCard>
           ))}
@@ -233,6 +235,7 @@ const PreMadeKanjiSheets = () => {
               title={card.title}
               description={card.description}
               bannerText="Grammar"
+              pdfId=""
             ></PremadeKanjiCard>
           ))}
       </div>

@@ -3,6 +3,7 @@ import { TrashIcon } from "@heroicons/react/solid";
 import classes from "./icon.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { storeActions } from "../../../../store/store";
+import kanjiStrokeData from "../../../../kanjiStrokeSVGs/kanjiStrokeDatabase";
 
 const KanjiContainer = styled.div`
   width: min(80px, 80px);
@@ -45,14 +46,15 @@ const TrachIconContainer = styled.button`
 // `;
 const KanjiStrokeContainer = ({ data, id, stroke, strokeData }) => {
   let extractedStroke = +id.slice(-2);
+  let extractedKanji = id.slice(0, 1);
 
-  let xmlString = strokeData[extractedStroke];
-  let htmlDoc = new DOMParser().parseFromString(xmlString, "text/html");
-  console.log(htmlDoc.firstChild.innerHTML);
+  let masterString = `${extractedKanji}Strokes`;
+  console.log(masterString);
 
   const dispatch = useDispatch();
 
   const customKanjiGridData = useSelector((state) => state.customKanjiGridData);
+
   const trashIconHandler = () => {
     let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
 
@@ -79,7 +81,9 @@ const KanjiStrokeContainer = ({ data, id, stroke, strokeData }) => {
 
   return (
     <>
-      <KanjiContainer></KanjiContainer>
+      <KanjiContainer>
+        <img src={kanjiStrokeData[masterString][extractedStroke]} alt="" />
+      </KanjiContainer>
       <TrachIconContainer onClick={trashIconHandler}>
         <TrashIcon className={classes.icon}></TrashIcon>
       </TrachIconContainer>

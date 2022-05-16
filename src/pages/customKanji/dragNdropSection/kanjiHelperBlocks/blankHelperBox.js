@@ -3,7 +3,7 @@ import { TrashIcon } from "@heroicons/react/solid";
 import classes from "./icon.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { storeActions } from "../../../../store/store";
-import blankImage from "../../../../img/blankKanjiSquare.png";
+import blankImage from "../../../../img/BlankKanjiSquare.svg";
 
 const TrachIconContainer = styled.button`
   width: min(15px, 15px);

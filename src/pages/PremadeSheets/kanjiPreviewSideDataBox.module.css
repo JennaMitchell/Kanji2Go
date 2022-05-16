@@ -1,18 +1,26 @@
 .infoContainer {
   position: absolute;
   top: 40%;
-  left: 7.5%;
+  left: 5.5%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 
-  width: max(85%, 85%);
-  height: max(55%, 55%);
+  width: max(90%, 90%);
+  height: max(57.5%, 57.5%);
 
   background-color: #221f1f;
   gap: 0;
   color: white;
   border-radius: 10px;
+}
+.radicalTitle,
+.kunyomiTitle,
+.onyomiTitle,
+.meaningTitle {
+  font-size: 15px;
+  font-weight: bolder;
+  margin-left: 5px;
 }
 .kanjiPicture {
   grid-column: 1 / span 1;
@@ -34,15 +42,11 @@
 }
 .meaningTitle {
   font-weight: 800;
-  margin-left: 5px;
 }
 .meaning {
   margin-left: 5px;
 }
-.radicalTitle {
-  font-weight: 800;
-  margin-left: 5px;
-}
+
 .radical {
   margin-left: 5px;
 }
@@ -69,8 +73,9 @@
   width: max(100%, 100%);
 }
 .kunyomiTitle {
-  font-weight: 800;
+  font-weight: bold;
   margin-left: 5px;
+  font-size: 15px;
 }
 .kuyomiKana {
   margin-left: 5px;

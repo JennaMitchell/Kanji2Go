@@ -5,9 +5,19 @@ import { Image, Text, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import KanjiPreviewSide from "./kanjiPreviewSide";
 import VocabPreviewSide from "./vocabPreviewSIde/vocabPreviewSide";
-
+import vocabPDFOne from "../../img/VocabSheets/VocabSheet1.pdf";
+import { DownloadIcon } from "@heroicons/react/solid";
+import kanjiSheetDatabase from "../../img/KanjiSheets/KanjiSheetDatabase";
+import vocabPdfDatabase from "../../img/VocabSheets/pdfMasterFIle";
 import { useSelector } from "react-redux";
-const PremadeKanjiCard = ({ photo, title, description, bannerText, id }) => {
+const PremadeKanjiCard = ({
+  photo,
+  title,
+  description,
+  bannerText,
+  id,
+  pdfId,
+}) => {
   const [previewIconClicked, setPreviewIconClicked] = useState(false);
   const [cardList, setCardList] = useState([]);
   const previewIconHandler = () => {
@@ -88,8 +98,23 @@ const PremadeKanjiCard = ({ photo, title, description, bannerText, id }) => {
     }
   }, [idClicked, previewIconClicked]);
 
+  /// Handling the releated pdf links
+  let pdfReference = "";
+  if (pdfId.includes("Kanji")) {
+    pdfReference = kanjiSheetDatabase[pdfId];
+  } else if (pdfId.includes("Vocab")) {
+    pdfReference = vocabPdfDatabase[pdfId];
+  }
+
   return (
     <div className={classes.cardContainer}>
+      <a
+        href={pdfReference}
+        className={classes.downloadIconContainer}
+        target="blank"
+      >
+        <DownloadIcon className={classes.previewIcon} />
+      </a>
       <button
         className={classes.previewIconContainer}
         onClick={previewIconHandler}

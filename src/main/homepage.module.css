@@ -22,6 +22,11 @@
   margin: 0;
   position: relative;
 }
+.navLinkBox {
+  width: max(max-content, max-content);
+  height: max(max-content, max-content);
+  display: grid;
+}
 .blurBackground {
   height: max(100vh, 100vh);
   width: max(100vw, 100vw);

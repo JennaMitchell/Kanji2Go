@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import kanjiStrokeData from "../../../../kanjiStrokeSVGs/kanjiStrokeDatabase";
+
 const KanjiContainer = styled.div`
   width: min(80px, 80px);
   height: min(80px, 80px);
@@ -10,24 +12,19 @@ const KanjiContainer = styled.div`
   text-align: center;
   font-size: 56px;
 `;
-// const Kanji = styled.p`
-//   width: min(60px, 60px);
-//   height: min(60px, 60px);
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   text-align: center;
-//   font-size: 56px;
-// `;
 
 const PreviewStrokeContainer = ({ id, strokeData }) => {
   let extractedStroke = +id.slice(-2);
+  let extractedKanji = id.slice(0, 1);
 
-  let strokeToRender = strokeData[extractedStroke];
+  let masterString = `${extractedKanji}Strokes`;
+  let finalSvg = kanjiStrokeData[masterString][extractedStroke];
 
   return (
     <>
-      <KanjiContainer>{strokeToRender}</KanjiContainer>
+      <KanjiContainer>
+        <img src={finalSvg} alt="" />
+      </KanjiContainer>
     </>
   );
 };

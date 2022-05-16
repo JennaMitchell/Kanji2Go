@@ -1,25 +1,16 @@
 import classes from "./BannerBox.module.css";
 import { Container, Heading, Text, Image } from "@chakra-ui/react";
 
-const BannerBox = ({
-  title,
-  subtext,
-  img,
-  ribbon = false,
-  marginLeft = "0",
-  marginRight = "0",
-}) => {
+const BannerBox = ({ title, subtext, img, ribbon = false }) => {
   return (
     <Container
       bgColor="brand.600"
-      w={["200px", "200px", "300px", "350px", "350px", "400px"]}
-      height={["200px", "200px", "300px", "300px", "350px", "385px"]}
+      w={"400px"}
+      height={"385px"}
       borderRadius="10px"
       pos="relative"
       zIndex={3}
       transition="1s"
-      ml={marginLeft}
-      mr={marginRight}
       mt="40px"
       _hover={{
         boxShadow: "dark-lg",

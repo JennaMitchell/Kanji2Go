@@ -32,12 +32,12 @@
 .cardContainer:hover {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.563);
 }
-.previewIconContainer {
+.previewIconContainer,
+.downloadIconContainer {
   width: max(30px, 30px);
   height: max(30px, 30px);
   position: absolute;
-  top: 30px;
-  right: -30px;
+
   background-color: #221f1f;
   display: flex;
   justify-content: center;
@@ -45,7 +45,16 @@
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-.cardContainer .previewIconContainer:hover {
+.previewIconContainer {
+  top: 30px;
+  right: -30px;
+}
+.downloadIconContainer {
+  top: 70px;
+  right: -30px;
+}
+.cardContainer .previewIconContainer:hover,
+.cardContainer .downloadIconContainer:hover {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.563);
 }
 .previewIcon {
