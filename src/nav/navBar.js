@@ -1,22 +1,16 @@
 import {
-  Container,
   Flex,
   Image,
-  Input,
   HStack,
   SimpleGrid,
   GridItem,
   Button,
-  InputRightElement,
-  InputGroup,
 } from "@chakra-ui/react";
-import logo from "../img/logo.JPG";
+import logo from "../img/logo.jpg";
 import {
-  SearchIcon,
   ChevronDownIcon,
   ChevronUpIcon,
   UserIcon,
-  ShoppingCartIcon,
 } from "@heroicons/react/solid";
 import classes from "./navBar.module.css";
 import { NavLink } from "react-router-dom";
