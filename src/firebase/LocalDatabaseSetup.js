@@ -1,6 +1,6 @@
 import { ref, child, get } from "firebase/database";
 import exportObject from "./firebaseInitialization";
-import store, { storeActions } from "../store/store";
+import { storeActions } from "../store/store";
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import classes from "./LocalDatabaseSetup.module.css";
@@ -21,8 +21,6 @@ const LocalDatabaseSetup = () => {
       const grammarCardDB = await get(child(databaseRef, "GrammarCards/"));
       const kanjiCardDB = await get(child(databaseRef, "KanjiCards/"));
       const vocabCardDB = await get(child(databaseRef, "VocabCards/"));
-      console.log(grammarCardDB);
-
       const takeDatabaseSnapshot = (snapShot, databaseType) => {
         try {
           if (snapShot.exists()) {

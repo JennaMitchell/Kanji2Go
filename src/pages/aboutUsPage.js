@@ -6,9 +6,7 @@ import {
   Text,
   SimpleGrid,
   GridItem,
-  Button,
   Heading,
-  Grid,
 } from "@chakra-ui/react";
 
 import Footer from "../components/footer";

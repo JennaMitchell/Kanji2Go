@@ -18,7 +18,7 @@ const KanjiPreviewSide = ({
   const kanjiButtonHandler = () => {
     kanjiClickedFunction(savedId);
   };
-  console.log(card);
+
   useEffect(() => {
     if (kanjiClicked === true && activeKanji === savedId) {
       setKanjiClicked(false);

@@ -28,8 +28,6 @@ import NavBar from "../nav/navBar";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { storeActions } from "../store/store";
-import vocabPdfOne from "../img/VocabSheets/VocabSheet1.pdf";
-import kanjiSheetOne from "../img/KanjiSheets/KanjiSheetOne.pdf";
 
 const HomePage = () => {
   //const dispatch = useDispatch();

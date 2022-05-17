@@ -29,10 +29,6 @@ const NavBar = () => {
   const storeShopButtonClicked = useSelector(
     (state) => state.shopNavButtonClicked
   );
-  const loginButtonClicked = useSelector((state) => state.loginButtonClicked);
-  const customAddComponentClicked = useSelector(
-    (state) => state.customAddComponentClicked
-  );
 
   const pageButtonHandler = () => {
     if (storePageButtonClicked) {
@@ -45,17 +41,17 @@ const NavBar = () => {
       // if the shop button is clicked then we turn it off and render the page button
     }
   };
-  const shopButtonHandler = () => {
-    if (storeShopButtonClicked) {
-      dispatch(storeActions.setShopNavButtonClicked(false));
-    } else {
-      if (storePageButtonClicked) {
-        dispatch(storeActions.setPageButtonClicked(false));
-      }
-      // if the page button is clicked then we turn it off and render the shop button
-      dispatch(storeActions.setShopNavButtonClicked(true));
-    }
-  };
+  // const shopButtonHandler = () => {
+  //   if (storeShopButtonClicked) {
+  //     dispatch(storeActions.setShopNavButtonClicked(false));
+  //   } else {
+  //     if (storePageButtonClicked) {
+  //       dispatch(storeActions.setPageButtonClicked(false));
+  //     }
+  //     // if the page button is clicked then we turn it off and render the shop button
+  //     dispatch(storeActions.setShopNavButtonClicked(true));
+  //   }
+  // };
   const loginButtonHandler = () => {
     dispatch(storeActions.setLoginButtonClicked(true));
     dispatch(storeActions.setPageButtonClicked(false));

@@ -19,12 +19,6 @@ const SentencePracticeMainPage = () => {
   const newTestButtonHandler = () => {
     setNewTestPopupActive(!newTestPopupActive);
   };
-  const [numberOfQuestions, setNumberOfQuestions] = useState(0);
-  const [jlptLevel, setJLPTLevel] = useState("");
-  const popupReturnData = (jlptLevel, numberOfQuestions) => {
-    setNumberOfQuestions(numberOfQuestions);
-    setJLPTLevel(jlptLevel);
-  };
 
   return (
     <div className={classes.mainContainer}>
@@ -39,7 +33,6 @@ const SentencePracticeMainPage = () => {
         <NewSentencePracticePopup
           newTestPageOpen={newTestPopupActive}
           onCloseFunction={newTestButtonHandler}
-          returnDataFunction={popupReturnData}
         />
 
         <button
