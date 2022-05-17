@@ -6,7 +6,7 @@ import {
   GridItem,
   Button,
 } from "@chakra-ui/react";
-import logo from "../img/logo.jpg";
+import logo from "../img/logo2.jpg";
 import {
   ChevronDownIcon,
   ChevronUpIcon,
