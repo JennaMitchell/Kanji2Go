@@ -33,7 +33,7 @@ function App() {
           }
         ></Route>
         <Route
-          path="/premadeKanjiSheets"
+          path="/preMadeKanjiSheets"
           element={
             <>
               <PreMadeKanjiSheets />
