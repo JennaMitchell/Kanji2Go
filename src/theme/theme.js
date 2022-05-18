@@ -1,15 +1,4 @@
-import {
-  extendTheme,
-  theme as base,
-  withDefaultColorScheme,
-  withDefaultVariant,
-} from "@chakra-ui/react";
-
-import { mode } from "@chakra-ui/theme-tools";
-
-const searchBar = {
-  variants: {},
-};
+import { extendTheme, theme as base } from "@chakra-ui/react";
 
 const theme = extendTheme({
   colors: {

@@ -68,7 +68,6 @@ const PreMadeKanjiSheets = () => {
   }, [kanjiCardsDB]);
   useEffect(() => {
     if (vocabCardsDB.length !== 0) {
-      console.log("Vocab");
       setFilteredVocabDB(vocabCardsDB);
     }
   }, [vocabCardsDB]);
@@ -111,7 +110,7 @@ const PreMadeKanjiSheets = () => {
   }, [premadeKanjiFilterArray]);
 
   //fitering side effect
-  console.log(filteredVocabDB);
+
   useEffect(() => {
     if (premadeKanjiFilterArray.length !== 0) {
       let jlptFilteredSearch = premadeKanjiFilterArray

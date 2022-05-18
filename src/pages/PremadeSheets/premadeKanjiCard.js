@@ -1,11 +1,9 @@
 import classes from "./premadeKanjiCard.module.css";
 
 import { EyeIcon, EyeOffIcon } from "@heroicons/react/solid";
-import { Image, Text, Heading } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import KanjiPreviewSide from "./kanjiPreviewSide";
 import VocabPreviewSide from "./vocabPreviewSIde/vocabPreviewSide";
-import vocabPDFOne from "../../img/VocabSheets/VocabSheet1.pdf";
 import { DownloadIcon } from "@heroicons/react/solid";
 import kanjiSheetDatabase from "../../img/KanjiSheets/KanjiSheetDatabase";
 import vocabPdfDatabase from "../../img/VocabSheets/pdfMasterFIle";
@@ -154,13 +152,13 @@ const PremadeKanjiCard = ({
         ${bannerText === "Grammar" && classes.bannerShadowRed}`}
             ></div>
           </div>
-          <Image h="90%" w="90%" p="10px" pt="25px" src={photo}></Image>
-          <Heading w="fill" h="max-content" textAlign="center">
-            {title}
-          </Heading>
-          <Text pb="20px" textAlign="center">
-            {description}
-          </Text>
+          <img
+            src={photo}
+            className={classes.previewImage}
+            alt="decorative scene"
+          />
+          <h3 className={classes.jlptHeader}>{title}</h3>
+          <p className={classes.description}>{description}</p>
         </>
       )}
     </div>

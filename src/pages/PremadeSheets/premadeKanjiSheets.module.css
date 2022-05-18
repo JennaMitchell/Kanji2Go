@@ -25,7 +25,7 @@
   position: relative;
   height: max(1200px, 1200px);
   width: max(100%, 100%);
-  background-color: #f7d5d5;
+  background-color: #f5b2b2;
 
   grid-template-columns: repeat(5, 1fr);
 
