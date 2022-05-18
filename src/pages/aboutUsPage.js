@@ -8,6 +8,7 @@ import {
   GridItem,
   Heading,
 } from "@chakra-ui/react";
+console.log("x");
 
 import Footer from "../components/footer";
 
