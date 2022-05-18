@@ -1,0 +1,103 @@
+.dialogContainer {
+  width: max(max-content, max-content);
+  height: max(max-content, max-content);
+  padding: 0;
+  box-shadow: 0 0 10px white;
+  background-color: #221f1f;
+  border-radius: 20px;
+}
+.dialogContainer::backdrop {
+  background-color: rgba(0, 0, 0, 0.538);
+}
+.mainContainer {
+  width: max(400px, 400px);
+  height: max(290px, 290px);
+  background-color: #221f1f;
+  display: grid;
+  grid-template-rows: 60px 60px 60px 120px;
+  align-content: space-between;
+  justify-items: center;
+}
+.closingIconContainer {
+  background-color: #dc5357;
+  color: black;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: max(40px, 40px);
+  height: max(40px, 40px);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.closingIconContainer:hover {
+  background-color: #f3bdbd;
+}
+.icon {
+  width: max(90%, 80%);
+  height: max(90%, 80%);
+}
+.mainTitle {
+  width: max(max-content, max-content);
+  height: max(max-content, max-content);
+  font-size: 32px;
+  text-decoration: underline;
+  line-height: 32px;
+  color: white;
+  margin-top: 20px;
+}
+.jlptTestSelectorContainer,
+.numberOfQuestionsContainer {
+  height: max(60px, 60px);
+  width: max(340px, 340px);
+  display: grid;
+  grid-template-columns: 220px 90px;
+  justify-content: space-between;
+
+  color: white;
+  line-height: 20px;
+  font-size: 20px;
+
+  padding: 0;
+}
+.jlptTestSelectorTitle,
+.numberOfQuestionsTitle {
+  height: max(100%, 100%);
+  width: max(100%, 100%);
+  text-align: left;
+  display: grid;
+  justify-items: flex-start;
+  align-items: center;
+  font-size: 22px;
+}
+.jlptLevelDropDown,
+.numberOfQuestionsDropDown {
+  text-align: right;
+  height: max(100%, 100%);
+  width: max(100%, 100%);
+  margin-right: 10px;
+  background-color: #221f1f;
+  font-size: 22px;
+  line-height: 20px;
+  color: white;
+  display: grid;
+  justify-items: center;
+}
+.submitButton {
+  width: max(120px, 120px);
+  height: max(80px, 80px);
+  border-radius: 20px;
+  font-size: 24px;
+  margin-top: 10px;
+}
+.submitButtonActive {
+  background-color: #dc5357;
+  color: black;
+}
+.submitButtonActive:hover {
+  background-color: #f3bdbd;
+}
+.submitButtonDisabled {
+  background-color: rgb(119, 113, 113);
+  color: rgb(197, 195, 195);
+}

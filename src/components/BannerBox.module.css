@@ -1,0 +1,49 @@
+.ribbon {
+  width: 120px;
+  height: 100px;
+  overflow: hidden;
+  position: absolute;
+}
+
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 170px;
+  padding: 5px 0;
+  background-color: #3498db;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font: "Nanum Myeongjo", sans-serif;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  text-align: center;
+  z-index: 3;
+}
+.ribbonTopRight {
+  top: -10px;
+  right: -10px;
+}
+
+.ribbonTopRight span {
+  left: -2px;
+  top: 23px;
+  transform: rotate(45deg);
+}
+.shadowOne {
+  position: absolute;
+  display: block;
+  background-color: #22618b;
+  padding: 5px;
+  z-index: 2;
+  top: -10px;
+  right: 81px;
+}
+.shadowTwo {
+  position: absolute;
+  display: block;
+  background-color: #25638d;
+  padding: 5px;
+  z-index: 2;
+  top: 80px;
+  right: -10px;
+}

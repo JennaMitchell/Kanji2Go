@@ -1,0 +1,9 @@
+.blurBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: max(100vw, 100vw);
+  height: max(100vh, 100vh);
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 3;
+}

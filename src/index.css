@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: max-content;
+}
+#root {
+  width: 100vw;
+  height: max-content;
+}

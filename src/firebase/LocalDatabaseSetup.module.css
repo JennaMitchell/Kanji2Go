@@ -1,0 +1,23 @@
+.httpRequestError {
+  text-align: center;
+  color: red;
+  height: max(100vh, 100vh);
+  width: max(100vw, 100vw);
+  font-size: 2rem;
+}
+.flashcardsLoading {
+  text-align: center;
+  color: white;
+  height: max(100vh, 100vh);
+  width: max(100vw, 100vw);
+  font-size: 6rem;
+}
+.text {
+  height: max(100vh, 100vh);
+  width: max(100vw, 100vw);
+}
+.flashcardsFinishedLoading {
+  display: none;
+  height: max(0, 0);
+  width: max(0, 0);
+}

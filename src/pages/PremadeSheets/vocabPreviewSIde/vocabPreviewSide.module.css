@@ -1,0 +1,47 @@
+.vocabSelection {
+  width: max(80px, 80px);
+  height: max(40px, 40px);
+  background-color: #221f1f;
+
+  margin: 0px 10px 10px 15px;
+  font-size: 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+.infoContainer {
+  width: max(70%, 70%);
+  height: max(337.833px, 337.833px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+.kanjiPicture {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 2;
+  width: max(100%, 100%);
+  height: max(100%, 100%);
+  border: 1px solid black;
+  font-size: 64px;
+}
+.meaningContainer {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+  width: max(100%, 100%);
+  height: max(100%, 100%);
+  display: grid;
+}
+.radicalContainer {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  width: max(100%, 100%);
+  height: max(100%, 100%);
+  display: grid;
+}
+.readingsContainer {
+  grid-column: 1 / span 2;
+  grid-row: 3 / span 2;
+}
+.vocabClicked,
+.vocabSelection:hover {
+  box-shadow: 1px 1px 5px white;
+}

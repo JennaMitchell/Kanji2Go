@@ -1,0 +1,45 @@
+.bannerBoxOne {
+  margin-left: 30%;
+}
+.bannerBoxThree {
+  margin-right: 30%;
+}
+.icon {
+  width: max(25px, 20px);
+  height: max(25px, 20px);
+}
+
+.loginClickedHomepage {
+  overflow: hidden;
+  width: max(100vw, 100vw);
+  height: max(100vh, 100vh);
+}
+.mainContainer {
+  width: max(100%, 100%);
+  height: max(900px, 900px);
+  padding: 0;
+  background-color: #dc5357;
+  margin: 0;
+  position: relative;
+}
+.navLinkBox {
+  width: max(max-content, max-content);
+  height: max(max-content, max-content);
+  display: grid;
+}
+.blurBackground {
+  height: max(100vh, 100vh);
+  width: max(100vw, 100vw);
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+.navLink {
+  width: max(100%, 100%);
+  height: max(100%, 100%);
+  display: grid;
+  place-items: center;
+}

@@ -1,0 +1,85 @@
+.infoContainer {
+  position: absolute;
+  top: 40%;
+  left: 5.5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  width: max(90%, 90%);
+  height: max(57.5%, 57.5%);
+
+  background-color: #221f1f;
+  gap: 0;
+  color: white;
+  border-radius: 10px;
+}
+.radicalTitle,
+.kunyomiTitle,
+.onyomiTitle,
+.meaningTitle {
+  font-size: 15px;
+  font-weight: bolder;
+  margin-left: 5px;
+}
+.kanjiPicture {
+  grid-column: 1 / span 1;
+  grid-row: 1 / span 1;
+  height: max(100%, 100%);
+  width: max(100%, 100%);
+  font-size: 64px;
+  background-color: #221f1f;
+  color: white;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+}
+.radMeaningContainer {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+  height: max(100%, 100%);
+  width: max(100%, 100%);
+}
+.meaningTitle {
+  font-weight: 800;
+}
+.meaning {
+  margin-left: 5px;
+}
+
+.radical {
+  margin-left: 5px;
+}
+.onyomiContainer {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+  height: max(100%, 100%);
+  width: max(100%, 100%);
+}
+.onyomiTitle {
+  font-weight: 800;
+  margin-left: 5px;
+}
+.onyomiKana {
+  margin-left: 5px;
+}
+.onyomiEnglish {
+  margin-left: 5px;
+}
+.kunyomiContainer {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  height: max(100%, 100%);
+  width: max(100%, 100%);
+}
+.kunyomiTitle {
+  font-weight: bold;
+  margin-left: 5px;
+  font-size: 15px;
+}
+.kuyomiKana {
+  margin-left: 5px;
+}
+.kunyomiEnglish {
+  margin-left: 5px;
+}
