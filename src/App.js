@@ -3,7 +3,7 @@ import HomePage from "./main/homepage";
 import "./theme/style.css";
 import { Route, Routes, Navigate } from "react-router-dom";
 import AboutUsPage from "./pages/aboutUsPage";
-import PreMadeKanjiSheets from "./pages/premadeSheets/premadeKanjiSheet";
+import PreMadeKanjiSheets from "./pages/premadesheets/premadeKanjiSheet";
 import LocalDatabaseSetup from "./firebase/LocalDatabaseSetup";
 import CustomKanjiHomePage from "./pages/customKanji/customKanjiHomePage";
 import KanjiQuizMainPage from "./pages/kanjiQuiz/kanjiQuizMainPage";
