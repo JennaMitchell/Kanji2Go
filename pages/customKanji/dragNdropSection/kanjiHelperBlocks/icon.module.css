@@ -1,9 +1,0 @@
-.icon {
-  width: max(14px, 14px);
-  height: max(14px, 14px);
-  position: relative;
-  color: black;
-}
-.icon:hover {
-  color: white;
-}
