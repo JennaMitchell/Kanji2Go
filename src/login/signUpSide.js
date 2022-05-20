@@ -37,16 +37,22 @@ const SignUpSide = () => {
         columns={1}
         columnGap={3}
         rowGap={6}
-        mt="4%"
+        mt={["6%", "4%", "4%", "4%", "4%", "4%"]}
         ml="5%"
         justifyItems="center"
         alignItems="center"
       >
         <GridItem colSpan={1}>
-          <Heading textAlign="center" fontSize="46px">
+          <Heading
+            textAlign="center"
+            fontSize={["24px", "28px", "46px", "46px", "46px", "46px"]}
+          >
             Let's Get Started!
           </Heading>
-          <Text fontSize="18px" mt="10px">
+          <Text
+            fontSize={["14px", "16px", "18px", "18px", "18px", "18px"]}
+            mt="10px"
+          >
             Create an account to save your progress
           </Text>
         </GridItem>
@@ -94,7 +100,10 @@ const SignUpSide = () => {
             />
           </FormControl>
         </GridItem>
-        <GridItem w="80%" marginBottom="20px">
+        <GridItem
+          w="80%"
+          marginBottom={["0px", "10px", "20px", "20px", "20px", "20px"]}
+        >
           <Button
             colorScheme="brand"
             size="lg"
@@ -111,6 +120,7 @@ const SignUpSide = () => {
           display="flex"
           justifyContent="center"
           textAlign={"center"}
+          fontSize={["12px", "14px", "16px", "18px", "18px", "18px"]}
         >
           <Text>Already have an account? </Text>
           <Text

@@ -98,7 +98,7 @@ const CustomKanjiHomePage = () => {
             color="brand.900"
             borderBottom="2px"
           >
-            Kanji Sheets Creator
+            Custom Kanji Sheets
           </Heading>
         </Container>
         <Container

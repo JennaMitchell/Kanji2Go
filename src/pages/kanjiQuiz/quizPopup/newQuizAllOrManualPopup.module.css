@@ -74,3 +74,31 @@
   width: max(90%, 80%);
   height: max(90%, 80%);
 }
+@media (max-width: 550px) {
+  .mainContainer {
+    width: max(400px, 400px);
+    font-size: 28px;
+  }
+  .closingIconContainer {
+    top: 15px;
+    right: 15px;
+  }
+  .btnContainer {
+    width: max(350px, 350px);
+  }
+}
+@media (max-width: 440px) {
+  .mainContainer {
+    width: max(300px, 300px);
+    height: max(285px, 285px);
+    font-size: 22px;
+  }
+  .closingIconContainer {
+    top: 5px;
+    right: 5px;
+  }
+  .btnContainer {
+    width: max(250px, 250px);
+    grid-template-columns: 100px 100px;
+  }
+}

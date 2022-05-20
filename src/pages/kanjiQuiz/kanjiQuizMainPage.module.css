@@ -199,7 +199,17 @@
     height: max(660px, 660px);
     grid-template-rows: 220px 400px;
   }
-  .canvasContainer {
-    margin-top: 220px;
+}
+@media (max-width: 700px) {
+  .scoreWindowContainer {
+    margin-top: 110px;
+  }
+  .quizWindowContainer {
+    width: max(400px, 400px);
+    height: max(660px, 660px);
+    grid-template-rows: 220px 400px;
+  }
+  .quizCanvasBackdrop {
+    margin-top: 140px;
   }
 }

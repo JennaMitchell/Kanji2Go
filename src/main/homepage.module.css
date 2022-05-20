@@ -38,7 +38,7 @@
   overflow: hidden;
 }
 .navLink {
-  width: max(100%, 100%);
+  width: max(max-content, max-content);
   height: max(100%, 100%);
   display: grid;
   place-items: center;

@@ -49,7 +49,10 @@ const LoginSide = () => {
           <Heading textAlign="center" fontSize="46px">
             Login
           </Heading>
-          <Text fontSize="18px" mt="10px">
+          <Text
+            fontSize={["14px", "16px", "16px", "18px", "18px", "18px"]}
+            mt="10px"
+          >
             Please enter your Login and Password
           </Text>
         </GridItem>
@@ -77,6 +80,7 @@ const LoginSide = () => {
               textAlign="end"
               mt="3px"
               _hover={{ color: "blue", textDecoration: "underline" }}
+              fontSize={["14px", "16px", "16px", "18px", "18px", "18px"]}
             >
               Forgot password?
             </Text>
@@ -119,7 +123,7 @@ const LoginSide = () => {
           borderRadius="4px"
           pos="absolute"
           top="-20px"
-          left="45%"
+          left={["39%", "45%", "45%", "45%", "45%", "45%"]}
           zIndex="3"
           bg="brand.100"
           color="black"
@@ -171,6 +175,7 @@ const LoginSide = () => {
           display="flex"
           justifyContent="center"
           textAlign={"center"}
+          fontSize={["12px", "14px", "16px", "18px", "18px", "18px"]}
         >
           <Text>Dont'have an account? </Text>
           <Text

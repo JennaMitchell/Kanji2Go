@@ -25,9 +25,14 @@
   border-radius: 40px;
   color: black;
 }
-@media (min-width: 30rem) {
+@media (max-width: 800px) {
   .mainContainer {
-    width: max(500px, 500px);
+    width: max(80vw, 80vw);
+  }
+}
+@media (max-width: 700px) {
+  .mainContainer {
+    height: max(680px, 680px);
   }
 }
 /* @media (min-width: 48rem) {

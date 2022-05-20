@@ -79,11 +79,11 @@ const NavBar = () => {
               <Image
                 src={logo}
                 alt="kanji 2 go logo"
-                maxW="60px"
-                maxH="60px"
+                maxW={["45px", "60px", "60px", "60px", "60px", "60px"]}
+                maxH={["45px", "60px", "60px", "60px", "60px", "60px"]}
                 borderRadius="50%"
                 border="none"
-                ml={["30px", "40px", "40px", "50px", "50px", "50px"]}
+                ml={["10px", "20px", "40px", "50px", "50px", "50px"]}
               />
               <Flex w="max-content" h="60%" ml="10%">
                 <HStack>
@@ -111,13 +111,16 @@ const NavBar = () => {
             display="flex"
             alignItems="center"
           >
-            <Flex mr={50}>
-              <Flex mr="20px" justifyContent="center" alignItems="center">
+            <Flex mr={[3, 3, 30, 30, 50, 50]}>
+              <Flex
+                mr={["0px", "20px", "20px", "20px", "20px", "20px"]}
+                justifyContent="center"
+                alignItems="center"
+              >
                 <Button
-                  w="100%"
+                  w={["70%", "100%", "100%", "100%", "100%", "100%"]}
                   h="80%"
-                  fontSize="24px"
-                  paddingRight="10px"
+                  fontSize={["16px", "20px", "24px", "24px", "24px", "24px"]}
                   bg="inherit"
                   _hover={{ color: "black", bgColor: "brand.300" }}
                 >
@@ -125,11 +128,15 @@ const NavBar = () => {
                 </Button>
               </Flex>
 
-              <Flex mr="20px" justifyContent="center" alignItems="center">
+              <Flex
+                justifyContent="center"
+                alignItems="center "
+                mr={["2px", "20px", "20px", "20px", "20px", "20px"]}
+              >
                 <Button
-                  w="80%"
+                  w={["60%", "100%", "100%", "100%", "100%", "100%"]}
                   h="80%"
-                  fontSize="24px"
+                  fontSize={["16px", "20px", "24px", "24px", "24px", "24px"]}
                   onClick={pageButtonHandler}
                   bgColor="inherit"
                   _focus={{ border: "none" }}
@@ -147,8 +154,12 @@ const NavBar = () => {
                   ></ChevronDownIcon>
                 )}
               </Flex>
-              <Flex mr="20px" justifyContent="center" alignItems="center">
-                {/* <Button
+              {/* <Flex
+                mr={["2", "20px", "20px", "20px", "20px", "20px"]}
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Button
                   w="80%"
                   h="80%"
                   fontSize="24px"
@@ -167,8 +178,8 @@ const NavBar = () => {
                   <ChevronDownIcon
                     className={classes.chevronDownIcon}
                   ></ChevronDownIcon>
-                )} */}
-              </Flex>
+                )}
+              </Flex> */}
 
               {/* <Flex
                 mr="20px"
@@ -199,10 +210,11 @@ const NavBar = () => {
 
               <Button
                 h="50px"
-                w={["140px", "140px", "170px", "170px", "170px", "170px"]}
+                w={["110px", "140px", "170px", "170px", "170px", "170px"]}
                 bgColor="brand.300"
                 onClick={loginButtonHandler}
                 _hover={{ color: "black", bgColor: "brand.300" }}
+                fontSize={["14px", "16px", "18px", "18px", "18px", "18px"]}
               >
                 <UserIcon className={classes.userIcon} />
                 Login/Register

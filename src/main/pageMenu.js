@@ -20,7 +20,7 @@ const PageMenu = () => {
       borderColor="brand.100"
       pos="absolute"
       top="0"
-      right={["175px", "175px", "200px", "200px", "200px", "200px"]}
+      right={["85px", "120px", "190px", "180px", "180px", "180px"]}
       p={4}
       borderEndEndRadius="20px"
       borderEndStartRadius="20px"
@@ -29,7 +29,7 @@ const PageMenu = () => {
       borderTop="0px"
     >
       <Button
-        fontSize="20px"
+        fontSize={["16px", "16px", "20px", "20px", "20px", "20px"]}
         backgroundColor="inherit"
         textAlign="start"
         onClick={navButtonHandler}
@@ -38,7 +38,7 @@ const PageMenu = () => {
         <NavLink to="/aboutus"> About Us</NavLink>
       </Button>
       <Button
-        fontSize="20px"
+        fontSize={["16px", "16px", "20px", "20px", "20px", "20px"]}
         backgroundColor="inherit"
         onClick={navButtonHandler}
         _hover={{ color: "black", bgColor: "brand.300" }}
@@ -46,7 +46,7 @@ const PageMenu = () => {
         <NavLink to="/premadeKanjiSheets">Premade Kanji Sheets</NavLink>
       </Button>
       <Button
-        fontSize="20px"
+        fontSize={["16px", "16px", "20px", "20px", "20px", "20px"]}
         backgroundColor="inherit"
         onClick={navButtonHandler}
         _hover={{ color: "black", bgColor: "brand.300" }}
@@ -54,7 +54,7 @@ const PageMenu = () => {
         <NavLink to="/customKanjiSheets">Kanji Sheets Creator</NavLink>
       </Button>
       <Button
-        fontSize="20px"
+        fontSize={["16px", "16px", "20px", "20px", "20px", "20px"]}
         backgroundColor="inherit"
         onClick={navButtonHandler}
         _hover={{ color: "black", bgColor: "brand.300" }}

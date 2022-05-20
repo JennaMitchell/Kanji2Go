@@ -312,10 +312,10 @@ const NewQuizManualKanjiSelector = ({
               id={index}
               key={index}
             ></SelectedKanjiCard>
-          ))}{" "}
+          ))}
         </div>
         <h2 className={classes.filterTitle}>
-          &nbsp; Select Number To Test &nbsp;
+          &nbsp; Number of Questions &nbsp;
         </h2>
         <div className={classes.numberOfQuestionsContainer}>
           <p className={classes.numberOfQuestionsLabel}> Number of Questions</p>

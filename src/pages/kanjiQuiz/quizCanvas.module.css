@@ -119,3 +119,31 @@
     left: 50px;
   }
 }
+@media (max-width: 700px) {
+  .clearButton {
+    top: -85px;
+    right: 0;
+  }
+  .eraseButton {
+    top: -85px;
+    right: 120px;
+  }
+  .submitButton {
+    top: -85px;
+    right: 240px;
+  }
+  .clearButton,
+  .eraseButton,
+  .submitButton {
+    font-size: 22px;
+    width: max(100px, 100px);
+    height: max(60px, 60px);
+  }
+  .submitCheckMark {
+    top: -50px;
+    left: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+  }
+}

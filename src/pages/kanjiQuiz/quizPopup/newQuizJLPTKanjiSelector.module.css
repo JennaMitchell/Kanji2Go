@@ -58,7 +58,7 @@
   width: max(350px, 350px);
   height: max(50px, 50px);
   display: grid;
-  grid-template-columns: 250px 100px;
+  grid-template-columns: 250px max-content;
   font-size: 22px;
   align-items: center;
   justify-content: space-between;
@@ -99,4 +99,27 @@
 .activeSubmitButton {
   background-color: #dc5357;
   color: #221f1f;
+}
+@media (max-width: 500px) {
+  .mainContainer {
+    height: max(275px, 275px);
+    width: max(350px, 350px);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .jlptTestSelectorContainer,
+  .numberOfQuestionsSelectorContainer {
+    width: max(300px, 300px);
+    grid-template-columns: 200px 100px;
+    justify-content: space-between;
+    font-size: 18px;
+  }
+  .submitButton,
+  .activeSubmitButton {
+    margin-left: 0px;
+  }
 }

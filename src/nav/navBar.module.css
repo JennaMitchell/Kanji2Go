@@ -35,3 +35,10 @@
   height: max(100px, 100px);
   z-index: 4;
 }
+@media (max-width: 700px) {
+  .userIcon {
+    height: max(20px, 20px);
+    width: max(20px, 20px);
+    margin-right: 10px;
+  }
+}

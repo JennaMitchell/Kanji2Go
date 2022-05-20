@@ -71,13 +71,19 @@ const HomePage = () => {
           >
             <GridItem colSpan={1} h="max-content" w="75%" transform="auto">
               <Heading
-                fontSize={{ base: "28px", md: "50px", lg: "60px", xl: "80px" }}
+                fontSize={{
+                  base: "26px",
+                  sm: "28px",
+                  md: "50px",
+                  lg: "60px",
+                  xl: "80px",
+                }}
                 textAlign="center"
               >
                 Custom Kanji Sheet Generator
               </Heading>
               <Text
-                fontSize={{ base: "18px", lg: "22px", xl: "36px" }}
+                fontSize={{ base: "14px", sm: "18px", lg: "22px", xl: "36px" }}
                 textAlign="left"
                 mt="30px"
               >
@@ -88,7 +94,7 @@ const HomePage = () => {
                 h={["50px", "60px", "75px", "80px", "100px", "100px"]}
                 w={["100%", "100%", "100%", "100%", "100%", "100%"]}
                 mt="30px"
-                fontSize={{ base: "24px", lg: "30px", xl: "36px" }}
+                fontSize={{ base: "20px", sm: "24px", lg: "30px", xl: "36px" }}
                 bgColor="#221f1f"
                 color="white"
                 _hover={{ color: "black", bgColor: "brand.200" }}
@@ -110,7 +116,7 @@ const HomePage = () => {
                 src={kanjiSheet}
                 alt="kanji sheets"
                 h={["65%", "65%", "75%", "75%", "75%", "80%"]}
-                w={["75%", "75%", "75%", "80%", "80%", "70%"]}
+                w={["85%", "75%", "75%", "80%", "80%", "70%"]}
               ></Image>
             </GridItem>
           </SimpleGrid>
@@ -127,9 +133,9 @@ const HomePage = () => {
           justifyContent={"center"}
           gridTemplateRows={"max-content auto"}
           gridTemplateColumns={[
-            "max-content",
-            "max-content",
-            "max-content",
+            "100vw",
+            "100vw",
+            "100vw",
             "max-content",
             "max-content",
             "1600px",
@@ -139,14 +145,21 @@ const HomePage = () => {
             <Text color="brand.900" fontWeight="bold" mt="40px" fontSize="20px">
               EDUCATION ANYWHERE
             </Text>
-            <Heading color="brand.900" maxW="550px" textAlign="center">
+            <Heading
+              color="brand.900"
+              w="100%"
+              height="max-content"
+              textAlign="center"
+              fontSize={["22px", "24px", "26px", "28px", "28px", "28px"]}
+            >
               Online Practice or Downloadable Sheets for Remote Learning
             </Heading>
             <Text
               color="brand.900"
-              maxW="550px"
+              w="100%"
+              height="max-content"
               textAlign="center"
-              fontSize="18px"
+              fontSize={["14px", "14px", "16px", "18px", "18px", "18px"]}
             >
               Find the latest, and most popular sheets below, or select custom
               practice sheets based on your JLPT Level.
@@ -154,15 +167,18 @@ const HomePage = () => {
           </VStack>
 
           <Grid
-            w={["100%"]}
+            w={"100%"}
             h="450px"
             bgColor="brand.100"
             alignContent="center"
             templateColumns={{
+              base: "100%",
+              sm: "100%",
+              md: "100%",
               lg: "repeat(2,1fr)",
               xl: "repeat(3,1fr)",
             }}
-            templateRows="450px"
+            templateRows="100%"
             justifyItems="center"
             display={"grid"}
           >
@@ -224,15 +240,15 @@ const HomePage = () => {
           >
             <Image
               src={tablet}
-              h={["60%", "50%", "60%", "60%", "70%", "70%"]}
-              w={["70%", "80%", "70%", "70%", "70%", "70%"]}
-              ml={["10%", "10%", "10%", "10%", "10%", "10%"]}
+              h={["50%", "50%", "60%", "60%", "70%", "70%"]}
+              w={["90%", "80%", "70%", "70%", "70%", "70%"]}
+              ml={["0", "10%", "10%", "10%", "10%", "10%"]}
               mt="0"
               alt="tablet"
               display={"grid"}
             />
             <GridItem
-              w="80%"
+              w={["100%", "80%", "80%", "80%", "80%", "80%"]}
               h="max-content"
               p="10px"
               colSpan={1}
@@ -242,8 +258,15 @@ const HomePage = () => {
               gap={["20px", "15px", "20px", "20px", "20px", "20px"]}
             >
               <Text
-                fontSize={{ base: "18px", md: "22px", lg: "24px", xl: "26px" }}
+                fontSize={{
+                  base: "16px",
+                  sm: "18px",
+                  md: "22px",
+                  lg: "24px",
+                  xl: "26px",
+                }}
                 color="black"
+                textAlign={"center"}
               >
                 Real Time Learning
               </Text>
@@ -262,7 +285,7 @@ const HomePage = () => {
               </Heading>
               <Text
                 fontSize={{
-                  base: "16px",
+                  base: "12px",
                   sm: "16px",
                   md: "18px",
                   lg: "20px",
@@ -280,7 +303,7 @@ const HomePage = () => {
                 mt={"10px"}
                 h={["50px", "60px", "75px", "80px", "100px", "100px"]}
                 w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-                fontSize={{ base: "24px", lg: "30px", xl: "36px" }}
+                fontSize={{ base: "14px", sm: "24px", lg: "30px", xl: "36px" }}
                 textAlign="left"
                 color="white"
                 _hover={{ bgColor: "brand.100", color: "black" }}
@@ -316,8 +339,8 @@ const HomePage = () => {
           >
             <Text
               fontSize={{
-                base: "16px",
-                sm: "px",
+                base: "14px",
+                sm: "18px",
                 md: "22px",
                 lg: "26px",
                 xl: "26px",
@@ -349,7 +372,7 @@ const HomePage = () => {
               mt="2%"
               h={["50px", "60px", "75px", "80px", "100px", "100px"]}
               w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-              fontSize={{ base: "26px", lg: "30px", xl: "36px" }}
+              fontSize={{ base: "18px", sm: "26px", lg: "30px", xl: "36px" }}
               textAlign="left"
               marginTop="20px"
               color="white"
@@ -361,8 +384,8 @@ const HomePage = () => {
           </GridItem>
           <Image
             src={books}
-            h={["60%", "60%", "60%", "60%", "60%", "70%"]}
-            w={["80%", "80%", "80%", "70%", "70%", "70%"]}
+            h={["50%", "60%", "60%", "60%", "60%", "70%"]}
+            w={["90%", "80%", "80%", "70%", "70%", "70%"]}
             mt="0"
             alt="tablet"
           />

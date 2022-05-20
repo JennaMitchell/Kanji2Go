@@ -48,14 +48,20 @@ const AboutUsPage = () => {
           w="max-content"
           textAlign="center"
           h="max-content"
-          fontSize="64px"
+          fontSize={["48px", "56px", "64px", "64px", "64px", "64px"]}
           color="brand.900"
           borderBottom="2px"
         >
           About Us
         </Heading>
       </Container>
-      <Container maxW="100%" h="900px" p="0" bgColor="brand.200" m="0">
+      <Container
+        maxW="100%"
+        h={["600px", "700px", "800px", "900px", "900px", "900px"]}
+        p="0"
+        bgColor="brand.200"
+        m="0"
+      >
         <SimpleGrid
           columns={2}
           w="100%"
@@ -63,18 +69,25 @@ const AboutUsPage = () => {
           display="grid"
           placeItems="center"
         >
-          <GridItem w="650px" h="max-content">
+          <GridItem
+            w={["90%", "90%", "90%", "90%", "650px", "650px"]}
+            h="max-content"
+          >
             <VStack w="fill" h="fill">
               <Heading
                 color="brand.900"
-                fontSize="64px"
+                fontSize={["26px", "38px", "52px", "64px", "64px", "64px"]}
                 borderBottom="2px"
                 textAlign="center"
                 w="100%"
               >
                 Passion Driven
               </Heading>
-              <Text fontSize="26px" paddingTop="30px" color="brand.900">
+              <Text
+                fontSize={["18px", "22px", "24px", "26px", "26px", "26px"]}
+                paddingTop={["15px", "20px", "25px", "30px", "30px", "30px"]}
+                color="brand.900"
+              >
                 Kanji2Go is created by Jenna Mitchell, an aspiring frontend
                 devloper. Who's love for language learning, inspired her to
                 create a free, dynamic, language web app to aid others on their
@@ -83,8 +96,8 @@ const AboutUsPage = () => {
             </VStack>
           </GridItem>
           <GridItem
-            w="650px"
-            h="650px"
+            w={["90%", "90%", "90%", "90%", "650px", "650px"]}
+            h={["55%", "70%", "70%", "70%", "650px", "650px"]}
             bgColor="brand.600"
             display="grid"
             placeItems="center"

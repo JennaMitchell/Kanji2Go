@@ -5,8 +5,8 @@ const BannerBox = ({ title, subtext, img, ribbon = false }) => {
   return (
     <Container
       bgColor="brand.600"
-      w={"400px"}
-      height={"385px"}
+      w={["300px", "300px", "400px", "400px", "400px", "400px"]}
+      height={["320px", "320px", "385px", "385px", "385px", "385px"]}
       borderRadius="10px"
       pos="relative"
       zIndex={3}

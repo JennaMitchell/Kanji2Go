@@ -109,3 +109,22 @@
     font-size: 18px;
   }
 }
+@media (max-width: 510px) {
+  .questionContainer {
+    width: max(325px, 325px);
+    /* margin-top: 110px; */
+  }
+  .kunyomiTitle,
+  .onyomiTitle,
+  .meaningTitle {
+    font-size: 22px;
+  }
+  .previousButton {
+    top: 50%;
+    left: -17%;
+  }
+  .nextButton {
+    top: 50%;
+    right: -17%;
+  }
+}

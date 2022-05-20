@@ -59,8 +59,8 @@ const Footer = () => {
         <Heading
           w="80%"
           height="max-content"
-          fontSize={{ base: "10px", sm: "28px", md: "32px" }}
-          lineHeight={{ base: "10px", sm: "28px", md: "32px" }}
+          fontSize={{ base: "22px", sm: "28px", md: "32px" }}
+          lineHeight={{ base: "22px", sm: "28px", md: "32px" }}
           textAlign="flex-start"
         >
           Kanji2Go
@@ -111,7 +111,7 @@ const Footer = () => {
         colSpan={1}
         w="100%"
         h="max-content"
-        mt={{ sm: "20px", lg: "0" }}
+        mt={{ base: "20px", sm: "20px", lg: "0" }}
       >
         <VStack w="100%" h="100%" colSpan={1}>
           <Heading
@@ -145,7 +145,7 @@ const Footer = () => {
         </VStack>
         <VStack w="100%" h="100%" colSpan={1}>
           <Heading
-            marginTop={{ sm: "30px", lg: "30px" }}
+            marginTop={{ base: "20px", sm: "30px", lg: "30px" }}
             marginBottom={{ sm: "0", lg: "30px" }}
             fontSize={{ base: "34px", sm: "34px", md: "28px" }}
           >
@@ -212,7 +212,7 @@ const Footer = () => {
         </VStack>
         <VStack w="100%" h="100%" colSpan={1}>
           <Heading
-            marginTop={{ sm: "30px", lg: "30px" }}
+            marginTop={{ base: "20px", sm: "30px", lg: "30px" }}
             marginBottom={{ sm: "0", lg: "30px" }}
             fontSize={{ base: "34px", sm: "34px", md: "28px" }}
           >
