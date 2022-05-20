@@ -1,0 +1,104 @@
+.dialogContainer {
+  width: max(max-content, max-content);
+  height: max(max-content, max-content);
+  padding: 0;
+  box-shadow: 0 0 10px white;
+  background-color: #221f1f;
+  border-radius: 20px;
+}
+.dialogContainer::backdrop {
+  background-color: rgba(0, 0, 0, 0.538);
+}
+.mainContainer {
+  width: max(500px, 500px);
+  height: max(300px, 300px);
+  box-shadow: 0 0 10px white;
+  background-color: #221f1f;
+  border-radius: 20px;
+  color: white;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-rows: repeat(3, 50px) 200px;
+  font-size: 32px;
+}
+
+.secondTitle,
+.orDivider {
+  text-align: center;
+  margin-top: 30px;
+}
+.firstTitle {
+  text-align: center;
+  margin-top: 30px;
+}
+.orDivider {
+  font-size: 26px;
+}
+.btnContainer {
+  width: max(400px, 400px);
+  height: max(100px, 100px);
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  grid-template-columns: 150px 150px;
+  font-size: 24px;
+  color: black;
+  margin-bottom: 40px;
+}
+.selectionBtn {
+  background-color: #dc5357;
+  width: max(100%, 100%);
+  height: max(75px, 75px);
+  border-radius: 10px;
+}
+.selectionBtn:hover {
+  background-color: #f3bdbd;
+}
+.closingIconContainer {
+  background-color: #dc5357;
+  color: black;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: max(40px, 20px);
+  height: max(40px, 20px);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.closingIconContainer:hover {
+  background-color: #f3bdbd;
+}
+.icon {
+  width: max(90%, 80%);
+  height: max(90%, 80%);
+}
+@media (max-width: 550px) {
+  .mainContainer {
+    width: max(400px, 400px);
+    font-size: 28px;
+  }
+  .closingIconContainer {
+    top: 15px;
+    right: 15px;
+  }
+  .btnContainer {
+    width: max(350px, 350px);
+  }
+}
+@media (max-width: 440px) {
+  .mainContainer {
+    width: max(300px, 300px);
+    height: max(285px, 285px);
+    font-size: 22px;
+  }
+  .closingIconContainer {
+    top: 5px;
+    right: 5px;
+  }
+  .btnContainer {
+    width: max(250px, 250px);
+    grid-template-columns: 100px 100px;
+  }
+}

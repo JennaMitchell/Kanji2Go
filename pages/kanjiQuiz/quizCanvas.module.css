@@ -1,0 +1,149 @@
+#kanjiCanvas {
+  background-color: white;
+}
+.clearButton,
+.eraseButton,
+.submitButton {
+  width: max(100px, 100px);
+  height: max(60px, 60px);
+  position: absolute;
+  background-color: #dc5357;
+  color: black;
+  border-radius: 10px;
+  font-size: 26px;
+}
+.clearButton:hover,
+.eraseButton:hover,
+.submitButton:hover {
+  box-shadow: 0 0 10px white;
+}
+.clearButton {
+  top: 0;
+  right: -120px;
+}
+.eraseButton {
+  top: 100px;
+  right: -120px;
+}
+.eraseButtonActive,
+.clearButtonActive {
+  box-shadow: 0 0 10px white;
+  background-color: #f3bdbd;
+  color: black;
+}
+.submitButton {
+  top: 200px;
+  right: -120px;
+}
+
+.submitCheckMark {
+  width: max(50px, 50px);
+  height: max(50px, 50px);
+  position: absolute;
+  top: 30px;
+  left: -50px;
+  background-color: grey;
+  color: rgb(220, 215, 215);
+  font-size: 26px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submitCheckMarkActive {
+  background-color: white;
+  color: green;
+}
+
+.icon {
+  width: max(70%, 70%);
+  height: max(70%, 70%);
+}
+
+.prevStrokeContainer {
+  position: absolute;
+  width: max(300px, 300px);
+  height: max(390px, 390px);
+  top: 0%;
+  left: -400px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-rows: 50px 300px;
+  justify-content: space-between;
+  align-items: center;
+}
+.prevStrokeTitle {
+  text-align: center;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  color: white;
+  text-decoration: underline;
+}
+
+.prevStroke {
+  width: max(300px, 300px);
+  height: max(300px, 300px);
+  background-color: white;
+  border-radius: 10px;
+}
+@media (max-width: 1415px) {
+  .prevStrokeContainer {
+    top: 600px;
+    left: 150px;
+  }
+}
+@media (max-width: 920px) {
+  .clearButton,
+  .eraseButton,
+  .submitButton {
+    font-size: 22px;
+    width: max(70px, 70px);
+    height: max(60px, 60px);
+  }
+  .clearButton {
+    top: 0;
+    right: -80.5px;
+  }
+  .eraseButton {
+    top: 100px;
+    right: -80.5px;
+  }
+  .submitButton {
+    top: 200px;
+    right: -80.5px;
+  }
+  .prevStrokeContainer {
+    top: 400px;
+    left: 50px;
+  }
+}
+@media (max-width: 700px) {
+  .clearButton {
+    top: -85px;
+    right: 0;
+  }
+  .eraseButton {
+    top: -85px;
+    right: 120px;
+  }
+  .submitButton {
+    top: -85px;
+    right: 240px;
+  }
+  .clearButton,
+  .eraseButton,
+  .submitButton {
+    font-size: 22px;
+    width: max(100px, 100px);
+    height: max(60px, 60px);
+  }
+  .submitCheckMark {
+    top: -50px;
+    left: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+  }
+}

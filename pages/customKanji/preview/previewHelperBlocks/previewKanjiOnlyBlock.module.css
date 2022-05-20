@@ -1,0 +1,35 @@
+.kanjiContainer {
+  width: min(96px, 96px);
+  height: min(96px, 96px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 56px;
+}
+.kanji {
+  width: min(max-content, max-content);
+  height: min(max-content, max-content);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 62px;
+
+  line-height: 62px;
+}
+.kanjiDownload {
+  letter-spacing: -1px;
+  line-height: 0px;
+  margin-top: 5px;
+}
+.text {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 0px;
+}
+.textDownload {
+  margin-top: 30px;
+  padding-top: 10px;
+}

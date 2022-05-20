@@ -1,0 +1,125 @@
+.dialogBox {
+  height: max(max-content, max-content);
+  width: max(max-content, max-content);
+  border: 0;
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 0 0 10px white;
+}
+.dialogBox::backdrop {
+  background-color: rgba(0, 0, 0, 0.538);
+}
+.mainContainer {
+  height: max(275px, 275px);
+  width: max(450px, 450px);
+  border-radius: 20px;
+  background-color: #221f1f;
+  display: grid;
+  grid-template-rows: 50px 50px 50px 75px;
+
+  grid-template-columns: 350px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.iconContainer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: max(40px, 40px);
+  height: max(40px, 40px);
+  background-color: #dc5357;
+  color: #221f1f;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.iconContainer:hover,
+.activeSubmitButton:hover {
+  background-color: #f3bdbd;
+}
+.icon {
+  width: max(90%, 90%);
+  height: max(90%, 90%);
+}
+.title {
+  font-size: 32px;
+  margin-top: 24px;
+  text-decoration: underline;
+  font-weight: bolder;
+  text-align: center;
+
+  width: max(350px, 350px);
+  height: max(50px, 50px);
+  grid-row: 1 / span 1;
+}
+.jlptTestSelectorContainer,
+.numberOfQuestionsSelectorContainer {
+  width: max(350px, 350px);
+  height: max(50px, 50px);
+  display: grid;
+  grid-template-columns: 250px max-content;
+  font-size: 22px;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  margin-top: 50px;
+}
+.jlptTestLabel {
+  text-align: left;
+  color: white;
+}
+.testDropDownMenu,
+.numberOfQuestionsDropDown {
+  text-align: right;
+  margin-right: 5px;
+  background-color: #221f1f;
+}
+.numberOfQuestionsLabel {
+  text-align: left;
+  color: white;
+}
+
+.submitButton,
+.activeSubmitButton {
+  width: max(150px, 150px);
+  height: max(70px, 70px);
+
+  font-size: 24px;
+  border-radius: 10px;
+  display: inline-block;
+  grid-row: 4 / span 1;
+  margin-left: 100px;
+  margin-top: 75px;
+}
+.submitButton {
+  background-color: rgba(128, 128, 128, 0.646);
+  color: rgba(255, 255, 255, 0.474);
+}
+.activeSubmitButton {
+  background-color: #dc5357;
+  color: #221f1f;
+}
+@media (max-width: 500px) {
+  .mainContainer {
+    height: max(275px, 275px);
+    width: max(350px, 350px);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .jlptTestSelectorContainer,
+  .numberOfQuestionsSelectorContainer {
+    width: max(300px, 300px);
+    grid-template-columns: 200px 100px;
+    justify-content: space-between;
+    font-size: 18px;
+  }
+  .submitButton,
+  .activeSubmitButton {
+    margin-left: 0px;
+  }
+}

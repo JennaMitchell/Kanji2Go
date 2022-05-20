@@ -1,0 +1,117 @@
+.mainContainer {
+  width: max(100%, 100%);
+  height: max(660px, 660px);
+  display: grid;
+  grid-template-columns: 40% 40%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.answerContainer,
+.responseContainer {
+  width: max(100%, 100%);
+  height: max(100%, 100%);
+  display: grid;
+  align-content: space-between;
+  justify-items: center;
+  font-size: 400px;
+  text-align: center;
+  line-height: 400px;
+  position: relative;
+  grid-template-rows: 60px 600px;
+}
+.responseTitle {
+  position: absolute;
+  width: max(max-content, max-content);
+  height: max(max-content, max-content);
+  text-align: center;
+  text-decoration: underline;
+  font-size: 36px;
+  grid-row: 1 / span 1;
+  color: white;
+  line-height: 36px;
+}
+.kanjiText,
+.userImage {
+  background-color: white;
+  width: max(600px, 600px);
+  height: max(600px, 600px);
+  grid-row: 2 / span 1;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+}
+.userImage {
+  font-size: 22px;
+}
+@media (max-width: 1415px) {
+  .mainContainer {
+    width: max(100%, 100%);
+    height: max(1330px, 1330px);
+    display: grid;
+    grid-template-rows: 650px 650px;
+    grid-template-columns: 100%;
+    justify-items: center;
+    align-content: space-between;
+    margin-top: 40px;
+  }
+  .answerContainer {
+    grid-row: 1 / span 1;
+  }
+  .responseContainer {
+    grid-row: 2 / span 1;
+  }
+  .answerContainer,
+  .responseContainer {
+    width: max(100%, 100%);
+    height: max(100%, 100%);
+    display: grid;
+    align-content: space-between;
+    justify-items: center;
+    font-size: 400px;
+    text-align: center;
+    line-height: 400px;
+    position: relative;
+    grid-template-rows: 60px 600px;
+  }
+}
+@media (max-width: 920px) {
+  .mainContainer {
+    width: max(460px, 460px);
+    height: max(930px, 930px);
+    display: grid;
+    grid-template-rows: 450px 450px;
+    grid-template-columns: 100%;
+    justify-items: center;
+    align-content: space-between;
+  }
+  .answerContainer {
+    grid-row: 1 / span 1;
+  }
+  .responseContainer {
+    grid-row: 2 / span 1;
+  }
+  .answerContainer,
+  .responseContainer {
+    width: max(460px, 460px);
+    height: max(460px, 460px);
+    display: grid;
+    align-content: space-between;
+    justify-items: center;
+    font-size: 350px;
+    text-align: center;
+    line-height: 350px;
+    position: relative;
+    grid-template-rows: 60px 400px;
+  }
+  .kanjiText,
+  .userImage {
+    background-color: white;
+    width: max(400px, 400px);
+    height: max(400px, 400px);
+    grid-row: 2 / span 1;
+    border-radius: 20px;
+    display: grid;
+    place-items: center;
+  }
+}

@@ -1,0 +1,52 @@
+.mainContainer {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.titleContainer {
+  width: max(100%, 100%);
+  height: max(150px, 150px);
+  background-color: #dc5357;
+  position: relative;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sentenceContainer {
+  width: max(100%, 100%);
+  height: max(1000px, 1000px);
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: #221f1f;
+  border-bottom: 1px solid white;
+}
+.titleHeading {
+  width: max(max-content, max-content);
+  text-align: center;
+  height: max(max-content, max-content);
+  color: #221f1f;
+  border-bottom: 2px solid #221f1f;
+
+  font-family: var(--chakra-fonts-heading);
+  font-weight: var(--chakra-fontWeights-bold);
+  font-size: 64px;
+}
+.newPracticeButton {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: max(150px, 150px);
+  height: max(100px, 100px);
+  background-color: #dc5357;
+  color: black;
+  border-radius: 20px;
+  font-size: 24px;
+  font-weight: bolder;
+}
+.newPracticeButton:hover {
+  box-shadow: 0 0 10px white;
+  color: black;
+}

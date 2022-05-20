@@ -1,0 +1,44 @@
+.mainContainer {
+  width: max(600px, 600px);
+  height: max(700px, 700px);
+  z-index: 3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: #f3bdbd;
+  transform: translate(-50%, -50%);
+  border-radius: 40px;
+  color: black;
+}
+
+.closingIcon:hover {
+  background-color: #a00303;
+  border: 1px solid #f3bdbd;
+}
+.closingIcon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: max(45px, 45px);
+  height: max(45px, 45px);
+  background-color: #e15e5e;
+  border-radius: 50%;
+  padding: 5px;
+  color: white;
+}
+@media (max-width: 800px) {
+  .mainContainer {
+    width: max(80vw, 80vw);
+  }
+}
+@media (max-width: 700px) {
+  .mainContainer {
+    height: max(660px, 660px);
+  }
+  .closingIcon {
+    top: 15px;
+    right: 15px;
+    width: max(35px, 35px);
+    height: max(35px, 35px);
+  }
+}
