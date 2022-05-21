@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: grid;
-  height: max(100%, 100%);
+  height: max(1800px, 1800px);
   width: max(100%, 100%);
   grid-template-rows: repeat(14, 120px);
   column-gap: 0;

@@ -3,7 +3,7 @@
   top: 50%;
   left: 50%;
   height: max(800px, 800px);
-  width: max(650px, 650px);
+  width: max(550px, 550px);
   transform: translate(-50%, -50%);
   background-color: #221f1f;
   z-index: 5;
@@ -225,5 +225,107 @@
     height: max(80vh, 80vh);
   }
 }
-@media (max-width: 550px) {
+@media (max-width: 585px) {
+  .popupWindow {
+    width: max(350px, 350px);
+    height: max(600px, 600px);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    overflow-y: scroll;
+  }
+  .filterTitle {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  .closingIcon {
+    height: max(30px, 30px);
+    width: max(30px, 30px);
+    top: 10px;
+    right: 5px;
+  }
+
+  .testFilters {
+    margin-top: 24px;
+    font-weight: bolder;
+    font-size: 24px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: max(250px, 250px);
+    height: max(100%, 100%);
+  }
+  .filterSelector {
+    font-size: 18px;
+    width: max(80px, 80px);
+    height: max(100%, 100%);
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+  }
+  .filterBtn {
+    height: max(30px, 30px);
+    width: max(30px, 30px);
+
+    position: relative;
+    display: grid;
+    place-items: center;
+    margin-left: 5px;
+  }
+
+  .lineTwo {
+    margin-left: 40px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .strokesContainer {
+    height: max(90%, 90%);
+    width: max(90%, 90%);
+  }
+  .strokesTitle {
+    margin-left: 0;
+  }
+  .testDropDownMenu {
+    width: max(100%, 100%);
+    height: max(50px, 50px);
+    background-color: inherit;
+  }
+  .kanjiSelector {
+    background-color: white;
+    width: max(95%, 95%);
+    height: max(350px, 350px);
+    margin-top: 10px;
+    border-radius: 5px;
+    overflow-y: scroll;
+    display: grid;
+    place-items: center;
+    padding: 10px 0 10px 0;
+    margin-left: 0;
+  }
+  .strokesContainer {
+    width: max(300px, 300px);
+    height: max(80px, 80px);
+    display: grid;
+    grid-template-columns: 200px 50px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 0;
+    margin-bottom: 0;
+    margin-top: 10px;
+  }
+  .submitEnabledButton {
+    width: max(300px, 300px);
+    font-size: 36px;
+    border-radius: 20px;
+    margin-left: 0px;
+    margin-top: 10px;
+  }
+  .submitDisabledButton {
+    width: max(300px, 300px);
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+  .definitionBlockSelector {
+    margin-left: 0;
+  }
 }

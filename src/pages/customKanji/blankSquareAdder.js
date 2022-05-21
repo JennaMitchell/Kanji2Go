@@ -38,7 +38,7 @@ const BlankSquareAdder = () => {
       </button>
       <h2 className={classes.mainTitle}>Blanks Creator</h2>
       <div className={classes.selector}>
-        <h3 className={classes.numberHelperText}> How many? </h3>
+        <h3 className={classes.numberHelperText}>How many?</h3>
         <select
           name="numberOfBlanks"
           id="numberOfBlanks"
@@ -54,21 +54,25 @@ const BlankSquareAdder = () => {
       </div>
       <div className={classes.btnContainer}>
         <button
-          className={`${classes.button} ${classes.activeButton}`}
+          className={`${classes.btn} ${classes.activeButton}`}
           onClick={fillButtonHandler}
         >
           Fill
         </button>
-        <button
-          className={`${
-            dropDownMenuVal === 0
-              ? classes.submitButtonDisabled
-              : classes.activeButton
-          } ${classes.button}`}
-          onClick={submitButtonHandler}
-        >
-          Submit
-        </button>
+
+        {+dropDownMenuVal !== 0 ? (
+          <button
+            onClick={submitButtonHandler}
+            className={`${classes.activeButton}  ${classes.btn}`}
+          >
+            {" "}
+            Submit
+          </button>
+        ) : (
+          <button className={`${classes.submitButtonDisabled} ${classes.btn}`}>
+            Submit
+          </button>
+        )}
       </div>
     </div>
   );

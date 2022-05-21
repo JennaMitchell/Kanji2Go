@@ -12,7 +12,6 @@ const KanjiContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 56px;
 `;
 const Kanji = styled.p`
   width: min(60px, 60px);

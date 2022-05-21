@@ -182,3 +182,41 @@
     left: 30px;
   }
 }
+@media (max-width: 560px) {
+  .imageButtonMenu {
+    display: grid;
+    grid-template-rows: 100px;
+    grid-template-columns: 80px 80px;
+    align-items: center;
+    justify-content: space-between;
+    width: max(200px, 200px);
+    height: max(100px, 100px);
+  }
+  .previewButton,
+  .clearButton {
+    width: max(100%, 100%);
+    height: max(60%, 60%);
+    font-size: 20px;
+  }
+  .dragNdropContainer {
+    height: max(1220px, 1220px);
+  }
+}
+@media (max-width: 430px) {
+  .imageButtonMenu {
+    right: 6px;
+    display: grid;
+    grid-template-rows: 100px;
+    grid-template-columns: 80px 80px;
+    align-items: center;
+    justify-content: space-between;
+    width: max(170px, 170px);
+    height: max(100px, 100px);
+  }
+  .previewButton,
+  .clearButton {
+    width: max(100%, 100%);
+    height: max(60%, 60%);
+    font-size: 20px;
+  }
+}

@@ -27,7 +27,7 @@
 }
 
 .selector {
-  width: max(40px, 400px);
+  width: max(400px, 400px);
   height: max(80px, 80px);
   display: grid;
   grid-template-columns: max-content 100px;
@@ -59,20 +59,24 @@
   align-items: center;
   justify-content: space-between;
 }
-.button {
-  background-color: #dc5357;
+.btn {
   width: max(160px, 160px);
   height: max(80px, 80px);
   border-radius: 10px;
   font-size: 32px;
   font-weight: bolder;
 }
+
 .activeButton:hover {
   background-color: #ff0008e0;
 }
 .submitButtonDisabled {
-  background-color: #b6b6b670;
+  background-color: hsla(0, 0%, 71%, 0.439);
   color: rgba(255, 255, 255, 0.438);
+}
+.activeButton {
+  color: white;
+  background-color: #dc5357;
 }
 .closingBtn {
   height: max(45px, 45px);
@@ -89,4 +93,52 @@
   height: max(90%, 90%);
   width: max(90%, 90%);
   color: black;
+}
+@media (max-width: 550px) {
+  .blankAddContainer {
+    height: max(220px, 220px);
+    width: max(300px, 300px);
+    display: grid;
+    place-items: center;
+  }
+  .mainTitle {
+    font-size: 26px;
+  }
+  .closingBtn {
+    height: max(30px, 30px);
+    width: max(30px, 30px);
+    top: 10px;
+    right: 10px;
+  }
+  .selector {
+    width: max(250px, 250px);
+    grid-template-columns: max-content 50px;
+    margin-top: 0px;
+  }
+  .numberHelperText {
+    font-size: 22px;
+    width: max(max-content, max-content);
+  }
+  .dropDownMenu {
+    height: max(40px, 40px);
+    width: max(50px, 50px);
+    font-size: 22px;
+  }
+  .btnContainer {
+    width: max(250px, 250px);
+    height: max(60px, 60px);
+
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .btn {
+    width: max(100px, 100px);
+    height: max(60px, 60px);
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: bolder;
+  }
 }

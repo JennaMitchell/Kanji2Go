@@ -60,3 +60,27 @@
     margin-left: 20px;
   }
 }
+@media (max-width: 585px) {
+  .mainContainer {
+    width: max(300px, 300px);
+    align-items: center;
+    justify-items: center;
+    margin-left: 0px;
+  }
+  .headerTitle {
+    font-size: 22px;
+    margin-left: 0px;
+  }
+  .selector {
+    font-size: 16px;
+  }
+  .selectorBtn {
+    height: max(32.5px, 32.5px);
+    width: max(32.5px, 32.5px);
+
+    position: relative;
+    display: grid;
+    place-items: center;
+    margin-left: 5px;
+  }
+}

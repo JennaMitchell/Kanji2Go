@@ -51,7 +51,7 @@ const PageMenu = () => {
         onClick={navButtonHandler}
         _hover={{ color: "black", bgColor: "brand.300" }}
       >
-        <NavLink to="/customKanjiSheets">Kanji Sheets Creator</NavLink>
+        <NavLink to="/customKanjiSheets">Kanji Sheet Creator</NavLink>
       </Button>
       <Button
         fontSize={["16px", "16px", "20px", "20px", "20px", "20px"]}

@@ -94,17 +94,17 @@ const CustomKanjiHomePage = () => {
             w="max-content"
             textAlign="center"
             h="max-content"
-            fontSize="64px"
+            fontSize={{ base: "42px", sm: "48px", lg: "64px" }}
             color="brand.900"
             borderBottom="2px"
           >
-            Custom Kanji Sheets
+            Kanji Sheet Creator
           </Heading>
         </Container>
         <Container
           maxW="100%"
           w={{ sm: "1300px", md: "100%" }}
-          h="1300px"
+          h={{ base: "1400px", sm: "1400px", "2xl": "1300px" }}
           pos="relative"
           display="flex"
           justifyContent="center"

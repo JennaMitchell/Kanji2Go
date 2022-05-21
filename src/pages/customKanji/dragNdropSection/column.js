@@ -5,22 +5,32 @@ import Contents from "./contents";
 const Container = styled.div`
   border: 2px solid black;
   border-radius: 2px;
-  width: max(1190px, 1190px);
-  justify-content: center;
-  background-color: white;
+  width: max(1175px, 1175px);
+
   height: 120px;
+  @media (max-width: 1200px) {
+    width: max(90vw, 90vw);
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    background-color: transparent;
+    position: relative;
+  }
 `;
 
 const KanjiContainer = styled.div`
   padding: 8px;
-  background-color: ${(props) =>
-    props.isDraggingOver ? "skyblue" : "inherit"};
+  background-color: ${(props) => (props.isDraggingOver ? "skyblue" : "white")};
   transition: background-color 0.2s ease;
-  height: 118px;
-  width: max(1190px, 1190px);
+  height: 120px;
+  width: max(1175px, 1175px);
   display: flex;
+  align-items: center;
   top: auto !important;
   left: auto !important;
+  @media (max-width: 1200px) {
+    width: max(1175px, 1175px);
+  }
 `;
 
 const Column = ({ column, container, strokeNum }) => {

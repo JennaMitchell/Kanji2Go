@@ -9,9 +9,9 @@ const PreviewSheet = ({ closingBtnHandler }) => {
   const exportRef = useRef();
   const [downloadButtonClicked, setDownloadButtonClicked] = useState(false);
   const [reRenderComplete, setReRenderComplete] = useState(false);
+
   const captureClicked = () => {
     setDownloadButtonClicked(true);
-    console.log("hello3");
   };
   const rerenderCompleteHandler = () => {
     setReRenderComplete("x");
@@ -20,6 +20,7 @@ const PreviewSheet = ({ closingBtnHandler }) => {
     if (reRenderComplete === "x") {
       const targetElement = document.getElementById("pdfContainer");
       exportAsImage(targetElement, "test");
+      closingBtnHandler();
     }
   }, [reRenderComplete]);
 
@@ -34,6 +35,7 @@ const PreviewSheet = ({ closingBtnHandler }) => {
       >
         <XIcon className={classes.closingIcon} />
       </button>
+
       <div
         className={classes.dragndropSheetContainer}
         id="pdfContainer"

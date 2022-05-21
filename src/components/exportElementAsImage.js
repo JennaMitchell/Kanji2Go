@@ -126,7 +126,6 @@ const exportAsImage = (targetElm, fileName = null) => {
     const sWidth = canvas.width;
     const sHeight =
       pdfHeight + (pdfHeight - pdfHeight * widthRatio) / widthRatio;
-    console.log(sHeight);
     const dX = 0;
     const dY = 0;
     const dWidth = sWidth;

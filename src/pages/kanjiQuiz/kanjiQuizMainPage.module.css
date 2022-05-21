@@ -213,3 +213,13 @@
     margin-top: 140px;
   }
 }
+@media (max-width: 600px) {
+  .titleHeading {
+    font-size: 48px;
+  }
+}
+@media (max-width: 400px) {
+  .titleHeading {
+    font-size: 42px;
+  }
+}

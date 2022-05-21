@@ -21,8 +21,12 @@ const TrachIconContainer = styled.button`
   justify-content: center;
 `;
 const BlankSquareImage = styled.image`
-  width: min(100%, 100%);
-  height: min(100%, 100%);
+  width: min(100px, 100px);
+  height: min(100px, 100px);
+`;
+const Container = styled.div`
+  width: min(100px, 100px);
+  height: min(100px, 100px);
 `;
 const BlankHelperBox = ({ id }) => {
   const dispatch = useDispatch();
@@ -53,12 +57,12 @@ const BlankHelperBox = ({ id }) => {
     dispatch(storeActions.setCustomKanjiDeleteIconClicked(true));
   };
   return (
-    <>
+    <Container>
       <BlankSquareImage src={blankImage}></BlankSquareImage>
       <TrachIconContainer onClick={trashIconHandler}>
         <TrashIcon className={classes.icon}></TrashIcon>
       </TrachIconContainer>
-    </>
+    </Container>
   );
 };
 export default BlankHelperBox;
