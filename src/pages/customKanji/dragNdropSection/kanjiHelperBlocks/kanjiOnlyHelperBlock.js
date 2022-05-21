@@ -12,6 +12,8 @@ const KanjiContainer = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  top: auto !important;
+  left: auto !important;
 `;
 const Kanji = styled.p`
   width: min(60px, 60px);

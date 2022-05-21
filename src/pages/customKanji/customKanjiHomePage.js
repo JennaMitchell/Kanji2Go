@@ -45,7 +45,6 @@ const CustomKanjiHomePage = () => {
     }
   }, [newPageClicked]);
   const clearButtonHandler = () => {
-    console.log("hello");
     setClearButtonClicked(!clearButtonClicked);
   };
 

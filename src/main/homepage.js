@@ -38,11 +38,11 @@ const HomePage = () => {
   );
   const loginButtonClicked = useSelector((state) => state.loginButtonClicked);
   // const signUpButtonClicked = useSelector((state) => state.signUpButtonClicked);
-  const loginButtonHandler = () => {
-    dispatch(storeActions.setLoginButtonClicked(true));
-    dispatch(storeActions.setPageButtonClicked(false));
-    dispatch(storeActions.setShopNavButtonClicked(false));
-  };
+  // const loginButtonHandler = () => {
+  //   dispatch(storeActions.setLoginButtonClicked(true));
+  //   dispatch(storeActions.setPageButtonClicked(false));
+  //   dispatch(storeActions.setShopNavButtonClicked(false));
+  // };
   return (
     <>
       {loginButtonClicked && <div className={classes.blurBackground}></div>}
@@ -377,7 +377,6 @@ const HomePage = () => {
               marginTop="20px"
               color="white"
               _hover={{ bgColor: "brand.100", color: "black" }}
-              onClick={loginButtonHandler}
             >
               Register
             </Button>

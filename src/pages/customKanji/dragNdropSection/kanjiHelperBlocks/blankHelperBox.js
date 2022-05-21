@@ -27,6 +27,8 @@ const BlankSquareImage = styled.image`
 const Container = styled.div`
   width: min(100px, 100px);
   height: min(100px, 100px);
+  top: auto !important;
+  left: auto !important;
 `;
 const BlankHelperBox = ({ id }) => {
   const dispatch = useDispatch();

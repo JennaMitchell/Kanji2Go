@@ -176,6 +176,7 @@ const LoginSide = () => {
           justifyContent="center"
           textAlign={"center"}
           fontSize={["12px", "14px", "16px", "18px", "18px", "18px"]}
+          margin={0}
         >
           <Text>Dont'have an account? </Text>
           <Text

@@ -4,7 +4,6 @@ import classes from "./icon.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { storeActions } from "../../../../store/store";
 
-
 const KanjiContainer = styled.div`
   width: min(80px, 80px);
   height: min(80px, 80px);
@@ -14,6 +13,8 @@ const KanjiContainer = styled.div`
   align-items: center;
   text-align: center;
   font-size: 56px;
+  top: auto !important;
+  left: auto !important;
 `;
 const Kanji = styled.p`
   width: min(60px, 60px);

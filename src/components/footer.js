@@ -112,6 +112,7 @@ const Footer = () => {
         w="100%"
         h="max-content"
         mt={{ base: "20px", sm: "20px", lg: "0" }}
+        margin={0}
       >
         <VStack w="100%" h="100%" colSpan={1}>
           <Heading

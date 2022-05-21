@@ -83,11 +83,11 @@ const NavBar = () => {
                 maxH={["45px", "60px", "60px", "60px", "60px", "60px"]}
                 borderRadius="50%"
                 border="none"
-                ml={["10px", "20px", "40px", "50px", "50px", "50px"]}
+                ml={["10px", "20px", "40px", "30px", "30px", "30px"]}
               />
-              <Flex w="max-content" h="60%" ml="10%">
+              {/* <Flex w="max-content" h="60%" ml="10%">
                 <HStack>
-                  {/* <InputGroup>
+                  <InputGroup>
                     <Input
                       placeholder="search for anything"
                       w="15vw"
@@ -98,9 +98,9 @@ const NavBar = () => {
                     <InputRightElement
                       children={<SearchIcon className={classes.searchIcon} />}
                     />
-                  </InputGroup> */}
+                  </InputGroup>
                 </HStack>
-              </Flex>
+              </Flex> */}
             </Flex>
           </GridItem>
           <GridItem
@@ -119,7 +119,7 @@ const NavBar = () => {
               >
                 <Button
                   w={["70%", "100%", "100%", "100%", "100%", "100%"]}
-                  h="80%"
+                  h="40px"
                   fontSize={["16px", "20px", "24px", "24px", "24px", "24px"]}
                   bg="inherit"
                   _hover={{ color: "black", bgColor: "brand.300" }}
@@ -131,11 +131,11 @@ const NavBar = () => {
               <Flex
                 justifyContent="center"
                 alignItems="center "
-                mr={["2px", "20px", "20px", "20px", "20px", "20px"]}
+                mr={["2px", "30px", "30px", "30px", "30px", "30px"]}
               >
                 <Button
                   w={["60%", "100%", "100%", "100%", "100%", "100%"]}
-                  h="80%"
+                  h="40px"
                   fontSize={["16px", "20px", "24px", "24px", "24px", "24px"]}
                   onClick={pageButtonHandler}
                   bgColor="inherit"
@@ -208,7 +208,7 @@ const NavBar = () => {
                 </Flex>
               </Flex> */}
 
-              <Button
+              {/* <Button
                 h="50px"
                 w={["110px", "140px", "170px", "170px", "170px", "170px"]}
                 bgColor="brand.300"
@@ -218,7 +218,7 @@ const NavBar = () => {
               >
                 <UserIcon className={classes.userIcon} />
                 Login/Register
-              </Button>
+              </Button> */}
             </Flex>
           </GridItem>
         </SimpleGrid>

@@ -20,7 +20,7 @@ const PageMenu = () => {
       borderColor="brand.100"
       pos="absolute"
       top="0"
-      right={["85px", "120px", "190px", "180px", "180px", "180px"]}
+      right={["0px", "10px", "17.5px", "17.5px", "17.5px", "17.5px"]}
       p={4}
       borderEndEndRadius="20px"
       borderEndStartRadius="20px"

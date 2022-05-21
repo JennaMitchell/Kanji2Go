@@ -107,7 +107,7 @@ const NewQuizManualKanjiSelector = ({
   useEffect(() => {
     if (testFilterClicked === 1) {
       if (jlpt1FilterClicked) {
-        setJlpt2FilterClicked(false);
+        setJlpt1FilterClicked(false);
         let tempArray = testFilters;
         tempArray = tempArray.filter((filter) => filter !== "JLPT1");
         setTestFilters(tempArray);
@@ -282,7 +282,7 @@ const NewQuizManualKanjiSelector = ({
           </div>
         </div>
         <div className={classes.strokesContainer}>
-          <h2 className={classes.strokesTitle}>Number of Strokes</h2>
+          <h2 className={classes.strokesTitle}>Number of Strokes:</h2>
           <div>
             <select
               name="numberOfStrokes"
