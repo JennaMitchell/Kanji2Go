@@ -108,7 +108,11 @@ const KanjiQuizMainPage = () => {
   };
 
   return (
-    <div className={classes.mainContainer}>
+    <div
+      className={`${newPageOpen && classes.overflowHidden} ${
+        manualDialogOpen && classes.overflowHidden
+      } ${jlptDialogOpen && classes.overflowHidden}  ${classes.mainContainer}`}
+    >
       <NewQuizAllOrManualPopup
         newTestPageOpen={newPageOpen}
         onCloseFunction={newTestButtonHandler}
