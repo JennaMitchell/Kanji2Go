@@ -367,19 +367,22 @@ const HomePage = () => {
               Create a free account today to save your custom made sheets, and
               track your quiz progress.
             </Text>
-            <Button
-              bgColor="brand.900"
+            <Text
+              bgColor="inherit"
               mt="2%"
               h={["50px", "60px", "75px", "80px", "100px", "100px"]}
               w={["100%", "100%", "100%", "100%", "100%", "100%"]}
               fontSize={{ base: "18px", sm: "26px", lg: "30px", xl: "36px" }}
               textAlign="left"
               marginTop="20px"
-              color="white"
-              _hover={{ bgColor: "brand.100", color: "black" }}
+              color="brand.900"
+              display={"grid"}
+              alignItems="center"
+              justifyContent={"flex-start"}
+              // _hover={{ bgColor: "brand.100", color: "black" }}
             >
-              Register
-            </Button>
+              Coming Soon...
+            </Text>
           </GridItem>
           <Image
             src={books}
