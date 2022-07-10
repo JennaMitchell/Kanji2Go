@@ -87,7 +87,7 @@ const TypeFilter = () => {
   }, [lengthOfSearchTermArray]);
 
   return (
-    <>
+    <div className={classes.filterContainer}>
       <h2 className={classes.subTitle}>&#160; Test Types &#160;</h2>
       <div className={classes.mainContainer}>
         <div className={classes.rowOne}>
@@ -116,7 +116,7 @@ const TypeFilter = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default TypeFilter;

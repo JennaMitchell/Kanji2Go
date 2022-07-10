@@ -33,6 +33,10 @@ const initialState = {
   activeQuizQuestionChanged: false,
   savedQuizImageArray: [],
   allQuizQuestionsAnswered: false,
+  premadeKanjiMenuButtonClicked: false,
+  grammarCardEnabler: false,
+  kanjiCardEnabler: false,
+  vocabCardEnabler: false,
 };
 
 const storeSlice = createSlice({
@@ -138,6 +142,18 @@ const storeSlice = createSlice({
     setAllQuizQuestionsAnswered(state, { payload }) {
       state.allQuizQuestionsAnswered = payload;
     },
+    setPremadeKanjiMenuButtonClicked(state, { payload }) {
+      state.premadeKanjiMenuButtonClicked = payload;
+    },
+    setGrammarCardEnabler(state, { payload }) {
+      state.grammarCardEnabler = payload;
+    },
+    setKanjiCardEnabler(state, { payload }) {
+      state.kanjiCardEnabler = payload;
+    },
+    setVocabCardEnabler(state, { payload }) {
+      state.vocabCardEnabler = payload;
+    },
   },
 });
 
@@ -146,3 +162,4 @@ const store = configureStore({ reducer: storeSlice.reducer });
 export const storeActions = storeSlice.actions;
 
 export default store;
+

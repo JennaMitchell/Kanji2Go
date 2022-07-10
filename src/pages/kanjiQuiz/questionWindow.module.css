@@ -1,10 +1,14 @@
 .questionContainer {
   width: max(600px, 600px);
-  height: max(160px, 160px);
+  min-height: 160px;
+  height: max-content;
+  max-height: max-content;
+
   background-color: white;
   display: grid;
 
   grid-template-columns: repeat(3, 1fr);
+  place-items: "center";
   position: relative;
   border-radius: 10px;
   grid-auto-flow: column;
@@ -126,5 +130,69 @@
   .nextButton {
     top: 50%;
     right: -17%;
+  }
+}
+@media (max-width: 450px) {
+  .previousButton,
+  .nextButton {
+    width: max(40px, 40px);
+    height: max(40px, 40px);
+  }
+  .previousButton {
+    top: 50%;
+    left: -45px;
+  }
+  .nextButton {
+    top: 50%;
+    right: -45px;
+  }
+}
+@media (max-width: 420px) {
+  .questionContainer {
+    width: max(275px, 275px);
+    font-size: 12px;
+    /* margin-top: 110px; */
+  }
+  .kunyomiTitle,
+  .onyomiTitle,
+  .meaningTitle {
+    font-size: 18px;
+    font-weight: bolder;
+    line-height: 18px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .kunyomiJapanenseText,
+  .kunyomiEnglishText,
+  .onyomiJapanenseText,
+  .onyomiEnglish,
+  .meaningText {
+    font-size: 10x;
+    line-height: 10px;
+    margin-top: 5px;
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+
+  .previousButton {
+    left: -45px;
+  }
+  .nextButton {
+    right: -45px;
+  }
+}
+@media (max-width: 370px) {
+  .previousButton,
+  .nextButton {
+    width: max(30px, 30px);
+    height: max(30px, 30px);
+  }
+  .previousButton {
+    top: 50%;
+    left: -35px;
+  }
+  .nextButton {
+    top: 50%;
+    right: -35px;
   }
 }

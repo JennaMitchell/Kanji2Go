@@ -42,7 +42,6 @@ const KanjiQuizMainPage = () => {
 
   //used to check if all questions answered
   useEffect(() => {
-    console.log(allQuizQuestionsAnswered);
     if (allQuizQuestionsAnswered) {
       setAllQuestionsAnswered(true);
     }
@@ -104,7 +103,7 @@ const KanjiQuizMainPage = () => {
       return;
     }
     setScoreQuizButtonClicked(!scoreQuizButtonClicked);
-    console.log(107);
+   
   };
 
   return (

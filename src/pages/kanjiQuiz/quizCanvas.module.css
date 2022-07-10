@@ -147,3 +147,58 @@
     border-bottom-left-radius: 0px;
   }
 }
+
+@media (max-width: 600px) {
+  .clearButton {
+    top: -85px;
+    right: 0;
+  }
+  .eraseButton {
+    top: -85px;
+    right: 120px;
+  }
+  .submitButton {
+    top: -85px;
+    right: 240px;
+  }
+  .clearButton,
+  .eraseButton,
+  .submitButton {
+    font-size: 18px;
+    width: max(90px, 90px);
+    height: max(55px, 55px);
+  }
+  .submitCheckMark {
+    top: -50px;
+    left: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0px;
+  }
+}
+@media (max-width: 425px) {
+  .clearButton {
+    top: -85px;
+    right: 0;
+  }
+  .eraseButton {
+    top: -85px;
+    right: 120px;
+  }
+  .submitButton {
+    top: -85px;
+    right: 240px;
+  }
+  .clearButton,
+  .eraseButton,
+  .submitButton {
+    font-size: 18px;
+    width: max(90px, 90px);
+    height: max(55px, 55px);
+  }
+  .submitCheckMark {
+    width: max(30px, 30px);
+    height: max(30px, 30px);
+    top: -29px;
+  }
+}

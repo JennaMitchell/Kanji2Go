@@ -25,7 +25,13 @@ const QuizCanvas = ({ numberOfQuestions }) => {
     const canvas = canvasRef.current;
 
     const windowSize = window.matchMedia("(max-width: 920px)");
-    if (windowSize.matches) {
+    const smallWindowSize = window.matchMedia("(max-width: 425px)");
+    if (smallWindowSize.matches) {
+      canvas.width = 325;
+      canvas.height = 325;
+      canvas.style.width = `325px`;
+      canvas.style.height = `325px`;
+    } else if (windowSize.matches) {
       canvas.width = 400;
       canvas.height = 400;
       canvas.style.width = `400px`;
@@ -100,8 +106,7 @@ const QuizCanvas = ({ numberOfQuestions }) => {
         numberOfAnsweredQuestions++;
       }
     }
-    console.log(numberOfAnsweredQuestions);
-    console.log(numberOfQuestions);
+
     if (numberOfAnsweredQuestions === +numberOfQuestions) {
       dispatch(storeActions.setAllQuizQuestionsAnswered(true));
     }

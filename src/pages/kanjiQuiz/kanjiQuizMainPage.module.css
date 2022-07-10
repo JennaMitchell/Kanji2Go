@@ -7,7 +7,7 @@
   position: relative;
   display: grid;
   place-items: center;
-  width: max(100vw, 100vw);
+  width: max(100%, 100%);
   margin: 0;
 }
 
@@ -43,7 +43,7 @@
   border-bottom: 1px solid white;
 }
 .quizWindowContainer {
-  height: max(800px, 800px);
+  height: max(max-content, max-content);
   width: max(600px, 600px);
   display: grid;
   grid-template-rows: 200px 600px;
@@ -143,7 +143,7 @@
   }
   .quizWindowContainer {
     width: max(600px, 600px);
-    height: max(800px, 800px);
+    height: max(max-content, max-content);
     grid-template-rows: 200px 650px;
   }
   .scoreWindowContainer {
@@ -202,7 +202,7 @@
   }
   .quizWindowContainer {
     width: max(600px, 600px);
-    height: max(660px, 660px);
+    height: max(max-content, max-content);
     grid-template-rows: 220px 400px;
   }
 }
@@ -212,8 +212,9 @@
   }
   .quizWindowContainer {
     width: max(400px, 400px);
-    height: max(660px, 660px);
+    height: max(max-content, max-content);
     grid-template-rows: 220px 400px;
+    place-items: center;
   }
   .quizCanvasBackdrop {
     margin-top: 140px;
@@ -223,9 +224,42 @@
   .titleHeading {
     font-size: 48px;
   }
+  .newTestButton,
+  .scoreTestButtonActive,
+  .questionMenu,
+  .questionDisabledMenu,
+  .scoreTestButtonDisabled {
+    width: max(100px, 100px);
+    height: max(55px, 55px);
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+  }
+}
+.newTestButton {
+  position: absolute;
+  right: 10px;
+}
+.scoreTestButtonDisabled,
+.scoreTestButtonActive {
+  right: 50%;
+  transform: translateX(50%);
+}
+.questionDisabledMenu,
+.questionActiveMenu {
+  right: 230px;
 }
 @media (max-width: 400px) {
   .titleHeading {
     font-size: 42px;
+  }
+  .titleContainer {
+    height: max(125px, 150px);
+  }
+  .quizWindowContainer {
+    width: max(350px, 350px);
+    height: max(max-content, max-content);
+    grid-template-rows: max-content max-content;
+    place-items: center;
   }
 }

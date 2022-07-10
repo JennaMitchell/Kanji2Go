@@ -3,7 +3,7 @@ import { Container, Heading } from "@chakra-ui/react";
 
 import Footer from "../../components/footer";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import PageMenu from "../../main/pageMenu";
 import ShopMenu from "../../main/shopMenu";
@@ -17,15 +17,21 @@ import SunsetCity from "../../img/sunset.jpg";
 import PremadeKanjiFilterMenu from "./filterMenu/premadeKanjiMenu";
 import { useEffect, useState } from "react";
 import NavBar from "../../nav/navBar";
+import { storeActions } from "../../store/store";
 
 const PreMadeKanjiSheets = () => {
-  const [grammarCardEnabler, setGrammarCardEnabler] = useState(true);
-  const [kanjiCardEnabler, setKanjiCardEnabler] = useState(true);
-  const [vocabCardEnabler, setVocabCardEnabler] = useState(true);
+  const grammarCardEnabler = useSelector((state) => state.grammarCardEnabler);
+  const kanjiCardEnabler = useSelector((state) => state.kanjiCardEnabler);
+  const vocabCardEnabler = useSelector((state) => state.vocabCardEnabler);
+
+  const dispatch = useDispatch();
 
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
   const shopNavButtonClicked = useSelector(
     (state) => state.shopNavButtonClicked
+  );
+  const premadeKanjiMenuButtonClicked = useSelector(
+    (state) => state.premadeKanjiMenuButtonClicked
   );
   const loginButtonClicked = useSelector((state) => state.loginButtonClicked);
   const kanjiCardsDB = useSelector((state) => state.kanjiCardsDB);
@@ -34,27 +40,28 @@ const PreMadeKanjiSheets = () => {
   const [filteredGrammarDB, setFilteredGrammarDB] = useState(grammarCardsDB);
   const [filteredKanjiDB, setFilteredKanjiDB] = useState(kanjiCardsDB);
   const [filteredVocabDB, setFilteredVocabDB] = useState(vocabCardsDB);
-  const [menuButtonClicked, setMenuButtonClicked] = useState(false);
-  const menuButtonHandler = () => {
-    if (!menuButtonClicked) {
-      setMenuButtonClicked(true);
-      setGrammarCardEnabler(false);
-      setKanjiCardEnabler(false);
-      setVocabCardEnabler(false);
-    } else {
-      if (premadeKanjiFilterArray.length === 0) {
-        setMenuButtonClicked(false);
-        setGrammarCardEnabler(true);
-        setKanjiCardEnabler(true);
-        setVocabCardEnabler(true);
-      } else {
-        setMenuButtonClicked(false);
-      }
-    }
-  };
   const premadeKanjiFilterArray = useSelector(
     (state) => state.premadeKanjiFilterArray
   );
+
+  const menuButtonHandler = () => {
+    if (!premadeKanjiMenuButtonClicked) {
+      dispatch(storeActions.setPremadeKanjiMenuButtonClicked(true));
+      dispatch(storeActions.setGrammarCardEnabler(false));
+      dispatch(storeActions.setKanjiCardEnabler(false));
+      dispatch(storeActions.setVocabCardEnabler(false));
+    } else {
+      if (premadeKanjiFilterArray.length === 0) {
+        dispatch(storeActions.setPremadeKanjiMenuButtonClicked(false));
+        dispatch(storeActions.setGrammarCardEnabler(true));
+        dispatch(storeActions.setKanjiCardEnabler(true));
+        dispatch(storeActions.setVocabCardEnabler(true));
+      } else {
+        dispatch(storeActions.setPremadeKanjiMenuButtonClicked(false));
+      }
+    }
+  };
+
   const jlptTests = ["JLPT1", "JPLT2", "JLPT3", "JLPT4", "JLPT5"];
 
   // used to handle refreshing
@@ -76,35 +83,35 @@ const PreMadeKanjiSheets = () => {
   useEffect(() => {
     if (premadeKanjiFilterArray.length !== 0) {
       if (premadeKanjiFilterArray.includes("Grammar")) {
-        setGrammarCardEnabler(true);
+        dispatch(storeActions.setGrammarCardEnabler(true));
       } else {
         if (grammarCardEnabler) {
-          setGrammarCardEnabler(false);
+          dispatch(storeActions.setGrammarCardEnabler(false));
         }
       }
       if (premadeKanjiFilterArray.includes("Kanji")) {
-        setKanjiCardEnabler(true);
+        dispatch(storeActions.setKanjiCardEnabler(true));
       } else {
         if (kanjiCardEnabler) {
-          setKanjiCardEnabler(false);
+          dispatch(storeActions.setKanjiCardEnabler(false));
         }
       }
       if (premadeKanjiFilterArray.includes("Vocab")) {
-        setVocabCardEnabler(true);
+        dispatch(storeActions.setVocabCardEnabler(true));
       } else {
         if (vocabCardEnabler) {
-          setVocabCardEnabler(false);
+          dispatch(storeActions.setVocabCardEnabler(false));
         }
       }
     } else {
       if (!vocabCardEnabler) {
-        setVocabCardEnabler(true);
+        dispatch(storeActions.setVocabCardEnabler(true));
       }
       if (!kanjiCardEnabler) {
-        setKanjiCardEnabler(true);
+        dispatch(storeActions.setKanjiCardEnabler(true));
       }
       if (!grammarCardEnabler) {
-        setGrammarCardEnabler(true);
+        dispatch(storeActions.setGrammarCardEnabler(true));
       }
     }
   }, [premadeKanjiFilterArray]);
@@ -177,7 +184,7 @@ const PreMadeKanjiSheets = () => {
           w="max-content"
           textAlign="center"
           h="max-content"
-          fontSize={{ base: "42px", sm: "48px", lg: "64px" }}
+          fontSize={{ base: "36px", sm: "48px", lg: "64px" }}
           color="brand.900"
           borderBottom="2px"
         >
@@ -187,17 +194,19 @@ const PreMadeKanjiSheets = () => {
       <div className={classes.cardGrid}>
         <div
           className={`${classes.menuIconContainer} ${
-            menuButtonClicked && classes.menuIconMoveOut
+            premadeKanjiMenuButtonClicked && classes.menuIconMoveOut
           }`}
         >
           <MenuIcon
             className={`${classes.menuIcon} ${
-              menuButtonClicked && classes.menuIconMoveOut
+              premadeKanjiMenuButtonClicked && classes.menuIconMoveOut
             }`}
             onClick={menuButtonHandler}
           />
         </div>
-        <PremadeKanjiFilterMenu menuButtonClicked={menuButtonClicked} />
+        <PremadeKanjiFilterMenu
+          menuButtonClicked={premadeKanjiMenuButtonClicked}
+        />
         {kanjiCardEnabler &&
           filteredKanjiDB.length !== 0 &&
           filteredKanjiDB.map((card, index) => (

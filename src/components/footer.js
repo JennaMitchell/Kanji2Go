@@ -105,7 +105,7 @@ const Footer = () => {
         </HStack>
       </GridItem>
       <Grid
-        templateColumns={{ sm: " 100%", lg: "repeat(3,1fr)" }}
+        templateColumns={{ base: "100%", sm: " 100%", lg: "repeat(3,1fr)" }}
         alignItems="center"
         justifyItems="center"
         colSpan={1}
@@ -116,7 +116,7 @@ const Footer = () => {
       >
         <VStack w="100%" h="100%" colSpan={1}>
           <Heading
-            marginTop={{ sm: "30px", lg: "30px" }}
+            marginTop={{ base: "30px", sm: "30px", lg: "30px" }}
             marginBottom={{ sm: "0", lg: "30px" }}
             fontSize={{ base: "34px", sm: "34px", md: "28px" }}
           >

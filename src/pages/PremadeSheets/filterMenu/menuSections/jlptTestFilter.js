@@ -132,7 +132,7 @@ const JLPTTestFilter = () => {
   }, [lengthOfSearchTermArray]);
 
   return (
-    <>
+    <div className={classes.filterContainer}>
       <h2 className={classes.subTitle}>&#160; JLPT Tests &#160;</h2>
       <div className={classes.jlptTestFilterContainer}>
         <div className={classes.jlptLineOne}>
@@ -170,7 +170,7 @@ const JLPTTestFilter = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 export default JLPTTestFilter;

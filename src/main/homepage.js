@@ -124,7 +124,7 @@ const HomePage = () => {
         <Container
           maxW="100%"
           w="100%"
-          h={["750px", "750px", "750px", "750px", "750px", "800px"]}
+          h={["650px", "750px", "750px", "750px", "750px", "800px"]}
           p="0"
           bgColor="brand.100"
           m="0"
@@ -224,7 +224,7 @@ const HomePage = () => {
         </Container>
         <Container
           maxW="100%"
-          h={["550px", "500px", "600px", "700px", "800px", "900px"]}
+          h={["400px", "500px", "600px", "700px", "800px", "900px"]}
           p="0"
           bgColor="brand.200"
           m="0"
@@ -318,7 +318,7 @@ const HomePage = () => {
 
         <Grid
           maxW="100%"
-          h={["550px", "500px", "600px", "700px", "800px", "900px"]}
+          h={["400px", "500px", "600px", "700px", "800px", "900px"]}
           p="0"
           bgColor="#dc5357"
           m="0"
@@ -361,7 +361,7 @@ const HomePage = () => {
               Save Your Progress
             </Heading>
             <Text
-              fontSize={{ base: "16px", md: "20px", lg: "26px", xl: "26px" }}
+              fontSize={{ base: "12px", md: "20px", lg: "26px", xl: "26px" }}
               mt="20px"
             >
               Create a free account today to save your custom made sheets, and

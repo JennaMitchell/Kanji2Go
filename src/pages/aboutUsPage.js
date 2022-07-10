@@ -32,7 +32,7 @@ const AboutUsPage = () => {
       <NavBar />
       <Container
         maxW="100%"
-        h="150px"
+        h={["100px", "100px", "150px", "150px", "150px", "150px"]}
         p="0"
         bgColor="#dc5357"
         m="0"
@@ -48,7 +48,7 @@ const AboutUsPage = () => {
           w="max-content"
           textAlign="center"
           h="max-content"
-          fontSize={["48px", "56px", "64px", "64px", "64px", "64px"]}
+          fontSize={["36px", "56px", "64px", "64px", "64px", "64px"]}
           color="brand.900"
           borderBottom="2px"
         >
@@ -57,7 +57,7 @@ const AboutUsPage = () => {
       </Container>
       <Container
         maxW="100%"
-        h={["600px", "700px", "800px", "900px", "900px", "900px"]}
+        h={["400px", "600px", "700px", "900px", "900px", "900px"]}
         p="0"
         bgColor="brand.200"
         m="0"
@@ -76,7 +76,7 @@ const AboutUsPage = () => {
             <VStack w="fill" h="fill">
               <Heading
                 color="brand.900"
-                fontSize={["26px", "38px", "52px", "64px", "64px", "64px"]}
+                fontSize={["26px", "32px", "52px", "64px", "64px", "64px"]}
                 borderBottom="2px"
                 textAlign="center"
                 w="100%"
@@ -84,7 +84,7 @@ const AboutUsPage = () => {
                 Passion Driven
               </Heading>
               <Text
-                fontSize={["18px", "22px", "24px", "26px", "26px", "26px"]}
+                fontSize={["14px", "16px", "18px", "26px", "26px", "26px"]}
                 paddingTop={["15px", "20px", "25px", "30px", "30px", "30px"]}
                 color="brand.900"
               >
@@ -97,7 +97,7 @@ const AboutUsPage = () => {
           </GridItem>
           <GridItem
             w={["90%", "90%", "90%", "90%", "650px", "650px"]}
-            h={["55%", "70%", "70%", "70%", "650px", "650px"]}
+            h={["55%", "60%", "65%", "70%", "650px", "650px"]}
             bgColor="brand.600"
             display="grid"
             placeItems="center"
