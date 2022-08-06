@@ -2,9 +2,6 @@ import classes from "./scoreQuizWindow.module.css";
 import { useSelector } from "react-redux";
 const ScoreQuizWindow = ({ activeQuestionNumber, selectedKanji }) => {
   const savedQuizImageArray = useSelector((state) => state.savedQuizImageArray);
-  console.log(selectedKanji);
-  console.log(activeQuestionNumber);
-  console.log(savedQuizImageArray);
 
   return (
     <div className={classes.mainContainer}>

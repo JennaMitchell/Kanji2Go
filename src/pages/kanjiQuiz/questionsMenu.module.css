@@ -3,14 +3,16 @@
   top: 18.5%;
   left: 3%;
   height: min(max-content, 600px);
-  width: max(200px, 200px);
+  width: max(220px, 220px);
   background-color: #dc5357;
   z-index: 3;
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-items: center;
+  padding:10px 20px;
+  gap:10px;
 }
 .questionContainer:last-of-type {
   margin-bottom: 8.5px;
@@ -23,6 +25,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 5px;
+
 }
 .questionContainer:hover {
   box-shadow: 0 0 10px white;
@@ -67,5 +70,48 @@
   .mainContainer {
     top: 120px;
     left: 3%;
+    
+  }
+}
+@media (max-width:650px){
+  .mainContainer {
+    width: max(150px, 150px);
+    padding:10px 10px;
+    top: 85px;
+    left: 3%;
+  }
+  .questionContainer:last-of-type {
+    margin-bottom: 8.5px;
+  }
+  .questionContainer {
+    width: max(120px, 120px);
+    height: max(50px, 50px);
+    display: grid;
+    grid-template-columns: 80px 30px;
+    justify-content: space-between;
+    align-content: center;
+    margin-top: 5px;
+    padding-left:5px;
+  
+  }
+  .questionTitle {
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 0px;
+ 
+    display: inline-block;
+    place-items: center;
+    height:max-content;
+  }
+  .checkMarkContainer {
+    width: max(30px, 30px);
+    height: max(30px, 30px);
+ 
+  }
+  .icon {
+    width: max(80%, 80%);
+    height: max(80%, 80%);
+    margin-bottom: 0px;
+    color: green;
   }
 }

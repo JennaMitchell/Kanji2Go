@@ -93,7 +93,7 @@ const CustomKanjiHomePage = () => {
             w="max-content"
             textAlign="center"
             h="max-content"
-            fontSize={{ base: "42px", sm: "48px", lg: "64px" }}
+            fontSize={{ base: "38px", sm: "42px", lg: "64px" }}
             color="brand.900"
             borderBottom="2px"
           >

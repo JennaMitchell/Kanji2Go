@@ -25,7 +25,7 @@ const DragNDropContainer = () => {
   );
   const [addStrokeOrder, setAddStrokeOrder] = useState(false);
   const newPageClicked = useSelector((state) => state.newPageClicked);
-  const [currentKanjiId, setCurrentKanjiId] = useState("");
+
   const [renderDataUpdated, setRenderDataUpdated] = useState(false);
   const okayClearButtonClicked = useSelector(
     (state) => state.okayClearButtonClicked
@@ -179,7 +179,7 @@ const DragNDropContainer = () => {
     );
     tempArray.columns[currentColumnId].numberOfItems =
       tempArray.columns[currentColumnId].numberOfItems + numberOfItems;
-    setCurrentKanjiId(`${customKanjiBoxData.data.kanji} ${currentNumber}`);
+
   };
 
   const addKanjiHelperBlock = (
@@ -230,9 +230,7 @@ const DragNDropContainer = () => {
               );
               setRenderDataUpdated(false);
 
-              setCurrentKanjiId(
-                `${customKanjiBoxData.data.kanji} ${currentNumber}`
-              );
+   
 
               dispatch(storeActions.setCustomKanjiGridData(tempArray));
               setData(tempArray);
@@ -293,9 +291,7 @@ const DragNDropContainer = () => {
                 strokeNum
               );
 
-              setCurrentKanjiId(
-                `${customKanjiBoxData.data.kanji} ${currentNumber}`
-              );
+        
 
               dispatch(storeActions.setCustomKanjiGridData(tempArray));
               setData(tempArray);

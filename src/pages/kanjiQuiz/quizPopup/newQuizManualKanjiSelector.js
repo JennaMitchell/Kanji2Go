@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import QuizFilteredKanji from "./quizFilteredKanji";
 import { XIcon, CheckIcon } from "@heroicons/react/solid";
-import QuizKanjiSelectorCard from "./quizKanjiSelectorCard";
 import SelectedKanjiCard from "./selectedKanjiCard";
 
 const NewQuizManualKanjiSelector = ({

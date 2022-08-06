@@ -12,19 +12,19 @@ const KanjiPreviewSide = ({
   activeKanji,
 }) => {
   const [kanjiClicked, setKanjiClicked] = useState(false);
-  const [savedId, setSavedId] = useState(id);
-  const [savedKanjiData, setSavedKanjiData] = useState(card);
+
+
 
   const kanjiButtonHandler = () => {
-    kanjiClickedFunction(savedId);
+    kanjiClickedFunction(id);
   };
 
   useEffect(() => {
-    if (kanjiClicked === true && activeKanji === savedId) {
+    if (kanjiClicked === true && activeKanji === id) {
       setKanjiClicked(false);
-    } else if (activeKanji === savedId) {
+    } else if (activeKanji === id) {
       setKanjiClicked(true);
-    } else if (activeKanji !== savedId && kanjiClicked === true) {
+    } else if (activeKanji !== id && kanjiClicked === true) {
       setKanjiClicked(false);
     }
   }, [activeKanji]);
@@ -39,7 +39,7 @@ const KanjiPreviewSide = ({
       >
         {kanji}
       </button>
-      {kanjiClicked && <KanjiPreviewSideDataBox card={savedKanjiData} />}
+      {kanjiClicked && <KanjiPreviewSideDataBox card={card} />}
     </>
   );
 };

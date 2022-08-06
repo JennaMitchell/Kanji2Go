@@ -1,9 +1,9 @@
-import { TrashIcon } from "@heroicons/react/solid";
+// import { TrashIcon } from "@heroicons/react/solid";
 import styled from "styled-components";
-import classes from "./pageBreakColumn.module.css";
+// import classes from "./pageBreakColumn.module.css";
 // import Task from "./task";
 import { Droppable } from "react-beautiful-dnd";
-import Contents from "./contents";
+// import Contents from "./contents";
 const Container = styled.div`
   border-radius: 2px;
   width: 1300px;

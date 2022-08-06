@@ -18,6 +18,16 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 5;
+  @media(max-width:430px){
+    width: max(330px, 330px);
+    height: max(300px, 300px);
+    grid-template-rows: 50px 150px 100px;
+    grid-template-columns: 300px;
+
+    justify-items: center;
+    align-items: center;
+  }
+
 `;
 const Title = styled.h2`
   width: max(100%, 100%);
@@ -36,6 +46,11 @@ const Dialog = styled.h3`
   margin-top: 120px;
   display: inline-block;
   margin-left: 5%;
+  @media(max-width:430px){
+    width: max(300px, 300px);
+    height: max(100%, 100%);
+  }
+
 `;
 const ButtonContainer = styled.div`
   width: max(100%, 100%);
@@ -45,6 +60,12 @@ const ButtonContainer = styled.div`
   grid-template-rows: 70%;
   justify-content: space-evenly;
   align-items: center;
+  @media(max-width:430px){
+    grid-template-columns: 100px 100px;
+    justify-content: space-between;
+    width: max(300px,  300px);
+   
+  }
 `;
 const Button = styled.button`
   width: max(100%, 100%);

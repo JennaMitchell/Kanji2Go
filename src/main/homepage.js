@@ -26,13 +26,13 @@ import LoginPopup from "../login/loginPopup";
 import Footer from "../components/footer";
 import NavBar from "../nav/navBar";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { storeActions } from "../store/store";
+
+
 
 const HomePage = () => {
   //const dispatch = useDispatch();
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
-  const dispatch = useDispatch();
+
   const shopNavButtonClicked = useSelector(
     (state) => state.shopNavButtonClicked
   );
@@ -94,7 +94,7 @@ const HomePage = () => {
                 h={["50px", "60px", "75px", "80px", "100px", "100px"]}
                 w={["100%", "100%", "100%", "100%", "100%", "100%"]}
                 mt="30px"
-                fontSize={{ base: "20px", sm: "24px", lg: "30px", xl: "36px" }}
+                fontSize={{ base: "20px", sm: "22px", lg: "30px", xl: "36px" }}
                 bgColor="#221f1f"
                 color="white"
                 _hover={{ color: "black", bgColor: "brand.200" }}
@@ -303,7 +303,7 @@ const HomePage = () => {
                 mt={"10px"}
                 h={["50px", "60px", "75px", "80px", "100px", "100px"]}
                 w={["100%", "100%", "100%", "100%", "100%", "100%"]}
-                fontSize={{ base: "14px", sm: "24px", lg: "30px", xl: "36px" }}
+                fontSize={{ base: "14px", sm: "20px", lg: "30px", xl: "36px" }}
                 textAlign="left"
                 color="white"
                 _hover={{ bgColor: "brand.100", color: "black" }}

@@ -26,7 +26,7 @@ const PremadeKanjiCard = ({
   const vocabCardsDB = useSelector((state) => state.vocabCardsDB);
   const [idClicked, setIdClicked] = useState(null);
   const [previewButtons, setPreviewButtons] = useState();
-  const [savedBannerText, setSavedBannerText] = useState(bannerText);
+
   const idButtonHandler = (id) => {
     setIdClicked(id);
   };
@@ -46,7 +46,6 @@ const PremadeKanjiCard = ({
       if (vocabCardsDB.length !== 0) {
         let tempArray = [];
         let objectToBeFiltered = vocabCardsDB[id].vocabData;
-        console.log(vocabCardsDB[id]);
         for (let i = 1; i < 10; i++) {
           tempArray.push(objectToBeFiltered[`term0${i}`]);
         }
@@ -58,7 +57,7 @@ const PremadeKanjiCard = ({
 
   useEffect(() => {
     if (cardList.length !== 0) {
-      if (savedBannerText === "Kanji") {
+      if (bannerText === "Kanji") {
         setPreviewButtons(
           <>
             {cardList.length !== 0 &&
@@ -76,7 +75,7 @@ const PremadeKanjiCard = ({
         );
       }
 
-      if (savedBannerText === "Vocab") {
+      if (bannerText === "Vocab") {
         setPreviewButtons(
           <>
             {cardList.length !== 0 &&
@@ -128,10 +127,10 @@ const PremadeKanjiCard = ({
         <div className={classes.kanjiSelectionContainer}>
           <div
             className={`${
-              savedBannerText === "Kanji" && classes.kanjiSelectorButtons
+              bannerText === "Kanji" && classes.kanjiSelectorButtons
             } ${
-              savedBannerText === "Grammar" && classes.kanjiSelectorButtons
-            } ${savedBannerText === "Vocab" && classes.vocabSelectorButtons}`}
+              bannerText === "Grammar" && classes.kanjiSelectorButtons
+            } ${bannerText === "Vocab" && classes.vocabSelectorButtons}`}
           >
             {previewButtons}
           </div>

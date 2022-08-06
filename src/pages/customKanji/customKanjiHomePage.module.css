@@ -201,6 +201,14 @@
   .dragNdropContainer {
     height: max(1220px, 1220px);
   }
+  .addIconClicked {
+    width: max(35px, 35px);
+    height: max(35px, 35px);
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    color: black;
+  }
 }
 @media (max-width: 430px) {
   .imageButtonMenu {
@@ -219,4 +227,16 @@
     height: max(60%, 60%);
     font-size: 20px;
   }
+  .addMenuContainer {
+    position: absolute;
+    top: 35px;
+    left: 15px;}
+    .addMenuContainerClicked{
+      position: absolute;
+      top: 35px;
+      left: 15px;}
+
+
+  
+            
 }

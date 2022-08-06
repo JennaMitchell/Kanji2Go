@@ -1,7 +1,7 @@
 import {
   Flex,
   Image,
-  HStack,
+
   SimpleGrid,
   GridItem,
   Button,
@@ -10,7 +10,7 @@ import logo from "../img/logo2.jpg";
 import {
   ChevronDownIcon,
   ChevronUpIcon,
-  UserIcon,
+
 } from "@heroicons/react/solid";
 import classes from "./navBar.module.css";
 import { NavLink } from "react-router-dom";
@@ -52,11 +52,11 @@ const NavBar = () => {
   //     dispatch(storeActions.setShopNavButtonClicked(true));
   //   }
   // };
-  const loginButtonHandler = () => {
-    dispatch(storeActions.setLoginButtonClicked(true));
-    dispatch(storeActions.setPageButtonClicked(false));
-    dispatch(storeActions.setShopNavButtonClicked(false));
-  };
+  // const loginButtonHandler = () => {
+  //   dispatch(storeActions.setLoginButtonClicked(true));
+  //   dispatch(storeActions.setPageButtonClicked(false));
+  //   dispatch(storeActions.setShopNavButtonClicked(false));
+  // };
 
   return (
     <>

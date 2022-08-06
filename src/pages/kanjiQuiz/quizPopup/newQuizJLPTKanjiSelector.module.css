@@ -1,6 +1,10 @@
 .dialogBox {
-  height: max(max-content, max-content);
-  width: max(max-content, max-content);
+min-height:max-content;
+height:max-content;
+max-height: max-content;
+width:max-content;
+min-width: max-content;
+max-width: max-content;
   border: 0;
   border-radius: 20px;
   padding: 0;
@@ -103,13 +107,14 @@
 @media (max-width: 500px) {
   .mainContainer {
     height: max(275px, 275px);
-    width: max(350px, 350px);
+    width: max(324px, 325px);
     display: grid;
     align-items: center;
     justify-items: center;
   }
   .title {
     font-size: 28px;
+    width: max(300px, 300px);
   }
   .jlptTestSelectorContainer,
   .numberOfQuestionsSelectorContainer {
@@ -122,4 +127,21 @@
   .activeSubmitButton {
     margin-left: 0px;
   }
+  .iconContainer {
+  
+    width: max(30px, 30px);
+    height: max(30px, 30px);
+
+  }
+}
+@media (max-width: 400px) {
+  .dialogBox {
+    height: max(ma, 275px);
+    width: max(350px, 350px);
+    border: 0;
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 0 10px white;
+  }
+  
 }
