@@ -1,4 +1,50 @@
-# Getting Started with Create React App
+#Kanji2Go
+
+#Project Description
+
+Kanji2go is a custom kanji practice sheet generator, and kanji testing site. The goal of the project was to create a student teaching aid for students learning Japanense. 
+
+## Developer Aside
+ 
+ My personal goal was to get practice using Chakra,React, React DnD, HTML2Canvas and Javascript. React DnD is used to allow users to drag and drop kanji aroung in the practice sheet generator to fit their personal needs. HTML2Canvas was used to generate a downloadable pdf of the users created kanji sheet. This site also has its own web url, provided by Go Daddy. 
+ 
+ The hardest part was learning how to incorporate React DnD, HTMl2Canvas together and make them work on mobile, as well as learning how to shrink a canvas on different screen sizes.
+ 
+ This project currently has a few bugs. When I created it I didn't fully understand how to handle useEffect type events on certain type triggers. I am planning on fixing these issues, with the new knowledge that I have. 
+ 
+ 
+## How to Use 
+
+See the code snippet below to run the project or go to https://www.kanji2go.com/home
+
+On the webpage you can click on pages dropdown to navigate to the following sections.
+
+### About Us
+
+This page holds a brief snippet about me and why I created the site.
+
+### Premade Kanji Sheets
+ This pages contains sortable premade kanji sheets. You can click on the eye icon to preview what is contained inside the pdf before downloading it.        There is a sort menu on the left that allows you to filter by JLPT testing level, and sheet type.
+ 
+ ### Kanji Sheet Creator
+This pages allows the user to create a custom kanji sheet and download it once satisfied. You can click on the + button to begin the kanji selection process. Once selected you can drag them around to any row you wish. 
+ 
+Clicking the new page button will createa a new page for you to drag kanji to. There is a bug when you scroll the item will move off your cursor. This    issue has been found to be with the DnD React library. The code will be updated once the libarary has been updated.
+
+To download the sheet click on preview then the download button.
+ 
+ ### Kanji Quiz
+This page allows you to quiz yourself on your knowledge of kanji. By, creating a customizable quiz, on which you can draw  kanji based on the prompt. Once all questions haved been answered you can click sumbit and compare your answers with the answer key. 
+
+Button Breakdown
+  New Quiz- prompts the user to create a new quiz and clears the current one
+  Questions - this button becomes active once the user creates a quiz and allows them to naviagte to each question, as well as track if an answer has                 been given for the prompt
+  Clear - clears the current canvas
+  Submit - submits what the user has drawn
+  Erase - turns the users cursor into an eraser, clicking it again will turn it off
+  Arrow Buttons - are used to navigate the prompts. 
+
+# Getting Started with Create React App 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
