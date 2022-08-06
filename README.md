@@ -2,7 +2,7 @@
 
 # Project Description
 
-Kanji2go is a custom kanji practice sheet generator, and kanji testing site. The goal of the project was to create a student teaching aid for students learning Japanense. 
+Kanji2go is a custom kanji practice sheet generator, and kanji testing site. The goal of the project is to create a student teaching aid for students learning Japanense. 
 
 ## Developer Aside
  
