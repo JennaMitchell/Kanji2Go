@@ -1,6 +1,6 @@
 import classes from "./typeFilter.module.css";
 import { CheckIcon } from "@heroicons/react/solid";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { storeActions } from "../../../../store/store";
 const TypeFilter = () => {
@@ -64,27 +64,27 @@ const TypeFilter = () => {
       tempArray = tempArray.filter((x) => x !== "Kanji");
       setSearchTermArray(tempArray);
       setRemovedSearch("Kanji");
-      setLengthOfSearchTermArray(lengthOfSearchTermArray - 1);
+
+      if (tempArray.length !== 0) {
+        let tempArray = premadeKanjiFilterArray.slice();
+        tempArray = tempArray.filter((x) => x !== removedSearch);
+        dispatch(storeActions.setPremadeKanjiFilterArray(tempArray));
+        dispatch(storeActions.setPremadeSheetFilteringActive(true));
+      } else {
+        if (searchTermArray !== null) {
+          let tempArray = premadeKanjiFilterArray.slice();
+          for (let i = 0; i < searchTermArray.length; i++) {
+            if (!tempArray.includes(searchTermArray[i])) {
+              tempArray.push(searchTermArray[i]);
+            }
+          }
+          dispatch(storeActions.setPremadeKanjiFilterArray(tempArray));
+          dispatch(storeActions.setPremadeSheetFilteringActive(true));
+        }
+      }
     }
     setKanjiFilterClicked(!kanjiFilterClicked);
   };
-  useEffect(() => {
-    if (removedSearch) {
-      let tempArray = premadeKanjiFilterArray.slice();
-      tempArray = tempArray.filter((x) => x !== removedSearch);
-      dispatch(storeActions.setPremadeKanjiFilterArray(tempArray));
-    } else {
-      if (searchTermArray !== null) {
-        let tempArray = premadeKanjiFilterArray.slice();
-        for (let i = 0; i < searchTermArray.length; i++) {
-          if (!tempArray.includes(searchTermArray[i])) {
-            tempArray.push(searchTermArray[i]);
-          }
-        }
-        dispatch(storeActions.setPremadeKanjiFilterArray(tempArray));
-      }
-    }
-  }, [lengthOfSearchTermArray]);
 
   return (
     <div className={classes.filterContainer}>

@@ -88,9 +88,6 @@ const Contents = ({ content = [], index, dragId, type, stroke }) => {
       break;
     case "Stroke Order":
       let kanjiStrokeData = kanjiStrokeRetreiver(content[0].kanji[0]);
-
-      console.log(kanjiStrokeData);
-
       itemToRender = (
         <Draggable draggableId={dragId} index={index}>
           {(provided, snapshot) => (

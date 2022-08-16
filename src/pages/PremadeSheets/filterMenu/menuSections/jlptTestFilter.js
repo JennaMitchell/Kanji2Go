@@ -1,6 +1,6 @@
 import classes from "./jlptTestFilter.module.css";
 import { CheckIcon } from "@heroicons/react/solid";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { storeActions } from "../../../../store/store";
 
@@ -18,10 +18,28 @@ const JLPTTestFilter = () => {
   const [removedSearch, setRemovedSearch] = useState();
   const [lengthOfSearchTermArray, setLengthOfSearchTermArray] = useState(0);
 
+  const dispatchFilteredKanjiHandler = (tempArray) => {
+    if (tempArray.length !== 0) {
+      let tempArray = premadeKanjiFilterArray.slice();
+      tempArray = tempArray.filter((x) => x !== removedSearch);
+      dispatch(storeActions.setPremadeKanjiFilterArray(tempArray));
+      dispatch(storeActions.setPremadeSheetFilteringActive(true));
+    } else {
+      if (searchTermArray !== null) {
+        let tempArray = premadeKanjiFilterArray.slice();
+        for (let i = 0; i < searchTermArray.length; i++) {
+          if (!tempArray.includes(searchTermArray[i])) {
+            tempArray.push(searchTermArray[i]);
+          }
+        }
+        dispatch(storeActions.setPremadeKanjiFilterArray(tempArray));
+        dispatch(storeActions.setPremadeSheetFilteringActive(true));
+      }
+    }
+  };
+
   const jlptOneHandler = () => {
     let tempArray = searchTermArray;
-
-    // we are doing the above code so that the useEffect triggers the first time we click
 
     if (!jlptOne) {
       tempArray.push("JLPT1");
@@ -34,7 +52,8 @@ const JLPTTestFilter = () => {
       tempArray = tempArray.filter((x) => x !== "JLPT1");
       setSearchTermArray(tempArray);
       setRemovedSearch("JLPT1");
-      setLengthOfSearchTermArray(lengthOfSearchTermArray - 1);
+
+      dispatchFilteredKanjiHandler(tempArray);
     }
     setJLPTOne(!jlptOne);
   };
@@ -54,7 +73,8 @@ const JLPTTestFilter = () => {
       tempArray = tempArray.filter((x) => x !== "JLPT2");
       setSearchTermArray(tempArray);
       setRemovedSearch("JLPT2");
-      setLengthOfSearchTermArray(lengthOfSearchTermArray - 1);
+
+      dispatchFilteredKanjiHandler(tempArray);
     }
     setJLPTTwo(!jlptTwo);
   };
@@ -73,7 +93,8 @@ const JLPTTestFilter = () => {
       tempArray = tempArray.filter((x) => x !== "JLPT3");
       setSearchTermArray(tempArray);
       setRemovedSearch("JLPT3");
-      setLengthOfSearchTermArray(lengthOfSearchTermArray - 1);
+
+      dispatchFilteredKanjiHandler(tempArray);
     }
     setJLPTThree(!jlptThree);
   };
@@ -91,7 +112,8 @@ const JLPTTestFilter = () => {
       tempArray = tempArray.filter((x) => x !== "JLPT4");
       setSearchTermArray(tempArray);
       setRemovedSearch("JLPT4");
-      setLengthOfSearchTermArray(lengthOfSearchTermArray - 1);
+
+      dispatchFilteredKanjiHandler(tempArray);
     }
     setJLPTFour(!jlptFour);
   };
@@ -108,28 +130,11 @@ const JLPTTestFilter = () => {
       tempArray = tempArray.filter((x) => x !== "JLPT5");
       setSearchTermArray(tempArray);
       setRemovedSearch("JLPT5");
-      setLengthOfSearchTermArray(lengthOfSearchTermArray - 1);
+
+      dispatchFilteredKanjiHandler(tempArray);
     }
     setJLPTFive(!jlptFive);
   };
-
-  useEffect(() => {
-    if (removedSearch) {
-      let tempArray = premadeKanjiFilterArray.slice();
-      tempArray = tempArray.filter((x) => x !== removedSearch);
-      dispatch(storeActions.setPremadeKanjiFilterArray(tempArray));
-    } else {
-      if (searchTermArray !== null) {
-        let tempArray = premadeKanjiFilterArray.slice();
-        for (let i = 0; i < searchTermArray.length; i++) {
-          if (!tempArray.includes(searchTermArray[i])) {
-            tempArray.push(searchTermArray[i]);
-          }
-        }
-        dispatch(storeActions.setPremadeKanjiFilterArray(tempArray));
-      }
-    }
-  }, [lengthOfSearchTermArray]);
 
   return (
     <div className={classes.filterContainer}>

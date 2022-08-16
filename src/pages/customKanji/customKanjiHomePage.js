@@ -18,6 +18,7 @@ import PreviewSheet from "./previewSheet";
 import ClearButtonWarning from "./clearButtonWarning";
 
 const CustomKanjiHomePage = () => {
+  const minimumScreenSizeReached = window.matchMedia("(max-width:1200px)");
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
   const shopNavButtonClicked = useSelector(
     (state) => state.shopNavButtonClicked
@@ -100,56 +101,81 @@ const CustomKanjiHomePage = () => {
             Kanji Sheet Creator
           </Heading>
         </Container>
-        <Container
-          maxW="100%"
-          w={{ sm: "1300px", md: "100%" }}
-          h={{ base: "1400px", sm: "1400px", "2xl": "1300px" }}
-          pos="relative"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          transition="1s"
-          bgColor="brand.900"
-          borderBottom="1px solid white"
-        >
-          <div
-            className={`${
-              addButtonClicked
-                ? classes.addMenuContainerClicked
-                : classes.addMenuContainer
-            }`}
-            onClick={addButtonHandler}
-          >
-            {addButtonClicked ? (
-              <MinusIcon
-                className={`${
-                  addButtonClicked ? classes.addIconClicked : classes.addIcon
-                }`}
-              />
-            ) : (
-              <PlusIcon className={classes.addIcon} />
-            )}
-            {addButtonClicked && <AddComponentMenu />}
-          </div>
-          <div className={classes.imageButtonMenu}>
-            <button
-              className={classes.previewButton}
-              onClick={previewButtonHandler}
-            >
-              Preview
-            </button>
-            <button
-              className={classes.clearButton}
-              onClick={clearButtonHandler}
-            >
-              Clear
-            </button>
-          </div>
 
-          <div className={`${classes.dragNdropContainer}`} ref={exportRef}>
-            <DragNDropContainer />
-          </div>
-        </Container>
+        {!minimumScreenSizeReached && (
+          <Container
+            maxW="100%"
+            w={{ sm: "1300px", md: "100%" }}
+            h={{ base: "1400px", sm: "1400px", "2xl": "1300px" }}
+            pos="relative"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            transition="1s"
+            bgColor="brand.900"
+            borderBottom="1px solid white"
+          >
+            <div
+              className={`${
+                addButtonClicked
+                  ? classes.addMenuContainerClicked
+                  : classes.addMenuContainer
+              }`}
+              onClick={addButtonHandler}
+            >
+              {addButtonClicked ? (
+                <MinusIcon
+                  className={`${
+                    addButtonClicked ? classes.addIconClicked : classes.addIcon
+                  }`}
+                />
+              ) : (
+                <PlusIcon className={classes.addIcon} />
+              )}
+              {addButtonClicked && <AddComponentMenu />}
+            </div>
+            <div className={classes.imageButtonMenu}>
+              <button
+                className={classes.previewButton}
+                onClick={previewButtonHandler}
+              >
+                Preview
+              </button>
+              <button
+                className={classes.clearButton}
+                onClick={clearButtonHandler}
+              >
+                Clear
+              </button>
+            </div>
+
+            <div className={`${classes.dragNdropContainer}`} ref={exportRef}>
+              <DragNDropContainer />
+            </div>
+          </Container>
+        )}
+        {minimumScreenSizeReached && (
+          <Container
+            maxW="100%"
+            w={{ sm: "1300px", md: "100%" }}
+            h={{ base: "1400px", sm: "1400px", "2xl": "1300px" }}
+            pos="relative"
+            display="flex"
+            justifyContent="center"
+            alignItems="flex-start"
+            transition="1s"
+            bgColor="brand.900"
+            borderBottom="1px solid white"
+          >
+            <div className={classes.warningTextContainer}>
+              <h6 className={classes.warningText}>
+                This feature is unavailable on screens less then 1200 pixels.
+                Please expand your screens window or use a larger screen.
+              </h6>
+            </div>
+          </Container>
+        )}
+
         <Footer />
       </div>
     </>

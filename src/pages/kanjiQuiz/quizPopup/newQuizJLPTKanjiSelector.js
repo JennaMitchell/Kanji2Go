@@ -47,7 +47,7 @@ const NewQuizJLPTKanjiSelector = ({
         numberOfQuestionsSelected
       );
     }
-    console.log(finalSelectedKanji);
+
     retreiveKanjiSelectedFunction(
       finalSelectedKanji,
       numberOfQuestionsSelected

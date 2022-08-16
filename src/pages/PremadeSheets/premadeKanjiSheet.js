@@ -23,6 +23,9 @@ const PreMadeKanjiSheets = () => {
   const grammarCardEnabler = useSelector((state) => state.grammarCardEnabler);
   const kanjiCardEnabler = useSelector((state) => state.kanjiCardEnabler);
   const vocabCardEnabler = useSelector((state) => state.vocabCardEnabler);
+  const premadeSheetFilteringActive = useSelector(
+    (state) => state.premadeSheetFilteringActive
+  );
 
   const dispatch = useDispatch();
 
@@ -40,6 +43,7 @@ const PreMadeKanjiSheets = () => {
   const [filteredGrammarDB, setFilteredGrammarDB] = useState(grammarCardsDB);
   const [filteredKanjiDB, setFilteredKanjiDB] = useState(kanjiCardsDB);
   const [filteredVocabDB, setFilteredVocabDB] = useState(vocabCardsDB);
+
   const premadeKanjiFilterArray = useSelector(
     (state) => state.premadeKanjiFilterArray
   );
@@ -69,10 +73,13 @@ const PreMadeKanjiSheets = () => {
     if (kanjiCardsDB.length !== 0) {
       setFilteredKanjiDB(kanjiCardsDB);
     }
-    if (kanjiCardsDB.length !== 0) {
+  }, [kanjiCardsDB]);
+  useEffect(() => {
+    if (grammarCardsDB.length !== 0) {
       setFilteredGrammarDB(grammarCardsDB);
     }
-  }, [kanjiCardsDB]);
+  }, [grammarCardsDB]);
+
   useEffect(() => {
     if (vocabCardsDB.length !== 0) {
       setFilteredVocabDB(vocabCardsDB);
@@ -80,87 +87,87 @@ const PreMadeKanjiSheets = () => {
   }, [vocabCardsDB]);
 
   // filtering
-  useEffect(() => {
-    if (premadeKanjiFilterArray.length !== 0) {
-      if (premadeKanjiFilterArray.includes("Grammar")) {
-        dispatch(storeActions.setGrammarCardEnabler(true));
-      } else {
-        if (grammarCardEnabler) {
-          dispatch(storeActions.setGrammarCardEnabler(false));
-        }
-      }
-      if (premadeKanjiFilterArray.includes("Kanji")) {
-        dispatch(storeActions.setKanjiCardEnabler(true));
-      } else {
-        if (kanjiCardEnabler) {
-          dispatch(storeActions.setKanjiCardEnabler(false));
-        }
-      }
-      if (premadeKanjiFilterArray.includes("Vocab")) {
-        dispatch(storeActions.setVocabCardEnabler(true));
-      } else {
-        if (vocabCardEnabler) {
-          dispatch(storeActions.setVocabCardEnabler(false));
-        }
-      }
+
+  if (premadeKanjiFilterArray.length !== 0 && premadeSheetFilteringActive) {
+    if (premadeKanjiFilterArray.includes("Grammar")) {
+      dispatch(storeActions.setGrammarCardEnabler(true));
     } else {
-      if (!vocabCardEnabler) {
-        dispatch(storeActions.setVocabCardEnabler(true));
-      }
-      if (!kanjiCardEnabler) {
-        dispatch(storeActions.setKanjiCardEnabler(true));
-      }
-      if (!grammarCardEnabler) {
-        dispatch(storeActions.setGrammarCardEnabler(true));
+      if (grammarCardEnabler) {
+        dispatch(storeActions.setGrammarCardEnabler(false));
       }
     }
-  }, [premadeKanjiFilterArray]);
+    if (premadeKanjiFilterArray.includes("Kanji")) {
+      dispatch(storeActions.setKanjiCardEnabler(true));
+    } else {
+      if (kanjiCardEnabler) {
+        dispatch(storeActions.setKanjiCardEnabler(false));
+      }
+    }
+    if (premadeKanjiFilterArray.includes("Vocab")) {
+      dispatch(storeActions.setVocabCardEnabler(true));
+    } else {
+      if (vocabCardEnabler) {
+        dispatch(storeActions.setVocabCardEnabler(false));
+      }
+    }
+    dispatch(storeActions.setPremadeSheetFilteringActive(false));
+  } else if (
+    premadeSheetFilteringActive &&
+    premadeKanjiFilterArray.length === 0
+  ) {
+    if (!vocabCardEnabler) {
+      dispatch(storeActions.setVocabCardEnabler(true));
+    }
+    if (!kanjiCardEnabler) {
+      dispatch(storeActions.setKanjiCardEnabler(true));
+    }
+    if (!grammarCardEnabler) {
+      dispatch(storeActions.setGrammarCardEnabler(true));
+    }
+    dispatch(storeActions.setPremadeSheetFilteringActive(false));
+  }
 
   //fitering side effect
 
-  useEffect(() => {
-    if (premadeKanjiFilterArray.length !== 0) {
-      let jlptFilteredSearch = premadeKanjiFilterArray
-        .slice()
-        .filter((x) => jlptTests.includes(x));
-      if (
-        premadeKanjiFilterArray.includes("Grammar") &&
-        jlptFilteredSearch.length !== 0
-      ) {
-        let tempArray = grammarCardsDB.slice();
-        for (let i = 0; i < jlptFilteredSearch.length; i++) {
-          tempArray = tempArray.filter(
-            (x) => x.title === jlptFilteredSearch[i]
-          );
-        }
-        setFilteredGrammarDB(tempArray);
+  if (premadeKanjiFilterArray.length !== 0 && premadeSheetFilteringActive) {
+    let jlptFilteredSearch = premadeKanjiFilterArray
+      .slice()
+      .filter((x) => jlptTests.includes(x));
+    if (
+      premadeKanjiFilterArray.includes("Grammar") &&
+      jlptFilteredSearch.length !== 0
+    ) {
+      let tempArray = grammarCardsDB.slice();
+      for (let i = 0; i < jlptFilteredSearch.length; i++) {
+        tempArray = tempArray.filter((x) => x.title === jlptFilteredSearch[i]);
       }
-      if (
-        premadeKanjiFilterArray.includes("Vocab") &&
-        jlptFilteredSearch.length !== 0
-      ) {
-        let tempArray = vocabCardsDB.slice();
-        for (let i = 0; i < jlptFilteredSearch.length; i++) {
-          tempArray = tempArray.filter(
-            (x) => x.title === jlptFilteredSearch[i]
-          );
-        }
-        setFilteredVocabDB(tempArray);
-      }
-      if (
-        premadeKanjiFilterArray.includes("Vocab") &&
-        jlptFilteredSearch.length !== 0
-      ) {
-        let tempArray = kanjiCardsDB.slice();
-        for (let i = 0; i < jlptFilteredSearch.length; i++) {
-          tempArray = tempArray.filter(
-            (x) => x.title === jlptFilteredSearch[i]
-          );
-        }
-        setFilteredKanjiDB(tempArray);
-      }
+      setFilteredGrammarDB(tempArray);
+      dispatch(storeActions.setPremadeSheetFilteringActive(false));
     }
-  }, [premadeKanjiFilterArray]);
+    if (
+      premadeKanjiFilterArray.includes("Vocab") &&
+      jlptFilteredSearch.length !== 0
+    ) {
+      let tempArray = vocabCardsDB.slice();
+      for (let i = 0; i < jlptFilteredSearch.length; i++) {
+        tempArray = tempArray.filter((x) => x.title === jlptFilteredSearch[i]);
+      }
+      setFilteredVocabDB(tempArray);
+      dispatch(storeActions.setPremadeSheetFilteringActive(false));
+    }
+    if (
+      premadeKanjiFilterArray.includes("Vocab") &&
+      jlptFilteredSearch.length !== 0
+    ) {
+      let tempArray = kanjiCardsDB.slice();
+      for (let i = 0; i < jlptFilteredSearch.length; i++) {
+        tempArray = tempArray.filter((x) => x.title === jlptFilteredSearch[i]);
+      }
+      setFilteredKanjiDB(tempArray);
+      dispatch(storeActions.setPremadeSheetFilteringActive(false));
+    }
+  }
+
   return (
     <div className={`${loginButtonClicked ? classes.loginClickedHompage : ""}`}>
       <NavBar />

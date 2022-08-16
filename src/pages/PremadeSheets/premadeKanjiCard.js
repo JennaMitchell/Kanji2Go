@@ -26,12 +26,13 @@ const PremadeKanjiCard = ({
   const vocabCardsDB = useSelector((state) => state.vocabCardsDB);
   const [idClicked, setIdClicked] = useState(null);
   const [previewButtons, setPreviewButtons] = useState();
+  const [initialRender, setInitialRender] = useState(true);
 
   const idButtonHandler = (id) => {
     setIdClicked(id);
   };
 
-  useEffect(() => {
+  if (initialRender) {
     if (bannerText === "Kanji") {
       if (kanjiCardsDB.length !== 0) {
         let tempArray = [];
@@ -40,6 +41,7 @@ const PremadeKanjiCard = ({
           tempArray.push(objectToBeFiltered[`kanji${i}`]);
         }
         setCardList(tempArray);
+        setInitialRender(false);
       }
     }
     if (bannerText === "Vocab") {
@@ -50,9 +52,11 @@ const PremadeKanjiCard = ({
           tempArray.push(objectToBeFiltered[`term0${i}`]);
         }
         setCardList(tempArray);
+        setInitialRender(false);
       }
     }
-  }, []);
+  }
+
   // creating preview side
 
   useEffect(() => {
@@ -93,7 +97,7 @@ const PremadeKanjiCard = ({
         );
       }
     }
-  }, [idClicked, previewIconClicked]);
+  }, [idClicked, previewIconClicked, bannerText, cardList]);
 
   /// Handling the releated pdf links
   let pdfReference = "";
@@ -128,9 +132,9 @@ const PremadeKanjiCard = ({
           <div
             className={`${
               bannerText === "Kanji" && classes.kanjiSelectorButtons
-            } ${
-              bannerText === "Grammar" && classes.kanjiSelectorButtons
-            } ${bannerText === "Vocab" && classes.vocabSelectorButtons}`}
+            } ${bannerText === "Grammar" && classes.kanjiSelectorButtons} ${
+              bannerText === "Vocab" && classes.vocabSelectorButtons
+            }`}
           >
             {previewButtons}
           </div>

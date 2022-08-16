@@ -51,7 +51,6 @@ const KanjiStrokeContainer = ({ data, id, stroke, strokeData }) => {
   let extractedKanji = id.slice(0, 1);
 
   let masterString = `${extractedKanji}Strokes`;
-  console.log(masterString);
 
   const dispatch = useDispatch();
 

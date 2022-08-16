@@ -52,7 +52,7 @@ const KanjiOnlyHelperBlock = ({ data, id }) => {
 
   const trashIconHandler = () => {
     let tempArray = JSON.parse(JSON.stringify(customKanjiGridData));
-    console.log(tempArray);
+
     // finding the coluumn where the object we want to delete is at
     for (let i = 1; i < tempArray.columnOrder.length; i++) {
       let columnId = "";
