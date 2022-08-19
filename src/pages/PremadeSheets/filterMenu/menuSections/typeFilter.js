@@ -1,6 +1,6 @@
 import classes from "./typeFilter.module.css";
 import { CheckIcon } from "@heroicons/react/solid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { storeActions } from "../../../../store/store";
 const TypeFilter = () => {
@@ -12,77 +12,38 @@ const TypeFilter = () => {
   const [vocabFilterClicked, setVocabFilterClicked] = useState(false);
   const [kanjiFilterClicked, setKanjiFilterClicked] = useState(false);
   const [searchTermArray, setSearchTermArray] = useState([]);
-  const [removedSearch, setRemovedSearch] = useState(false);
-  const [lengthOfSearchTermArray, setLengthOfSearchTermArray] = useState(0);
-  const grammarFilterHandler = () => {
-    let tempArray = searchTermArray;
 
-    if (!grammarFilterClicked) {
-      tempArray.push("Grammar");
+  const dispatchFunction = (arrayToBeDispatched) => {
+    dispatch(storeActions.setPremadeKanjiFilterArray(arrayToBeDispatched));
+    dispatch(storeActions.setPremadeSheetFilteringActive("true"));
+  };
+
+  useEffect(() => {
+    dispatchFunction(searchTermArray);
+  }, [searchTermArray]);
+
+  const filteringHandler = (buttonState, buttonType) => {
+    let tempArray = premadeKanjiFilterArray.slice();
+    if (!buttonState) {
+      tempArray.push(buttonType);
       setSearchTermArray(tempArray);
-      setLengthOfSearchTermArray(lengthOfSearchTermArray + 1);
-      if (removedSearch) {
-        setRemovedSearch(false);
-      }
     } else {
-      tempArray = tempArray.filter((x) => x !== "Grammar");
+      tempArray = tempArray.filter((type) => type !== buttonType);
       setSearchTermArray(tempArray);
-      setRemovedSearch("Grammar");
-      setLengthOfSearchTermArray(lengthOfSearchTermArray - 1);
     }
+  };
+
+  const grammarFilterHandler = () => {
+    filteringHandler(grammarFilterClicked, "Grammar");
     setGrammarFilterClicked(!grammarFilterClicked);
   };
   const vocabFilterHandler = () => {
-    let tempArray = searchTermArray;
+    filteringHandler(vocabFilterClicked, "Vocab");
 
-    if (!vocabFilterClicked) {
-      tempArray.push("Vocab");
-      setSearchTermArray(tempArray);
-      setLengthOfSearchTermArray(lengthOfSearchTermArray + 1);
-      if (removedSearch) {
-        setRemovedSearch(false);
-      }
-    } else {
-      tempArray = tempArray.filter((x) => x !== "Vocab");
-      setSearchTermArray(tempArray);
-      setRemovedSearch("Vocab");
-      setLengthOfSearchTermArray(lengthOfSearchTermArray - 1);
-    }
     setVocabFilterClicked(!vocabFilterClicked);
   };
   const kanjiFilterHandler = () => {
-    let tempArray = searchTermArray;
-
-    if (!kanjiFilterClicked) {
-      tempArray.push("Kanji");
-      setSearchTermArray(tempArray);
-      setLengthOfSearchTermArray(lengthOfSearchTermArray + 1);
-      if (removedSearch) {
-        setRemovedSearch(false);
-      }
-    } else {
-      tempArray = tempArray.filter((x) => x !== "Kanji");
-      setSearchTermArray(tempArray);
-      setRemovedSearch("Kanji");
-
-      if (tempArray.length !== 0) {
-        let tempArray = premadeKanjiFilterArray.slice();
-        tempArray = tempArray.filter((x) => x !== removedSearch);
-        dispatch(storeActions.setPremadeKanjiFilterArray(tempArray));
-        dispatch(storeActions.setPremadeSheetFilteringActive(true));
-      } else {
-        if (searchTermArray !== null) {
-          let tempArray = premadeKanjiFilterArray.slice();
-          for (let i = 0; i < searchTermArray.length; i++) {
-            if (!tempArray.includes(searchTermArray[i])) {
-              tempArray.push(searchTermArray[i]);
-            }
-          }
-          dispatch(storeActions.setPremadeKanjiFilterArray(tempArray));
-          dispatch(storeActions.setPremadeSheetFilteringActive(true));
-        }
-      }
-    }
+    filteringHandler(kanjiFilterClicked, "Kanji");
     setKanjiFilterClicked(!kanjiFilterClicked);
   };
 

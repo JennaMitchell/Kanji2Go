@@ -1,138 +1,62 @@
 import classes from "./jlptTestFilter.module.css";
 import { CheckIcon } from "@heroicons/react/solid";
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { storeActions } from "../../../../store/store";
 
 const JLPTTestFilter = () => {
   const dispatch = useDispatch();
-  const premadeKanjiFilterArray = useSelector(
-    (state) => state.premadeKanjiFilterArray
-  );
   const [jlptOne, setJLPTOne] = useState();
   const [jlptTwo, setJLPTTwo] = useState();
   const [jlptThree, setJLPTThree] = useState();
   const [jlptFour, setJLPTFour] = useState();
   const [jlptFive, setJLPTFive] = useState();
   const [searchTermArray, setSearchTermArray] = useState([]);
-  const [removedSearch, setRemovedSearch] = useState();
-  const [lengthOfSearchTermArray, setLengthOfSearchTermArray] = useState(0);
+  const premadeKanjiFilterArray = useSelector(
+    (state) => state.premadeKanjiFilterArray
+  );
 
-  const dispatchFilteredKanjiHandler = (tempArray) => {
-    if (tempArray.length !== 0) {
-      let tempArray = premadeKanjiFilterArray.slice();
-      tempArray = tempArray.filter((x) => x !== removedSearch);
-      dispatch(storeActions.setPremadeKanjiFilterArray(tempArray));
-      dispatch(storeActions.setPremadeSheetFilteringActive(true));
+  const dispatchFilteredKanjiHandler = (filtersArray) => {
+    dispatch(storeActions.setPremadeKanjiFilterArray(filtersArray));
+    dispatch(storeActions.setPremadeSheetFilteringActive("true"));
+  };
+  useEffect(() => {
+    dispatchFilteredKanjiHandler(searchTermArray);
+  }, [searchTermArray]);
+
+  const jlptButtonHandler = (testType, buttonState) => {
+    let tempArray = premadeKanjiFilterArray.slice();
+
+    if (!buttonState) {
+      tempArray.push(testType);
+      setSearchTermArray(tempArray);
     } else {
-      if (searchTermArray !== null) {
-        let tempArray = premadeKanjiFilterArray.slice();
-        for (let i = 0; i < searchTermArray.length; i++) {
-          if (!tempArray.includes(searchTermArray[i])) {
-            tempArray.push(searchTermArray[i]);
-          }
-        }
-        dispatch(storeActions.setPremadeKanjiFilterArray(tempArray));
-        dispatch(storeActions.setPremadeSheetFilteringActive(true));
-      }
+      tempArray = tempArray.filter((type) => type !== testType);
+
+      setSearchTermArray(tempArray);
     }
   };
 
   const jlptOneHandler = () => {
-    let tempArray = searchTermArray;
-
-    if (!jlptOne) {
-      tempArray.push("JLPT1");
-      setSearchTermArray(tempArray);
-      setLengthOfSearchTermArray(lengthOfSearchTermArray + 1);
-      if (removedSearch) {
-        setRemovedSearch(false);
-      }
-    } else {
-      tempArray = tempArray.filter((x) => x !== "JLPT1");
-      setSearchTermArray(tempArray);
-      setRemovedSearch("JLPT1");
-
-      dispatchFilteredKanjiHandler(tempArray);
-    }
+    jlptButtonHandler("JLPT1", jlptOne);
     setJLPTOne(!jlptOne);
   };
 
   const jlptTwoHandler = () => {
-    let tempArray = searchTermArray;
-
-    // we are doing the above code so that the useEffect triggers the first time we click
-    if (!jlptTwo) {
-      tempArray.push("JLPT2");
-      setSearchTermArray(tempArray);
-      setLengthOfSearchTermArray(lengthOfSearchTermArray + 1);
-      if (removedSearch) {
-        setRemovedSearch(false);
-      }
-    } else {
-      tempArray = tempArray.filter((x) => x !== "JLPT2");
-      setSearchTermArray(tempArray);
-      setRemovedSearch("JLPT2");
-
-      dispatchFilteredKanjiHandler(tempArray);
-    }
+    jlptButtonHandler("JLPT2", jlptTwo);
     setJLPTTwo(!jlptTwo);
   };
   const jlptThreeHandler = () => {
-    let tempArray = searchTermArray;
-
-    // we are doing the above code so that the useEffect triggers the first time we click
-    if (!jlptThree) {
-      tempArray.push("JLPT3");
-      setSearchTermArray(tempArray);
-      setLengthOfSearchTermArray(lengthOfSearchTermArray + 1);
-      if (removedSearch) {
-        setRemovedSearch(false);
-      }
-    } else {
-      tempArray = tempArray.filter((x) => x !== "JLPT3");
-      setSearchTermArray(tempArray);
-      setRemovedSearch("JLPT3");
-
-      dispatchFilteredKanjiHandler(tempArray);
-    }
+    jlptButtonHandler("JLPT3", jlptThree);
     setJLPTThree(!jlptThree);
   };
   const jlptFourHandler = () => {
-    let tempArray = searchTermArray;
+    jlptButtonHandler("JLPT4", jlptFour);
 
-    if (!jlptFour) {
-      tempArray.push("JLPT4");
-      setSearchTermArray(tempArray);
-      setLengthOfSearchTermArray(lengthOfSearchTermArray + 1);
-      if (removedSearch) {
-        setRemovedSearch(false);
-      }
-    } else {
-      tempArray = tempArray.filter((x) => x !== "JLPT4");
-      setSearchTermArray(tempArray);
-      setRemovedSearch("JLPT4");
-
-      dispatchFilteredKanjiHandler(tempArray);
-    }
     setJLPTFour(!jlptFour);
   };
   const jlptFiveHandler = () => {
-    let tempArray = searchTermArray;
-    if (!jlptFive) {
-      tempArray.push("JLPT5");
-      setSearchTermArray(tempArray);
-      setLengthOfSearchTermArray(lengthOfSearchTermArray + 1);
-      if (removedSearch) {
-        setRemovedSearch(false);
-      }
-    } else {
-      tempArray = tempArray.filter((x) => x !== "JLPT5");
-      setSearchTermArray(tempArray);
-      setRemovedSearch("JLPT5");
-
-      dispatchFilteredKanjiHandler(tempArray);
-    }
+    jlptButtonHandler("JLPT5", jlptFive);
     setJLPTFive(!jlptFive);
   };
 

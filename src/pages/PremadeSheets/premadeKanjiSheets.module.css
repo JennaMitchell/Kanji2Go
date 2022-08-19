@@ -26,6 +26,7 @@
   min-height: 1200px;
   height: max-content;
   max-height: max-content;
+  padding-bottom: 20px;
 
   width: max(100%, 100%);
   background-color: #f5b2b2;
@@ -38,7 +39,6 @@
   overflow-x: hidden;
   transition: all 1s;
   color: white;
-  gap: 10px;
 }
 .loginClickedHomepage {
   position: static;
@@ -46,22 +46,18 @@
   width: max(100vw, 100vw);
   height: max(90vh, 90vh);
 }
-@media (max-width: 1800px) {
-  .cardGrid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-@media (max-width: 1700px) {
+
+@media (max-width: 2120px) {
   .cardGrid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-@media (max-width: 1500px) {
+@media (max-width: 1700px) {
   .cardGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-@media (max-width: 1250px) {
+@media (max-width: 1300px) {
   .cardGrid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -73,7 +69,7 @@
 }
 @media (max-width: 510px) {
   .menuIconMoveOut {
-    right: -60px;
+    display: none;
   }
 }
 @media (max-width: 420px) {
@@ -81,10 +77,16 @@
     width: max(40px, 40px);
     height: max(40px, 40px);
   }
+  .menuIconMoveOut {
+    display: none;
+  }
 }
 @media (max-width: 375px) {
   .menuIconContainer {
     width: max(35px, 35px);
     height: max(35px, 35px);
+  }
+  .menuIconMoveOut {
+    display: none;
   }
 }
