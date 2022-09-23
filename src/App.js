@@ -8,13 +8,14 @@ import LocalDatabaseSetup from "./firebase/LocalDatabaseSetup";
 import CustomKanjiHomePage from "./pages/customKanji/customKanjiHomePage";
 import KanjiQuizMainPage from "./pages/kanjiQuiz/kanjiQuizMainPage";
 import SentencePracticeMainPage from "./pages/sentencePractice/sentencePracticeMainPage";
+import Credits from "./credits/credits";
 
 function App() {
   return (
     <div className={classes.appContainer}>
-      <LocalDatabaseSetup></LocalDatabaseSetup>
+      <LocalDatabaseSetup />
       <Routes>
-        <Route path="/" element={<Navigate replace to="/home" />}></Route>
+        <Route path="/" element={<Navigate replace to="/home" />} />
         <Route
           path="/home"
           element={
@@ -22,7 +23,7 @@ function App() {
               <HomePage />
             </>
           }
-        ></Route>
+        />
 
         <Route
           path="/aboutus"
@@ -31,7 +32,7 @@ function App() {
               <AboutUsPage />
             </>
           }
-        ></Route>
+        />
         <Route
           path="/premadeKanjiSheets"
           element={
@@ -39,7 +40,7 @@ function App() {
               <PreMadeKanjiSheets />
             </>
           }
-        ></Route>
+        />
         <Route
           path="/customKanjiSheets"
           element={
@@ -47,7 +48,7 @@ function App() {
               <CustomKanjiHomePage />
             </>
           }
-        ></Route>
+        />
         <Route
           path="/kanjiQuiz"
           element={
@@ -55,7 +56,7 @@ function App() {
               <KanjiQuizMainPage />
             </>
           }
-        ></Route>
+        />
         <Route
           path="/sentencePractice"
           element={
@@ -63,7 +64,15 @@ function App() {
               <SentencePracticeMainPage />
             </>
           }
-        ></Route>
+        />
+        <Route
+          path="/credits"
+          element={
+            <>
+              <Credits />
+            </>
+          }
+        />
       </Routes>
     </div>
   );

@@ -238,21 +238,20 @@ const PreMadeKanjiSheets = () => {
     // Reseting if test type array is blank
     if (
       typeFilters.length === 0 &&
-      premadeSheetFilteringActive !== 0 &&
-      jlptFilteredSearch.length === 0
+      jlptFilteredSearch.length === 0 &&
+      premadeSheetFilteringActive
     ) {
       setFilteredKanjiDB([]);
       setFilteredVocabDB([]);
       setFilteredGrammarDB([]);
     }
-    dispatch(storeActions.setPremadeSheetFilteringActive(0));
-    // at the end we reset the useEffect by setting the filter active state to false
+    dispatch(storeActions.setPremadeSheetFilteringActive(false));
   };
 
   // Use Effect For triggering the Filtering
 
   useEffect(() => {
-    if (premadeSheetFilteringActive !== 0) {
+    if (!premadeSheetFilteringActive) {
       filteringFunction();
     }
   }, [premadeSheetFilteringActive]);

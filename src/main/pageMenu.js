@@ -61,31 +61,14 @@ const PageMenu = () => {
       >
         <NavLink to="/kanjiQuiz">Kanji Quiz</NavLink>
       </Button>
-      {/* <Button
-        fontSize="20px"
-        backgroundColor="inherit"
-        onClick={navButtonHandler}
-        _hover={{ color: "black", bgColor: "brand.300" }}
-      >
-        <NavLink to="/sentencePractice">Sentence Practice</NavLink>
-      </Button> */}
-
-      {/* <Button
-        fontSize="20px"
-        backgroundColor="inherit"
-        onClick={navButtonHandler}
-        _hover={{ color: "black", bgColor: "brand.300" }}
-      >
-        Privacy Policy
-      </Button>
       <Button
-        fontSize="20px"
+        fontSize={["16px", "16px", "20px", "20px", "20px", "20px"]}
         backgroundColor="inherit"
         onClick={navButtonHandler}
         _hover={{ color: "black", bgColor: "brand.300" }}
       >
-        Terms of Service
-      </Button> */}
+        <NavLink to="/credits">Credits</NavLink>
+      </Button>
     </Grid>
   );
 };

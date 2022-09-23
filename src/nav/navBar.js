@@ -1,17 +1,6 @@
-import {
-  Flex,
-  Image,
-
-  SimpleGrid,
-  GridItem,
-  Button,
-} from "@chakra-ui/react";
+import { Flex, Image, SimpleGrid, GridItem, Button } from "@chakra-ui/react";
 import logo from "../img/logo2.jpg";
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-
-} from "@heroicons/react/solid";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/solid";
 import classes from "./navBar.module.css";
 import { NavLink } from "react-router-dom";
 
@@ -41,22 +30,6 @@ const NavBar = () => {
       // if the shop button is clicked then we turn it off and render the page button
     }
   };
-  // const shopButtonHandler = () => {
-  //   if (storeShopButtonClicked) {
-  //     dispatch(storeActions.setShopNavButtonClicked(false));
-  //   } else {
-  //     if (storePageButtonClicked) {
-  //       dispatch(storeActions.setPageButtonClicked(false));
-  //     }
-  //     // if the page button is clicked then we turn it off and render the shop button
-  //     dispatch(storeActions.setShopNavButtonClicked(true));
-  //   }
-  // };
-  // const loginButtonHandler = () => {
-  //   dispatch(storeActions.setLoginButtonClicked(true));
-  //   dispatch(storeActions.setPageButtonClicked(false));
-  //   dispatch(storeActions.setShopNavButtonClicked(false));
-  // };
 
   return (
     <>
@@ -85,22 +58,6 @@ const NavBar = () => {
                 border="none"
                 ml={["10px", "20px", "40px", "30px", "30px", "30px"]}
               />
-              {/* <Flex w="max-content" h="60%" ml="10%">
-                <HStack>
-                  <InputGroup>
-                    <Input
-                      placeholder="search for anything"
-                      w="15vw"
-                      color="white"
-                      borderColor="white"
-                      _placeholder={{ color: "white" }}
-                    />
-                    <InputRightElement
-                      children={<SearchIcon className={classes.searchIcon} />}
-                    />
-                  </InputGroup>
-                </HStack>
-              </Flex> */}
             </Flex>
           </GridItem>
           <GridItem
@@ -154,71 +111,6 @@ const NavBar = () => {
                   ></ChevronDownIcon>
                 )}
               </Flex>
-              {/* <Flex
-                mr={["2", "20px", "20px", "20px", "20px", "20px"]}
-                justifyContent="center"
-                alignItems="center"
-              >
-                <Button
-                  w="80%"
-                  h="80%"
-                  fontSize="24px"
-                  onClick={shopButtonHandler}
-                  bgColor="inherit"
-                  _focus={{ border: "none" }}
-                  _hover={{ color: "black", bgColor: "brand.300" }}
-                >
-                  Shop
-                </Button>
-                {storeShopButtonClicked ? (
-                  <ChevronUpIcon
-                    className={classes.chevronDownIcon}
-                  ></ChevronUpIcon>
-                ) : (
-                  <ChevronDownIcon
-                    className={classes.chevronDownIcon}
-                  ></ChevronDownIcon>
-                )}
-              </Flex> */}
-
-              {/* <Flex
-                mr="20px"
-                justifyContent="center"
-                alignItems="center"
-                pos="relative"
-              > */}
-              {/* <ShoppingCartIcon
-                  className={classes.shoppingCardIcon}
-                ></ShoppingCartIcon> */}
-              {/* <Flex
-                  pos="absolute"
-                  bgColor="brand.300"
-                  h="17.5px"
-                  w="17.5px"
-                  p="0"
-                  borderRadius="7px"
-                  textAlign="center"
-                  top="4px"
-                  right="-5px"
-                  justifyContent="center"
-                  alignItems="center"
-                  fontSize="14px"
-                >
-                  0
-                </Flex>
-              </Flex> */}
-
-              {/* <Button
-                h="50px"
-                w={["110px", "140px", "170px", "170px", "170px", "170px"]}
-                bgColor="brand.300"
-                onClick={loginButtonHandler}
-                _hover={{ color: "black", bgColor: "brand.300" }}
-                fontSize={["14px", "16px", "18px", "18px", "18px", "18px"]}
-              >
-                <UserIcon className={classes.userIcon} />
-                Login/Register
-              </Button> */}
             </Flex>
           </GridItem>
         </SimpleGrid>
