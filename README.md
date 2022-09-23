@@ -9,8 +9,7 @@ Kanji2go is a custom kanji practice sheet generator, and kanji testing site. The
  My personal goal was to get practice using Chakra,React, React DnD, HTML2Canvas and Javascript. React DnD is used to allow users to drag and drop kanji aroung in the practice sheet generator to fit their personal needs. HTML2Canvas was used to generate a downloadable pdf of the users created kanji sheet. This site also has its own web url, provided by Go Daddy. 
  
  The hardest part was learning how to incorporate React DnD, HTMl2Canvas together and make them work on mobile, as well as learning how to shrink a canvas on different screen sizes.
- 
- This project currently has a few bugs. When I created it I didn't fully understand how to handle useEffect type events on certain type triggers. I am planning on fixing these issues, with the new knowledge that I have. 
+
  
  
 ## How to Use 
