@@ -3,8 +3,31 @@ import PageMenu from "../main/pageMenu";
 import NavBar from "../nav/navBar";
 import { useSelector } from "react-redux";
 import { Container, Heading } from "@chakra-ui/react";
+import classes from "./credits.module.css";
+import { creditsData } from "./credits-data";
+import Footer from "../components/footer";
+
 const Credits = () => {
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
+
+  const renderReadyCreditsData = creditsData.map((data) => {
+    return (
+      <div className={classes.imageContainer} key={data.desciption}>
+        <img
+          className={classes.styledImage}
+          src={data.photo}
+          alt={data.desciption}
+        />
+        <p className={classes.photoDescription}>
+          Photo by <b>{data.author}</b> on{" "}
+          <a href={data.link} className={classes.unsplashLink}>
+            Unsplash
+          </a>
+        </p>
+      </div>
+    );
+  });
+
   return (
     <div>
       <NavBar />
@@ -33,6 +56,10 @@ const Credits = () => {
           Credits
         </Heading>
       </Container>
+      <div className={classes.mainContainer}>
+        <div className={classes.gridContianer}> {renderReadyCreditsData}</div>
+      </div>
+      <Footer />
     </div>
   );
 };
