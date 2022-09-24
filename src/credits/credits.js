@@ -10,9 +10,12 @@ import Footer from "../components/footer";
 const Credits = () => {
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
 
-  const renderReadyCreditsData = creditsData.map((data) => {
+  const renderReadyCreditsData = creditsData.map((data, index) => {
     return (
-      <div className={classes.imageContainer} key={data.desciption}>
+      <div
+        className={classes.imageContainer}
+        key={`${data.desciption} ${index} key`}
+      >
         <img
           className={classes.styledImage}
           src={data.photo}
@@ -57,7 +60,7 @@ const Credits = () => {
         </Heading>
       </Container>
       <div className={classes.mainContainer}>
-        <div className={classes.gridContianer}> {renderReadyCreditsData}</div>
+        <div className={classes.gridContainer}> {renderReadyCreditsData}</div>
       </div>
       <Footer />
     </div>
