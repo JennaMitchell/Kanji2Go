@@ -42,7 +42,15 @@ const NavBar = () => {
           h="100%"
           position="relative"
         >
-          <GridItem colSpan={1} maxW="100%" height="100px">
+          <GridItem
+            colSpan={1}
+            maxW="max-content"
+            height="100px"
+            display="flex"
+            gap="10px"
+            justifyContent="flex-start"
+            alignItems="center"
+          >
             <Flex
               justifyContent="center"
               alignItems="center"
@@ -58,6 +66,14 @@ const NavBar = () => {
                 border="none"
                 ml={["10px", "20px", "40px", "30px", "30px", "30px"]}
               />
+            </Flex>
+            <Flex
+              mr={["0px", "20px", "20px", "20px", "20px", "20px"]}
+              justifyContent="center"
+              alignItems="center"
+              fontSize={["16px", "20px", "24px", "24px", "24px", "24px"]}
+            >
+              Kanji2Go
             </Flex>
           </GridItem>
           <GridItem

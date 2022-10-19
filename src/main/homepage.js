@@ -27,22 +27,14 @@ import Footer from "../components/footer";
 import NavBar from "../nav/navBar";
 import { NavLink } from "react-router-dom";
 
-
-
 const HomePage = () => {
-  //const dispatch = useDispatch();
   const pageButtonClicked = useSelector((state) => state.pageButtonClicked);
 
   const shopNavButtonClicked = useSelector(
     (state) => state.shopNavButtonClicked
   );
   const loginButtonClicked = useSelector((state) => state.loginButtonClicked);
-  // const signUpButtonClicked = useSelector((state) => state.signUpButtonClicked);
-  // const loginButtonHandler = () => {
-  //   dispatch(storeActions.setLoginButtonClicked(true));
-  //   dispatch(storeActions.setPageButtonClicked(false));
-  //   dispatch(storeActions.setShopNavButtonClicked(false));
-  // };
+
   return (
     <>
       {loginButtonClicked && <div className={classes.blurBackground}></div>}
@@ -52,7 +44,7 @@ const HomePage = () => {
         <NavBar />
         <Container
           maxW="100%"
-          h={["400px", "450px", "500px", "600px", "800px", "900px"]}
+          h={["300px", "450px", "500px", "600px", "800px", "900px"]}
           p="0"
           bgColor="#dc5357"
           m="0"
@@ -72,18 +64,19 @@ const HomePage = () => {
             <GridItem colSpan={1} h="max-content" w="75%" transform="auto">
               <Heading
                 fontSize={{
-                  base: "26px",
+                  base: "16px",
                   sm: "28px",
                   md: "50px",
                   lg: "60px",
                   xl: "80px",
                 }}
                 textAlign="center"
+                width="100%"
               >
                 Custom Kanji Sheet Generator
               </Heading>
               <Text
-                fontSize={{ base: "14px", sm: "18px", lg: "22px", xl: "36px" }}
+                fontSize={{ base: "10px", sm: "18px", lg: "22px", xl: "36px" }}
                 textAlign="left"
                 mt="30px"
               >
@@ -94,7 +87,7 @@ const HomePage = () => {
                 h={["50px", "60px", "75px", "80px", "100px", "100px"]}
                 w={["100%", "100%", "100%", "100%", "100%", "100%"]}
                 mt="30px"
-                fontSize={{ base: "20px", sm: "22px", lg: "30px", xl: "36px" }}
+                fontSize={{ base: "16px", sm: "22px", lg: "30px", xl: "36px" }}
                 bgColor="#221f1f"
                 color="white"
                 _hover={{ color: "black", bgColor: "brand.200" }}
@@ -124,7 +117,7 @@ const HomePage = () => {
         <Container
           maxW="100%"
           w="100%"
-          h={["650px", "750px", "750px", "750px", "750px", "800px"]}
+          h={["580px", "750px", "750px", "750px", "750px", "800px"]}
           p="0"
           bgColor="brand.100"
           m="0"
@@ -142,7 +135,12 @@ const HomePage = () => {
           ]}
         >
           <VStack gap="15px">
-            <Text color="brand.900" fontWeight="bold" mt="40px" fontSize="20px">
+            <Text
+              color="brand.900"
+              fontWeight="bold"
+              mt="40px"
+              fontSize={["16px", "20px", "20px", "20px", "20px", "20px"]}
+            >
               EDUCATION ANYWHERE
             </Text>
             <Heading
@@ -150,7 +148,7 @@ const HomePage = () => {
               w="100%"
               height="max-content"
               textAlign="center"
-              fontSize={["22px", "24px", "26px", "28px", "28px", "28px"]}
+              fontSize={["16px", "24px", "26px", "28px", "28px", "28px"]}
             >
               Online Practice or Downloadable Sheets for Remote Learning
             </Heading>
@@ -159,7 +157,7 @@ const HomePage = () => {
               w="100%"
               height="max-content"
               textAlign="center"
-              fontSize={["14px", "14px", "16px", "18px", "18px", "18px"]}
+              fontSize={["10px", "14px", "16px", "18px", "18px", "18px"]}
             >
               Find the latest, and most popular sheets below, or select custom
               practice sheets based on your JLPT Level.
@@ -272,7 +270,7 @@ const HomePage = () => {
               </Text>
               <Heading
                 fontSize={{
-                  base: "18px",
+                  base: "16px",
                   sm: "20px",
                   md: "32px",
                   lg: "40px",
@@ -285,7 +283,7 @@ const HomePage = () => {
               </Heading>
               <Text
                 fontSize={{
-                  base: "12px",
+                  base: "10px",
                   sm: "16px",
                   md: "18px",
                   lg: "20px",
@@ -302,7 +300,7 @@ const HomePage = () => {
                 bgColor="brand.600"
                 mt={"10px"}
                 h={["50px", "60px", "75px", "80px", "100px", "100px"]}
-                w={["100%", "100%", "100%", "100%", "100%", "100%"]}
+                w={["80%", "100%", "100%", "100%", "100%", "100%"]}
                 fontSize={{ base: "14px", sm: "20px", lg: "30px", xl: "36px" }}
                 textAlign="left"
                 color="white"
@@ -322,7 +320,14 @@ const HomePage = () => {
           p="0"
           bgColor="#dc5357"
           m="0"
-          templateColumns="repeat(2,1fr)"
+          templateColumns={[
+            "200px 100px",
+            "repeat(2,1fr)",
+            "repeat(2,1fr)",
+            "repeat(2,1fr)",
+            "repeat(2,1fr)",
+            "repeat(2,1fr)",
+          ]}
           justifyItems="center"
           alignItems="center"
         >
@@ -339,7 +344,7 @@ const HomePage = () => {
           >
             <Text
               fontSize={{
-                base: "14px",
+                base: "12px",
                 sm: "18px",
                 md: "22px",
                 lg: "26px",
@@ -350,7 +355,7 @@ const HomePage = () => {
             </Text>
             <Heading
               fontSize={{
-                base: "22px",
+                base: "16px",
                 sm: "24px",
                 md: "30px",
                 lg: "42px",
@@ -386,8 +391,8 @@ const HomePage = () => {
           </GridItem>
           <Image
             src={books}
-            h={["50%", "60%", "60%", "60%", "60%", "70%"]}
-            w={["90%", "80%", "80%", "70%", "70%", "70%"]}
+            h={["200px", "60%", "60%", "60%", "60%", "70%"]}
+            w={["100%", "80%", "80%", "70%", "70%", "70%"]}
             mt="0"
             alt="tablet"
           />
